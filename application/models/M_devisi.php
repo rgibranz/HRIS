@@ -20,6 +20,12 @@ class M_devisi extends CI_Model {
     {
         $this->db->where('id_devisi', $data['id_devisi']);
         $this->db->delete('devisi', $data);
+    }
+
+    public function edit($data)
+    {
+        $this->db->where('id_devisi', $data['id_devisi']);
+        $this->db->update('devisi', $data);
         
         
     }

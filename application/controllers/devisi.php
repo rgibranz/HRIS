@@ -34,9 +34,21 @@ class devisi extends CI_Controller {
         redirect('devisi');
     }
 
+    public function edit( $id_devisi = null)
+    {
+        $data = array(
+            'id_devisi' => $id_devisi,
+            'nama_devisi' => $this->input->post('nama_devisi')
+        );
+        $this->m_devisi->edit($data);
+        $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
+        redirect('devisi');
+        
+    }
+
     public function delete($id_devisi = null)
     {
-     $data = array ('id_devisi', $id_devisi);
+     $data = array ('id_devisi' => $id_devisi);
      $this->m_devisi->delete($data);
      $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !!! ');
      redirect('devisi');
