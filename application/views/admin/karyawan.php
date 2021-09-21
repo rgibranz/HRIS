@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card card-primary">
       <div class="card-header">
-        <div class="card-title"> <?= $title ?></div>
+        <div class="card-title"> Data <?= $title ?></div>
         <div class="card-tools">
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add">
             <i class=" fa fa-plus"></i>
@@ -17,6 +17,8 @@
             <tr>
               <th>No</th>
               <th>Nama Karyawan</th>
+              <th>devisi</th>
+              <th>Job</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -24,10 +26,12 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($devisi as $key => $value) { ?>
+            foreach ($karyawan as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $value->nama_devisi ?></td>
+                <td><?= $value->nama_karyawan ?></td>
+                <td><?= $value->nama_devisi?></td>
+                <td><?= $value->job?></td>
                 <td>
                   <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_devisi?>"><i class="fa fa-edit"></i></button>
                   <a href="<?= base_url('devisi_karyawan/' . $value->id_devisi)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -73,9 +77,9 @@
 
 
         <!-- model edit-->
-        <?php foreach ($devisi as $key => $value) { ?>
+        <?php foreach ($karyawan as $key => $value) { ?>
 
-        <div class="modal fade" id="edit<?= $value->id_devisi?>">
+        <div class="modal fade" id="edit<?= $value->id_karyawan?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -85,11 +89,11 @@
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('devisi/edit/' . $value->id_devisi); ?>
+            <?php echo form_open('devisi/edit/' . $value->id_karyawan); ?>
 
             <div class="form-group">
-              <label>Nama Divisi</label>
-              <input type="text" class="form-control" name="nama_devisi" value="<?= $value->nama_devisi?>" placeholder="Nama devisi">
+              <label>Nama karyawan</label>
+              <input type="text" class="form-control" name="nama_karyawan" value="<?= $value->id_karyawan?>" placeholder="Nama devisi">
             </div>
 
           </div>

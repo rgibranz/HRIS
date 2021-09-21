@@ -4,7 +4,6 @@
       <div class="card-header">
         <div class="card-title"> <?= $title ?></div>
         <div class="card-tools">
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add">
             <i class=" fa fa-plus"></i>
             Add
           </button>

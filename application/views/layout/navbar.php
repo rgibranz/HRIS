@@ -46,6 +46,17 @@
                      </a>
                  </li>
 
+                 <li class="nav-item">
+                     <a href="<?= base_url('karyawan')?>" class="nav-link <?php if ($this->uri->segment(1) == 'karyawan') {
+                         echo "active";
+                     }?>">
+                         <i class="nav-icon fas fa-users"></i>
+                         <p>
+                             Karyawan
+                         </p>
+                     </a>
+                 </li>
+
              </ul>
          </nav>
          <!-- /.sidebar-menu -->
