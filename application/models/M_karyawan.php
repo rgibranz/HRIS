@@ -13,9 +13,11 @@ class M_karyawan extends CI_Model {
         return $this->db->get()->result();
     }
 
-    public function add()
+
+    public function add($data)
     {
-        
+        $this->db->insert('karyawan', $data);
+
     }
 
     public function edit($data)

@@ -12,11 +12,11 @@
       </div>
 
       <div  class="card-body">
-        <table class="table table-bordered" id="example1">
+        <table class="table table-bordered text-center" id="example1">
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Karyawan</th>
+              <th>Nama Devisi</th>
               <th>Action</th>
             </tr>
           </thead>

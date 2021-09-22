@@ -4,15 +4,17 @@
       <div class="card-header">
         <div class="card-title"> Data <?= $title ?></div>
         <div class="card-tools">
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add">
+          <a href="<?= base_url('karyawan/add')?>" class="btn btn-primary btn-sm">
             <i class=" fa fa-plus"></i>
             Add
-          </button>
+          </a>
         </div>
       </div>
 
       <div  class="card-body">
-        <table class="table table-bordered" id="example1">
+
+      <!--Table-->
+        <table class="table table-bordered text-center" id="example1">
           <thead>
             <tr>
               <th>No</th>
@@ -34,7 +36,7 @@
                 <td><?= $value->job?></td>
                 <td>
                   <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_devisi?>"><i class="fa fa-edit"></i></button>
-                  <a href="<?= base_url('devisi_karyawan/' . $value->id_devisi)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                  <a href="<?= base_url('karyawan/edit' . $value->id_karyawan)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?=$value->id_devisi?>"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
@@ -45,74 +47,9 @@
       </div>
     </div>
 
-    <!-- model add-->
-    <div class="modal fade" id="add">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Tambah <?= $title ?></h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?php echo form_open('devisi/add'); ?>
-            <div class="form-group">
-              <label>Nama Divisi</label>
-              <input type="text" class="form-control" name="nama_devisi" placeholder="Nama devisi">
-            </div>
-
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
-          </div>
-        </div>
-        <?php echo form_close(); ?>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-
-
-        <!-- model edit-->
-        <?php foreach ($karyawan as $key => $value) { ?>
-
-        <div class="modal fade" id="edit<?= $value->id_karyawan?>">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">edit <?= $title ?></h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?php echo form_open('devisi/edit/' . $value->id_karyawan); ?>
-
-            <div class="form-group">
-              <label>Nama karyawan</label>
-              <input type="text" class="form-control" name="nama_karyawan" value="<?= $value->id_karyawan?>" placeholder="Nama devisi">
-            </div>
-
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
-          </div>
-        </div>
-        <?php echo form_close(); ?>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
-  <?php } ?>
-    <!-- /.modal -->
-
         <!-- model Delete-->
-        <?php foreach ($devisi as $key => $value) {?>
-        <div class="modal fade" id="delete<?=$value->id_devisi?>">
+        <?php foreach ($karyawan as $key => $value) {?>
+        <div class="modal fade" id="delete<?=$value->id_karyawan?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
