@@ -2,14 +2,14 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class karyawan extends CI_Controller {
+class Karyawan extends CI_Controller {
 
     
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('m_karyawan');
-        $this->load->model('m_devisi');
+        $this->load->model('m_karyawan', 'karyawan');
+        $this->load->model('m_divisi');
         
     }
     
@@ -17,7 +17,7 @@ class karyawan extends CI_Controller {
     {
         $data = array(
             'title' => 'Karyawan',
-            'karyawan' => $this->m_karyawan->get_all_data(),
+            'karyawan' => $this->karyawan->get_all_data(),
             'isi' =>'admin/karyawan'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
@@ -26,6 +26,7 @@ class karyawan extends CI_Controller {
 
     public function add()
     {
+        
         $this->form_validation->set_rules(
             'nama_karyawan',
             'Nama Karang',
@@ -70,8 +71,8 @@ class karyawan extends CI_Controller {
 
 
         $this->form_validation->set_rules(
-            'id_devisi',
-            'id_devisi',
+            'id_divisi',
+            'id_divisi',
             'required',
             array('required' => '%s Harus di pilih !!!')
         );
@@ -83,11 +84,11 @@ class karyawan extends CI_Controller {
             array('required' => '%s Harus Diisi !!!')
         );
 
-        if ($this->form_validation->run() == false) {
+        if ($this->form_validation->run() == TRUE) {
             $data = array(
                 'title' => 'Tambah Karyawan',
-                'karyawan' => $this->m_karyawan->get_all_data(),
-                'devisi' => $this->m_devisi->get_all_data(),
+                'karyawan' => $this->karyawan->get_all_data(),
+                'divisi' => $this->m_divisi->get_all_data(),
                 'isi' => 'admin/add_karyawan'
             );
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -99,11 +100,11 @@ class karyawan extends CI_Controller {
                 'alamat' => $this->input->post('alamat'),
                 'no_hp' => $this->input->post('no_hp'),
                 'email' => $this->input->post('email'),
-                'id_devisi' => $this->input->post('id_devisi'),
+                'id_divisi' => $this->input->post('id_divisi'),
                 'job'=> $this->input->post('job'),
                 'password' => $this->input->post('password')
             );
-            $this->m_karyawan->add($data);
+            $this->karyawan->add($data);
             $this->session->set_flashdata('pesan', 'Data Karaywan Berhasil Di buat');
             redirect('karyawan');
             
@@ -112,8 +113,23 @@ class karyawan extends CI_Controller {
         
     }
 
-    public function edit($id_karyawan = null)
+    public function edit($id_karyawan = NULL)
+    {   
+            $data = array(
+                'title' => 'edit Karyawan',
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
+                'divisi' => $this->m_divisi->get_all_data(),
+                'error_upload' => $this->upload->display_errors(),
+                'isi' => 'admin/edit_karyawan',
+
+            );
+            $this->load->view('layout/wrapper', $data, FALSE);
+
+    }
+
+    public function edit_aksi($id_karyawan = NULL)
     {
+        
         $data = array(
             'id_karyawan' => $id_karyawan,
             'nama_karyawan' => $this->input->post('nama_karyawan'),
@@ -122,14 +138,24 @@ class karyawan extends CI_Controller {
             'alamat' => $this->input->post('alamat'),
             'no_hp' => $this->input->post('no_hp'),
             'email' => $this->input->post('email'),
-            'id_devisi' => $this->input->post('id_devisi'),
+            'id_divisi' => $this->input->post('id_divisi'),
             'job'=> $this->input->post('job'),
-            'password' => $this->input->post('password')
-        );
-        $this->m_devisi->edit($data);
-        $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
-        redirect('devisi');    }
+            'password' => $this->input->post('password'),
 
+        );
+        $this->karyawan->edit($data);
+        $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
+        redirect('karyawan');    
+    
+    }
+
+    public function delete($id_karyawan = NULL)
+    {
+     $data = array ('id_karyawan' => $id_karyawan);
+     $this->karyawan->delete($data);
+     $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !!! ');
+     redirect('karyawan');
+    }
 }
 
 /* End of file karyawan.php */

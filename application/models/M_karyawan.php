@@ -8,9 +8,19 @@ class M_karyawan extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('karyawan');
-        $this->db->join('devisi', 'devisi.id_devisi = karyawan.id_devisi', 'left');
+        $this->db->join('divisi', 'divisi.id_divisi = karyawan.id_divisi', 'left');
         $this->db->order_by('id_karyawan', 'desc');
         return $this->db->get()->result();
+    }
+
+    public function get_data($id_karyawan)
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('divisi', 'divisi.id_divisi = karyawan.id_divisi', 'left');
+        $this->db->where('karyawan.id_karyawan', $id_karyawan);
+
+        return $this->db->get()->row();
     }
 
 
@@ -22,12 +32,15 @@ class M_karyawan extends CI_Model {
 
     public function edit($data)
     {
-        # code...
+        $this->db->where('id_karyawan', $data['id_karyawan']);
+        $this->db->update('karyawan', $data);
+
     }
 
     public function delete($data)
     {
-        # code...
+        $this->db->where('id_karyawan', $data['id_karyawan']);
+        $this->db->delete('karyawan', $data);
     }
 
 }

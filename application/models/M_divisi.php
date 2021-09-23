@@ -2,30 +2,30 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_devisi extends CI_Model {
+class M_divisi extends CI_Model {
 
     public function get_all_data()
     {
         $this->db->select('*');
-        $this->db->from('devisi');
-        $this->db->order_by('id_devisi', 'desc');
+        $this->db->from('divisi');
+        $this->db->order_by('id_divisi', 'desc');
         return $this->db->get()->result();
     }
     public function add($data)
     {
-        $this->db->insert('devisi', $data);
+        $this->db->insert('divisi', $data);
     }
 
     public function delete($data)
     {
-        $this->db->where('id_devisi', $data['id_devisi']);
-        $this->db->delete('devisi', $data);
+        $this->db->where('id_divisi', $data['id_divisi']);
+        $this->db->delete('divisi', $data);
     }
 
     public function edit($data)
     {
-        $this->db->where('id_devisi', $data['id_devisi']);
-        $this->db->update('devisi', $data);
+        $this->db->where('id_divisi', $data['id_divisi']);
+        $this->db->update('divisi', $data);
         
         
     }

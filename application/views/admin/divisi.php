@@ -16,7 +16,7 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Devisi</th>
+              <th>Nama Divisi</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -24,14 +24,14 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($devisi as $key => $value) { ?>
+            foreach ($divisi as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $value->nama_devisi ?></td>
+                <td><?= $value->nama_divisi ?></td>
                 <td>
-                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_devisi?>"><i class="fa fa-edit"></i></button>
-                  <a href="<?= base_url('devisi_karyawan/' . $value->id_devisi)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?=$value->id_devisi?>"><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_divisi?>"><i class="fa fa-edit"></i></button>
+                  <a href="<?= base_url('karyawan/' . $value->id_divisi)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?=$value->id_divisi?>"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             <?php } ?>
@@ -52,10 +52,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('devisi/add'); ?>
+            <?php echo form_open('divisi/add'); ?>
             <div class="form-group">
               <label>Nama Divisi</label>
-              <input type="text" class="form-control" name="nama_devisi" placeholder="Nama devisi">
+              <input type="text" class="form-control" name="nama_divisi" placeholder="Nama divisi">
             </div>
 
           </div>
@@ -73,9 +73,9 @@
 
 
         <!-- model edit-->
-        <?php foreach ($devisi as $key => $value) { ?>
+        <?php foreach ($divisi as $key => $value) { ?>
 
-        <div class="modal fade" id="edit<?= $value->id_devisi?>">
+        <div class="modal fade" id="edit<?= $value->id_divisi?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -85,11 +85,11 @@
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('devisi/edit/' . $value->id_devisi); ?>
+            <?php echo form_open('divisi/edit/' . $value->id_divisi); ?>
 
             <div class="form-group">
               <label>Nama Divisi</label>
-              <input type="text" class="form-control" name="nama_devisi" value="<?= $value->nama_devisi?>" placeholder="Nama devisi">
+              <input type="text" class="form-control" name="nama_divisi" value="<?= $value->nama_divisi?>" placeholder="Nama divisi">
             </div>
 
           </div>
@@ -107,8 +107,8 @@
     <!-- /.modal -->
 
         <!-- model Delete-->
-        <?php foreach ($devisi as $key => $value) {?>
-        <div class="modal fade" id="delete<?=$value->id_devisi?>">
+        <?php foreach ($divisi as $key => $value) {?>
+        <div class="modal fade" id="delete<?=$value->id_divisi?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -118,14 +118,14 @@
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('devisi/delete'); ?>
+            <?php echo form_open('divisi/delete'); ?>
 
             <h5>Apakah anda kayakin Menghapus Data ini ?</h5>
 
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <a href="<?= base_url('devisi/delete/' . $value->id_devisi)?>" class="btn btn-danger">Delete</a>
+            <a href="<?= base_url('divisi/delete/' . $value->id_divisi)?>" class="btn btn-danger">Delete</a>
           </div>
         </div>
         <?php echo form_close(); ?>

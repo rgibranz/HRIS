@@ -36,12 +36,12 @@
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('divisi')?>" class="nav-link <?php if ($this->uri->segment(1) == 'divisi') {
+                     <a href="<?= base_url('form')?>" class="nav-link <?php if ($this->uri->segment(1) == 'form') {
                          echo "active";
                      }?>">
                          <i class="nav-icon fas fa-th"></i>
                          <p>
-                             Divisi
+                             Form
                          </p>
                      </a>
                  </li>

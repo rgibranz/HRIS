@@ -50,10 +50,10 @@
                     echo '</div>';
                 }
                 
-                                  echo form_open('auth/login_user') 
+                echo form_open('auth/login_user') 
                 ?>
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="email" name="email" class="form-control" placeholder="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
