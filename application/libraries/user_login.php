@@ -11,6 +11,8 @@ class User_login
         $this->ci->load->model('m_auth');
     }
 
+    
+
 
     public function proteksi_halaman()
     {
