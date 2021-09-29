@@ -23,6 +23,41 @@ class M_karyawan extends CI_Model {
         return $this->db->get()->row();
     }
 
+    public function get_all_data_cuti()
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->order_by('id_cuti', 'desc');
+        return $this->db->get()->result();
+    }
+    public function get_data_cuti($id_karyawan)
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->where('cuti.id_karyawan', $id_karyawan);
+
+        return $this->db->get()->result();
+    }
+
+    public function get_data_cuti_s($id_cuti)
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->where('cuti.id_cuti', $id_cuti);
+
+        return $this->db->get()->row();
+    }
+
+    
+    public function get_data_d_karyawan($id_divisi)
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('divisi', 'divisi.id_divisi = karyawan.id_divisi', 'left');
+        $this->db->where('karyawan.id_divisi', $id_divisi);
+
+        return $this->db->get()->result();
+    }
 
     public function add($data)
     {
@@ -31,6 +66,15 @@ class M_karyawan extends CI_Model {
     }
 
     public function edit($data)
+    {
+        $this->db->where('id_karyawan', $data['id_karyawan']);
+        $this->db->update('karyawan', $data);
+
+    }
+
+
+
+    public function edit_biodata($data)
     {
         $this->db->where('id_karyawan', $data['id_karyawan']);
         $this->db->update('karyawan', $data);

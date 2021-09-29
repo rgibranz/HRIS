@@ -30,7 +30,7 @@
                 <td><?= $value->nama_divisi ?></td>
                 <td>
                   <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_divisi?>"><i class="fa fa-edit"></i></button>
-                  <a href="<?= base_url('karyawan/' . $value->id_divisi)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                  <a href="<?= base_url('karyawan/divisi_karyawan/' . $value->id_divisi)?>"class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?=$value->id_divisi?>"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>

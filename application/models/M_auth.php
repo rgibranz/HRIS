@@ -4,13 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_auth extends CI_Model {
 
-    public function login_user($email, $password)
+    public function login_user($email)
     {
         $this->db->select('*');
-        $this->db->from('users');
+        $this->db->from('karyawan');
         $this->db->where(array(
             'email' =>$email,
-            'password' =>$password
         ));
         return $this->db->get()->row();
         
