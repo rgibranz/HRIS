@@ -13,6 +13,7 @@ class Auth extends CI_Controller
 
     public function login()
     {
+        
         $this->form_validation->set_rules('email', 'email', 'required',  array(
             'required' => '%s Harus Diisi !!!'
         ));
@@ -63,7 +64,7 @@ class Auth extends CI_Controller
                 }
             } else {
                 $this->session->set_flashdata('error', 'Email atau Password salah');
-                redirect('auth/login');
+                redirect('auth');
             }
         }
     }

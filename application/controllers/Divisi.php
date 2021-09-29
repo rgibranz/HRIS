@@ -14,12 +14,21 @@ class Divisi extends CI_Controller {
     
     public function index()
     {
-        $data = array(
-            'title' => 'divisi',
-            'divisi' => $this->m_divisi->get_all_data(),
-            'isi' => 'admin/divisi',);
+        $level = $this->session->userdata('level_user'); 
+        if ($level == "admin" || $level == "manajer" || $level == "direktur") {
+        
+        
+            $data = array(
+                'title' => 'divisi',
+                'divisi' => $this->m_divisi->get_all_data(),
+                'isi' => 'admin/divisi',);
+    
+            $this->load->view('layout/wrapper', $data, FALSE);
 
-        $this->load->view('layout/wrapper', $data, FALSE);
+        }else{
+            redirect('Dasboard_user');
+        }
+
         
     }
 
