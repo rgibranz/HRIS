@@ -177,7 +177,7 @@ class Form extends CI_Controller {
             'mulai_bekerja' => $this->input->post('mulai_bekerja'),
             'jenis_cuti' => $this->input->post('jenis_cuti'),
             'lama_cuti' => $this->input->post('lama_cuti'),
-            'sisa_cuti' => $this->input->post('sisa_cuti');
+            'sisa_cuti' => $this->input->post('sisa_cuti'),
             'tanggal' => $this->input->post('tanggal'),
             'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
             'status' => $this->input->post('status'),
