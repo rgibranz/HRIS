@@ -94,6 +94,7 @@
                 </div>
                 </div>
 
+                <input type="text" value="$list_cuti->id_cuti" hidden>
 
 
                 <div class="row">

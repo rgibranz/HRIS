@@ -61,7 +61,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Sisa Cuti</label>
-                        <input type="text" name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti">
+                        <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti?>" class="form-control" id="exampleInputEmail1" readonly>
                         <small class="text-danger"><?= form_error('sisa_cuti'); ?></small>
                     </div>
                 </div>

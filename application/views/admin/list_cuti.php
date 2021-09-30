@@ -24,8 +24,20 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($list_cuti as $key => $value) { ?>
+            foreach ($list_cuti as $key => $value) { 
+              if($value->status_direktur ==  ""){
+              ?>
               <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <?php }else{ ?>
+            <tr>
                 <td><?= $no++; ?></td>
                 <td><?= $value->nama_karyawan?></td>
                 <td><?= $value->jenis_cuti; ?></td>
@@ -38,13 +50,14 @@
                 <p class="text-danger"><?= $value->status; ?></p>
               <?php }
                   if ($value->status == "diajukan") { ?>
-                <p class="text-warning"><?= $value->status; ?></p>
+                <p class="text-warning">Menungu Konfirmasi</p>
               <?php  } ?>
               </td>
-
+                    
                 <td> <a href="<?= base_url('form/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
               </tr>
-            <?php } ?>
+            <?php  } }?>
+            
           </tbody>
         </table>
 

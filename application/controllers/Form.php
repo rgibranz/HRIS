@@ -10,16 +10,33 @@ class Form extends CI_Controller {
         parent::__construct();
         $this->load->model('m_karyawan', 'karyawan');
         $this->load->model('m_cuti', 'cuti');
+        $this->load->model('m_form', 'form');
+        
         $this->load->library('form_validation');
         
         
         
+    }
+
+    public function dump($id_karyawan = null)
+    {
+        
+        $data = array(
+            'title' => 'dump',
+            'dump' => $this->cuti->get_all_data()->num_rows(),
+            'isi' => 'user/dump',
+            'dump_1' => $this->cuti->get_data($id_karyawan)
+        );
+        $this->load->view('layout/wrapper_user', $data, FALSE);
+        
+
     }
     
     public function ajukan_cuti()
     {
         $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')]) -> row_array();
         $id_karyawan = $s_id['id_karyawan'];
+        
         $data = array(
             'title' => 'Ajukan Cuti',
             'karyawan' => $this->karyawan->get_data($id_karyawan),
@@ -51,6 +68,7 @@ class Form extends CI_Controller {
             
         
         } else {
+
             $row_tgl = $this->input->post("tanggal");
             $tgl = date_format(new DateTime($row_tgl),"Y-m-d");
             
@@ -61,7 +79,6 @@ class Form extends CI_Controller {
                 'jenis_cuti' => $this->input->post('jenis_cuti'),
                 'lama_cuti' => $this->input->post('lama_cuti'),
                 'tanggal' => $tgl,
-                'sisa_cuti' => $this->input->post('sisa_cuti'),
                 'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
                 'status' => 'diajukan'
             );
@@ -81,6 +98,7 @@ class Form extends CI_Controller {
         $id_karyawan = $s_id['id_karyawan'];
         $data = array(
             'title' => 'Ajukan Cuti',
+            'karyawan' => $this->karyawan->get_data($id_karyawan),
             'list_cuti' => $this->karyawan->get_data_cuti($id_karyawan),
             'isi' => 'user/list_cuti'
         );
@@ -90,7 +108,23 @@ class Form extends CI_Controller {
 
     public function list_cuti_admin()
     {
+        $level = $this->session->userdata('level_user');
+        if($level == 'manajer'){
+            $data = array(
+                'title' => 'Ajukan Cuti',
+                'list_cuti' => $this->karyawan->get_all_data_cuti(),
+                'isi' => 'manajer/list_cuti'
+            );
+            $this->load->view('layout/wrapper_manajer', $data, FALSE);
+        }if($level == 'direktur'){
+            $data = array(
+                'title' => 'Ajukan Cuti',
+                'list_cuti' => $this->karyawan->get_all_data_cuti(),
+                'isi' => 'direktur/list_cuti'
+            );
+            $this->load->view('layout/wrapper_direktur', $data, FALSE);
 
+        }
         $data = array(
             'title' => 'Ajukan Cuti',
             'list_cuti' => $this->karyawan->get_all_data_cuti(),
@@ -100,11 +134,13 @@ class Form extends CI_Controller {
         
     }
 
-    public function view_cuti($id_cuti = NULL)
+    public function view_cuti($id_cuti = NULL, $id_karyawan = NuLL)
     {
+    
         $data = array(
             'title' => ' view Karyawan',
             'list_cuti' => $this->karyawan->get_data_cuti_s($id_cuti),
+            'karyawan' => $this->karyawan->get_data($id_karyawan),
             'isi' => 'admin/cuti',
         );
         $this->load->view('layout/wrapper', $data, FALSE);
@@ -125,22 +161,39 @@ class Form extends CI_Controller {
     
     public function cuti_edit()
     {
+        $status = $this->input->post('status');
+        if($status == "accept") {
+            $sisa_cuti = $this->input->post('sisa_cuti');
+            $lama_cuti = $this->input->post('lama_cuti');
+            $hasil = $sisa_cuti - $lama_cuti;
+            $id_karyawan = intval($this->input->post('id_karyawan'));
+            var_dump($id_karyawan);
+            var_dump($hasil);
+        
         $data = array(
             'id_cuti' => $this->input->post('id_cuti'),
-            'id_karyawan' => $this->input->post('id_karyawan'),
+            'id_karyawan' => $id_karyawan,
             'nama_karyawan' => $this->input->post('nama_karyawan'),
             'mulai_bekerja' => $this->input->post('mulai_bekerja'),
             'jenis_cuti' => $this->input->post('jenis_cuti'),
             'lama_cuti' => $this->input->post('lama_cuti'),
+            'sisa_cuti' => $this->input->post('sisa_cuti');
             'tanggal' => $this->input->post('tanggal'),
-            'sisa_cuti' => $this->input->post('sisa_cuti'),
             'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-            'status' => $this->input->post('status')
+            'status' => $this->input->post('status'),
+            'status_manajer' => $this->input->post('status_manajer'),
+            'status_direktur' => $this->input->post('status_direktur')
+        );
+
+        $sisa_data = array( 
+            'id_karyawan' => $id_karyawan,
+            'sisa_cuti' => $hasil
         );
             $this->cuti->edit_cuti($data);
+            $this->form->edit($sisa_data);
             $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
             redirect('form/list_cuti_admin');
-        
+        }
     }
 
     public function delete($id_cuti = null)

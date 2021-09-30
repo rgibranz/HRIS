@@ -43,9 +43,18 @@ class M_karyawan extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('cuti');
+        $this->db->join('karyawan', 'karyawan.id_karyawan = cuti.id_karyawan', 'left');
         $this->db->where('cuti.id_cuti', $id_cuti);
 
         return $this->db->get()->row();
+    }
+
+    public function get_all_role()
+    {
+    $this->db->select('*');
+    $this->db->from('users_role');
+    $this->db->order_by('id_user', 'asc');
+    return $this->db->get()->result();
     }
 
     
@@ -72,13 +81,10 @@ class M_karyawan extends CI_Model {
 
     }
 
-
-
     public function edit_biodata($data)
     {
         $this->db->where('id_karyawan', $data['id_karyawan']);
         $this->db->update('karyawan', $data);
-
     }
 
     public function delete($data)
@@ -86,7 +92,6 @@ class M_karyawan extends CI_Model {
         $this->db->where('id_karyawan', $data['id_karyawan']);
         $this->db->delete('karyawan', $data);
     }
-
 }
 
 /* End of file .php */

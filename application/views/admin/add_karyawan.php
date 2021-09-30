@@ -78,7 +78,10 @@
                 <label> Divisi</label>
                 <select name="id_divisi" class="form-control">
                   <option value="">--Pilih divisi --</option>
-                  <?php foreach ($divisi as $key => $value) { ?>
+                  <?php 
+                  $x =1;
+                  foreach ($divisi as $key => $value) { ?>
+                    <option value="<?= $x++?>" hidden></option>
                     <option value="<?= $value->id_divisi ?>"><?= $value->nama_divisi ?></option>
                   <?php } ?>
                 </select>
@@ -99,14 +102,25 @@
                 <label> Role User</label>
                 <select name="level" class="form-control">
                   <option value="">--Pilih Role User --</option>
-                  <option value="admin">admin</option>
-                  <option value="user">user</option>
+                  <?php 
+                  $x = 1;
+                  foreach ($role as $key => $value) {?>
+                  <option value="<?= $x++ ?>" hidden></option>
+                  <option value="<?= $value->id_user?>"><?= $value->users_role?></option>
+                  <?php } ?>
+            
                 </select>
               </div>
 
               <div class="form-group">
                 <label>Gaji</label>
                 <input type="text" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+              </div>
+
+              div.<div class="form-group">
+                <label for="">Jumalah Cuti </label>
+                <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun">
+                <small id="helpId" class="text-muted">Help text</small>
               </div>
 
             </div>

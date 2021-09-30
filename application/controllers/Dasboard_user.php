@@ -18,13 +18,16 @@ class Dasboard_user extends CI_Controller {
      
     public function index()
     {
+        $level = $this->session->userdata('level_user');
+        if ($level != "user") {
+            redirect('dasboard');
+        }
         $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')]) -> row_array();
         $id_karyawan = $s_id['id_karyawan'];
         $data = array(
             'title' => 'Dasboard',
             'karyawan'=> $this->karyawan->get_data($id_karyawan),
             'isi' => 'user/dasboard');
-
             $this->load->view('layout/wrapper_user', $data, FALSE);
             
     }

@@ -12,7 +12,8 @@ class Auth extends CI_Controller
 
 
     public function login()
-    {
+    { 
+        
         
         $this->form_validation->set_rules('email', 'email', 'required',  array(
             'required' => '%s Harus Diisi !!!'
@@ -33,6 +34,7 @@ class Auth extends CI_Controller
             $this->_login();
         }
     }
+    
 
     private function _login()
     {

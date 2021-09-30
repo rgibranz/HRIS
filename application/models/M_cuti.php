@@ -4,6 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_cuti extends CI_Model {
 
+    public function get_data($id_karyawan)
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->where('id_karyawan', $id_karyawan);
+
+        return $this->db->get()->row();
+        
+    }
+
+    public function get_all_data()
+    {
+        return $this->db->get('cuti');
+
+    }
+
     public function add($data)
     {
         $this->db->insert('cuti', $data);

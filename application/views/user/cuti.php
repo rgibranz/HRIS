@@ -55,12 +55,12 @@
                     </div>
 
                 </div>
-
+    
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Sisa Cuti</label>
                        <h5><?= $list_cuti->sisa_cuti ?></h5>
-                        <input type="text" value="<?= $list_cuti->sisa_cuti ?>"name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" hidden>
+                        <input type="text" value="<?= $list_cuti->sisa_cuti ?>"name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" readonly>
                     </div>
                 </div>
 

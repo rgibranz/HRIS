@@ -48,7 +48,7 @@
 
         <!-- model Delete-->
         <?php foreach ($karyawan as $key => $value) {?>
-        <div class="modal fade" id="delete<?=$value->id_karyawan?>">
+        <div class="modal fade" id="delete<?= $value->id_karyawan?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">

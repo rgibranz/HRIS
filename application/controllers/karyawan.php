@@ -18,6 +18,7 @@ class Karyawan extends CI_Controller
         $data = array(
             'title' => 'Karyawan',
             'karyawan' => $this->karyawan->get_all_data(),
+            'role' => $this->karyawan->get_all_role(),
             'isi' => 'admin/karyawan'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
@@ -100,6 +101,7 @@ class Karyawan extends CI_Controller
             $data = array(
                 'title' => 'Tambah Karyawan',
                 'karyawan' => $this->karyawan->get_all_data(),
+                'role' => $this->karyawan->get_all_role(),
                 'divisi' => $this->m_divisi->get_all_data(),
                 'isi' => 'admin/add_karyawan'
             );
@@ -142,7 +144,8 @@ class Karyawan extends CI_Controller
                     'password' => $password,
                     'level' => $this->input->post('level'),
                     'gaji' => $this->input->post('gaji'),
-                    'img' => $upload_data['uploads']['file_name']
+                    'img' => $upload_data['uploads']['file_name'],
+                    'sisa_cuti' => $this->input->post('sisa_cuti')
                 );
 
                 $this->karyawan->add($data);
@@ -262,6 +265,8 @@ class Karyawan extends CI_Controller
         $data = array(
             'title' => 'edit Karyawan',
             'karyawan' => $this->karyawan->get_data($id_karyawan),
+            'role' => $this->karyawan->get_all_role(),
+
             'divisi' => $this->m_divisi->get_all_data(),
             'error_upload' => $this->upload->display_errors(),
             'isi' => 'admin/edit_karyawan',

@@ -98,11 +98,17 @@
               <div class="form-group">
                 <label> Role User</label>
                 <select name="level" class="form-control">
-                  <option value="<?= $karyawan->level ?>"><?= $karyawan->level ?></option>
-                  <option value="admin">admin</option>
-                  <option value="user">user</option>
+                  <option value=""><?= $karyawan->level?></option>
+                  <?php 
+                  $x = 1;
+                  foreach ($role as $key => $value) {?>
+                  <option value="<?= $x++ ?>" hidden></option>
+                  <option value="<?= $value->users_role?>"><?= $value->users_role?></option>
+                  <?php } ?>
+            
                 </select>
               </div>
+
               <div class="form-group">
                 <label>Gaji</label>
                 <input type="text" value="<?= $karyawan->gaji ?>" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">

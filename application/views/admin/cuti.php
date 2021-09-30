@@ -6,6 +6,7 @@
                 <!--Start Formulir-->
 
                 <?php echo form_open_multipart('form/cuti_edit/' ) ?>
+                <?php var_dump($list_cuti);?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
