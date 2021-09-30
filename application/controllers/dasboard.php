@@ -16,14 +16,28 @@ class Dasboard extends CI_Controller
     {
         $level = $this->session->userdata('level_user'); 
         if ($level == "admin" || $level == "manajer" || $level == "direktur") {
-        
-            $data = array(
-                'title' => 'Dasboard',
-                'isi' => 'admin/dasboard'
-            );
+            if ($level == "manajer") {
+                $data = array(
+                    'title' => 'Dasboard',
+                    'isi' => 'manajer/dasboard'
+                );
+                $this->load->view('layout/wrapper_manajer', $data, FALSE);
     
-            $this->load->view('layout/wrapper', $data, FALSE);
-
+            }if ($level == "direktur") {
+                $data = array(
+                    'title' => 'Dasboard',
+                    'isi' => 'direktur/dasboard'
+                );
+                $this->load->view('layout/wrapper_direktur', $data, FALSE);
+    
+            }else{
+                $data = array(
+                    'title' => 'Dasboard',
+                    'isi' => 'admin/dasboard'
+                );
+                $this->load->view('layout/wrapper', $data, FALSE);
+    
+            }
         }else{
             redirect('Dasboard_user');
         }
