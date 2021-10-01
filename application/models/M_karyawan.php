@@ -30,6 +30,7 @@ class M_karyawan extends CI_Model {
         $this->db->order_by('id_cuti', 'desc');
         return $this->db->get()->result();
     }
+    
     public function get_data_cuti($id_karyawan)
     {
         $this->db->select('*');
@@ -95,5 +96,3 @@ class M_karyawan extends CI_Model {
 }
 
 /* End of file .php */
-
-?>

@@ -5,7 +5,7 @@
             <div class="card-text">
                 <!--Start Formulir-->
 
-                <?php echo form_open_multipart('form/cuti_edit/' ) ?>
+                <?php echo form_open_multipart('form/cuti_edit/') ?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
@@ -47,58 +47,58 @@
                             <label>Tanggal</label>
                             <h5><?= $list_cuti->tanggal ?></h5>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" value="<?= $list_cuti->tanggal?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
+                                <input type="text" value="<?= $list_cuti->tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
 
-                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-    
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Sisa Cuti</label>
-                       <h5><?= $list_cuti->sisa_cuti ?></h5>
-                        <input type="text" value="<?= $list_cuti->sisa_cuti ?>"name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" readonly>
-                    </div>
-                </div>
-
-
-                <div>
-                    <div class="form-group">
-                        <label>Tanggal Pengajuan</label>
-                   <h5> <?= $list_cuti->tgl_pengajuan ?> </h5>
-                        <input type="text" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>" hidden>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="form-group">
-                        <input type="text" name="id_karyawan" value="<?= $list_cuti->id_karyawan ?>" hidden>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-group">
-                        <input type="text" name="id_cuti" value="<?= $list_cuti->id_cuti ?>" hidden>
-                    </div>
-                </div>
-
 
             </div>
 
-            <?php echo form_close(); ?>
-            <!--End Formulir-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Sisa Cuti</label>
+                    <h5><?= $list_cuti->sisa_cuti ?></h5>
+                    <input type="text" value="<?= $list_cuti->sisa_cuti ?>" name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" readonly>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="form-group">
+                    <label>Tanggal Pengajuan</label>
+                    <h5> <?= $list_cuti->tgl_pengajuan ?> </h5>
+                    <input type="text" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>" hidden>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <input type="text" name="id_karyawan" value="<?= $list_cuti->id_karyawan ?>" hidden>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <input type="text" name="id_cuti" value="<?= $list_cuti->id_cuti ?>" hidden>
+                </div>
+            </div>
+
+
         </div>
+
+        <?php echo form_close(); ?>
+        <!--End Formulir-->
     </div>
+</div>
 
 
 
-    <script>
-        $(function() {
-            //Date range picker
-            $('#reservationdate').datetimepicker({
-                format: 'DD-MM-YYYY'
-            });
-        })
-    </script>
+<script>
+    $(function() {
+        //Date range picker
+        $('#reservationdate').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+    })
+</script>

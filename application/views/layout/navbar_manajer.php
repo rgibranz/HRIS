@@ -2,7 +2,7 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
      <a href="index3.html" class="brand-link">
-         <img src="<?= base_url()?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+         <img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
          <span class="brand-text font-weight-light">AdminLTE 3</span>
      </a>
 
@@ -11,10 +11,10 @@
          <!-- Sidebar user panel (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
-                 <img src="<?= base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                 <img src="<?= base_url() ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
              </div>
              <div class="info">
-                 <a href="#" class="d-block"><?php echo $this->session->userdata('nama_karyawan')?></a>
+                 <a href="#" class="d-block"><?php echo $this->session->userdata('nama_karyawan') ?></a>
              </div>
          </div>
 
@@ -25,9 +25,9 @@
                with font-awesome or any other icon font library -->
 
                  <li class="nav-item">
-                     <a href="<?= base_url('dasboard')?>" class="nav-link <?php if ($this->uri->segment(1) == 'dasboard') {
-                         echo "active";
-                     }?>">
+                     <a href="<?= base_url('dasboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'dasboard') {
+                                                                                echo "active";
+                                                                            } ?>">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>
                              DASBOARD
@@ -35,34 +35,12 @@
                      </a>
                  </li>
 
-                 <li class="nav-item">
-                     <a href="<?= base_url('divisi')?>" class="nav-link <?php if ($this->uri->segment(1) == 'divisi') {
-                         echo "active";
-                     }if ($this->uri->segment(1) == 'divisi_karyawan') {
-                         echo "actives";
-                     }?>">
-                         <i class="nav-icon fas fa-th"></i>
-                         <p>
-                             Divisi
-                         </p>
-                     </a>
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('karyawan')?>" class="nav-link <?php if ($this->uri->segment(1) == 'karyawan') {
-                         echo "active";
-                     }?>">
-                         <i class="nav-icon fas fa-users"></i>
-                         <p>
-                             Karyawan
-                         </p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="<?= base_url('form/list_cuti_admin')?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
-                         echo "active";
-                     }?>">
+                     <a href="<?= base_url('form/list_cuti_admin') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
+                                                                                            echo "active";
+                                                                                        } ?>">
                          <i class="nav-icon fas fa-users"></i>
                          <p>
                              list cuti
@@ -71,7 +49,7 @@
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('auth/logout_user')?>" class="nav-link">
+                     <a href="<?= base_url('auth/logout_user') ?>" class="nav-link">
                          <i class="nav-icon fas fa-sign"></i>
                          <p>
                              Log Out

@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_hris`
 --
-
+CREATE DATABASE IF NOT EXISTS `db_hris` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `db_hris`;
 -- --------------------------------------------------------
 
 --

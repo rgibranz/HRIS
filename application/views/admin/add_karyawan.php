@@ -78,10 +78,10 @@
                 <label> Divisi</label>
                 <select name="id_divisi" class="form-control">
                   <option value="">--Pilih divisi --</option>
-                  <?php 
-                  $x =1;
+                  <?php
+                  $x = 1;
                   foreach ($divisi as $key => $value) { ?>
-                    <option value="<?= $x++?>" hidden></option>
+                    <option value="<?= $x++ ?>" hidden></option>
                     <option value="<?= $value->id_divisi ?>"><?= $value->nama_divisi ?></option>
                   <?php } ?>
                 </select>
@@ -102,13 +102,13 @@
                 <label> Role User</label>
                 <select name="level" class="form-control">
                   <option value="">--Pilih Role User --</option>
-                  <?php 
+                  <?php
                   $x = 1;
-                  foreach ($role as $key => $value) {?>
-                  <option value="<?= $x++ ?>" hidden></option>
-                  <option value="<?= $value->id_user?>"><?= $value->users_role?></option>
+                  foreach ($role as $key => $value) { ?>
+                    <option value="<?= $x++ ?>" hidden></option>
+                    <option value="<?= $value->users_role ?>"><?= $value->users_role ?></option>
                   <?php } ?>
-            
+
                 </select>
               </div>
 
