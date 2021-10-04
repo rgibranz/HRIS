@@ -10,7 +10,6 @@ class Dasboard extends CI_Controller
         parent::__construct();
     }
 
-
     public function index()
     {
         $level = $this->session->userdata('level_user');
