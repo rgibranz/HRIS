@@ -22,35 +22,52 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Jenis Cuti</label>
+                            <h5><?= $list_cuti->jenis_cuti ?></h5>
+                            <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->jenis_cuti ?>" hidden>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>lokasi semala cuti</label>
+                            <h5><?= $list_cuti->lokasi_cuti ?></h5>
+                            <input type="text" name="lokasi_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->lokasi_cuti ?>" hidden>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label>Jenis Cuti</label>
-                        <h5><?= $list_cuti->jenis_cuti ?></h5>
-                        <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->jenis_cuti ?>" hidden>
+                        <label>Lama Cuti</label>
+                        <h5><?= $list_cuti->lama_cuti ?></h5>
+                        <input type="text" name="lama_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->lama_cuti ?>" hidden>
                     </div>
                 </div>
 
                 <div class="row">
 
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Lama Cuti</label>
-                            <h5><?= $list_cuti->lama_cuti ?></h5>
-                            <input type="text" name="lama_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->lama_cuti ?>" hidden>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
 
                         <div class="form-group">
-                            <label>Tanggal</label>
-                            <h5><?= $list_cuti->tanggal ?></h5>
+                            <label>Mulai dari</label>
+                            <h5><?= $list_cuti->mulai_tanggal ?></h5>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" value="<?= $list_cuti->tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
+                                <input type="text" value="<?= $list_cuti->mulai_tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
 
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                    <label>Sampai dengan</label>
+                            <h5><?= $list_cuti->sampai_tanggal ?></h5>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="text" value="<?= $list_cuti->sampai_tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
+
+                            </div>
                     </div>
                 </div>
 
@@ -59,7 +76,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Sisa Cuti</label>
-                    <h5><?= $list_cuti->sisa_cuti_k ?></h5>
+                    <h5><?= $list_cuti->sisa_cuti ?></h5>
                     <input type="text" value="<?= $list_cuti->sisa_cuti ?>" name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" hidden>
                 </div>
             </div>
@@ -77,6 +94,7 @@
                     <input type="text" name="id_karyawan" value="<?= $list_cuti->id_karyawan ?>" hidden>
                 </div>
             </div>
+
             <div>
                 <div class="form-group">
                     <input type="text" name="id_cuti" value="<?= $list_cuti->id_cuti ?>" hidden>
@@ -90,6 +108,13 @@
                         <option value="accept">accept</option>
                         <option value="reject">reject</option>
                     </select>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Keterangan</label>
+                    <textarea class= "form-control" name="keterangan_manajer"  cols="30" rows="3"></textarea>
                 </div>
             </div>
 

@@ -22,12 +22,21 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Jenis Cuti</label>
+                            <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" placeholder="Jenis Cuti">
+                            <small class="text-danger"><?= form_error('jenis_cuti'); ?></small>
+                        </div>
+                    </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Jenis Cuti</label>
-                        <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" placeholder="Jenis Cuti">
-                        <small class="text-danger"><?= form_error('jenis_cuti'); ?></small>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Lokasi selama Cuti</label>
+                            <input type="text" name="lokasi_cuti" class="form-control" id="exampleInputEmail1" placeholder="Jenis Cuti">
+                            <small class="text-danger"><?= form_error('jenis_cuti'); ?></small>
+                        </div>
                     </div>
                 </div>
 
@@ -40,29 +49,39 @@
                             <small class="text-danger"><?= form_error('lama_cuti'); ?></small>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sisa Cuti</label>
+                            <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti ?>" class="form-control" id="exampleInputEmail1" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Mulai dari Tanggal</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun">
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-md-3">
-
                         <div class="form-group">
-                            <label>Tanggal</label>
+                            <label>Sampai dengan</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" />
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>                                
+                                <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun">
                             </div>
-                            <small class="text-danger"><?= form_error('tanggal'); ?></small>
-
                         </div>
                     </div>
 
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Sisa Cuti</label>
-                        <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti?>" class="form-control" id="exampleInputEmail1" readonly>
-                        <small class="text-danger"><?= form_error('sisa_cuti'); ?></small>
+                        <label>Keterangan</label>
+                        <textarea class="form-control" name="alasan_cuti" cols="30" rows="3"></textarea>
                     </div>
                 </div>
 

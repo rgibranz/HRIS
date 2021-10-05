@@ -42,28 +42,51 @@
                     </div>
 
                     <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sisa Cuti</label>
+                            <h5><?= $list_cuti->sisa_cuti ?></h5>
+                            <input type="text" value="<?= $list_cuti->sisa_cuti ?>" name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" hidden>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
 
                         <div class="form-group">
-                            <label>Tanggal</label>
-                            <h5><?= $list_cuti->tanggal ?></h5>
+                            <label>Mulai dari Tanggal</label>
+                            <h5><?= $list_cuti->mulai_tanggal ?></h5>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" value="<?= $list_cuti->tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
+                                <input type="text" value="<?= $list_cuti->mulai_tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
+                            </div>
+                        </div>
 
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sampai dengan</label>
+                            <h5><?= $list_cuti->sampai_tanggal ?></h5>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="text" value="<?= $list_cuti->sampai_tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" hidden>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
             </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Sisa Cuti</label>
-                    <h5><?= $list_cuti->sisa_cuti ?></h5>
-                    <input type="text" value="<?= $list_cuti->sisa_cuti ?>" name="sisa_cuti" class="form-control" id="exampleInputEmail1" placeholder="Sisa Cuti" readonly>
+            
+            <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Keterangan</label>
+                        <textarea class="form-control" name="alasan_cuti" cols="30" rows="3" readonly></textarea>
+                    </div>
                 </div>
-            </div>
-
 
             <div>
                 <div class="form-group">
