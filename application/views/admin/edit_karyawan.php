@@ -86,6 +86,17 @@
               </div>
 
               <div class="form-group">
+                <label> Status Karyawan</label>
+                <select name="status_karyawan" class="form-control">
+                  <option value="<?= $karyawan->status_karyawan?>"><?= $karyawan->status_karyawan?></option>
+                  <option value="Probation">Probation</option>
+                  <option value="Karyawan tetap">Karyawan Tetap</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Resign">Resign</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label>Posisi</label>
                 <input type="text" name="job" class="form-control" placeholder="Nama Karyawan" value="<?= $karyawan->job ?>">
               </div>
@@ -98,7 +109,7 @@
               <div class="form-group">
                 <label> Role User</label>
                 <select name="level" class="form-control">
-                  <option value=""><?= $karyawan->level?></option>
+                  <option value="<?= $karyawan->level ?>"><?= $karyawan->level ?></option>
                   <?php 
                   $x = 1;
                   foreach ($role as $key => $value) {?>
@@ -125,7 +136,7 @@
 
             <div class="form-group">
               <label for="exampleInputFile">Upload Gambar</label>
-              <input type="file" class="form-control" id="preview_gambar" name="img">
+              <input type="file" class="form-control" id="preview_gambar" name="img" >
             </div>
 
           </div>

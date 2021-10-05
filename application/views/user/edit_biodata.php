@@ -106,12 +106,12 @@
                     <div class="col-md-3">
 
                         <div class="form-group text-center">
-                            <img src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" alt="" width="200px" height="240px" id="gambar_load">
+                            <img src="" alt="" width="200px" height="240px" id="gambar_load">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputFile">Upload Gambar</label>
-                            <input type="file" class="form-control" id="preview_gambar" name="img">
+                            <input type="file" class="form-control" id="preview_gambar" name="img" value="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>">
                         </div>
 
                     </div>

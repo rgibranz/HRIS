@@ -98,7 +98,6 @@ class Form extends CI_Controller
     public function list_cuti_admin()
     {
         $level = $this->session->userdata('level_user');
-        var_dump($level);
         if ($level == "manajer") {
             $data = array(
                 'title' => 'Ajukan Cuti',

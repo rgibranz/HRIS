@@ -88,6 +88,17 @@
               </div>
 
               <div class="form-group">
+                <label> Status Karyawan</label>
+                <select name="status_karyawan" class="form-control">
+                  <option value="">--Pilih Status Karyawan --</option>
+                  <option value="Probation">Probation</option>
+                  <option value="Karyawan tetap">Karyawan Tetap</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Resign">Resign</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label>Posisi</label>
                 <input type="text" name="job" class="form-control" placeholder="Nama Karyawan">
               </div>
@@ -117,10 +128,9 @@
                 <input type="text" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
-              div.<div class="form-group">
+              <div class="form-group">
                 <label for="">Jumalah Cuti </label>
                 <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun">
-                <small id="helpId" class="text-muted">Help text</small>
               </div>
 
             </div>

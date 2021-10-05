@@ -139,6 +139,7 @@ class Karyawan extends CI_Controller
                     'no_hp_d' => $this->input->post('no_hp_d'),
                     'email' => $this->input->post('email'),
                     'id_divisi' => $this->input->post('id_divisi'),
+                    'status_karyawan' => $this->input->post('status_karyawan'),
                     'job' => $this->input->post('job'),
                     'password' => $password,
                     'level' => $this->input->post('level'),
@@ -353,19 +354,55 @@ class Karyawan extends CI_Controller
             $this->upload->initialize($config);
             $field_name = "img";
             if (!$this->upload->do_upload($field_name)) {
-                $data = array(
-                    'title' => 'Edit Karyawan',
-                    'karyawan' => $this->karyawan->get_data($id_karyawan),
-                    'divisi' => $this->m_divisi->get_all_data(),
-                    'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'admin/edit_karyawan'
-                );
+                if ($this->input->post('password') == '') {
+                    $data = array(
+                        'id_karyawan' => $id_karyawan,
+                        'nama_karyawan' => $this->input->post('nama_karyawan'),
+                        'tmpt_lahir' => $this->input->post('tmpt_lahir'),
+                        'tgl_lahir' => $this->input->post('tgl_lahir'),
+                        'alamat_ktp' => $this->input->post('alamat_ktp'),
+                        'alamat_domisili' => $this->input->post('alamat_domisili'),
+                        'no_hp' => $this->input->post('no_hp'),
+                        'no_hp_d' => $this->input->post('no_hp_d'),
+                        'email' => $this->input->post('email'),
+                        'id_divisi' => $this->input->post('id_divisi'),
+                        'status_karyawan' => $this->input->post('status_karyawan'),
+                        'job' => $this->input->post('job'),
+                        'level' => $this->input->post('level'),
+                        'gaji' => $this->input->post('gaji'),
+                    );
+                    $this->karyawan->edit($data);
+                    $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
+                    redirect('karyawan');
+                } else {
+                    $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+                    $data = array(
+                        'id_karyawan' => $id_karyawan,
+                        'nama_karyawan' => $this->input->post('nama_karyawan'),
+                        'tmpt_lahir' => $this->input->post('tmpt_lahir'),
+                        'tgl_lahir' => $this->input->post('tgl_lahir'),
+                        'alamat_ktp' => $this->input->post('alamat_ktp'),
+                        'alamat_domisili' => $this->input->post('alamat_domisili'),
+                        'no_hp' => $this->input->post('no_hp'),
+                        'no_hp_d' => $this->input->post('no_hp_d'),
+                        'email' => $this->input->post('email'),
+                        'id_divisi' => $this->input->post('id_divisi'),
+                        'status_karyawan' => $this->input->post('status_karyawan'),
+                        'job' => $this->input->post('job'),
+                        'level' => $this->input->post('level'),
+                        'gaji' => $this->input->post('gaji'),
+                        'password' => $password,
+                    );
+                    $this->karyawan->edit()($data);
+                    $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
+                    redirect('karyawan');
+                }
 
-                $this->load->view('layout/wrapper', $data, FALSE);
+
             } else {
 
                 $gambar = $this->karyawan->get_data($id_karyawan);
-                if ($gambar->gambar != "") {
+                if ($gambar->img != "") {
                     unlink('./assets/gambar/user/' . $gambar->img);
                 }
 
@@ -385,6 +422,7 @@ class Karyawan extends CI_Controller
                         'no_hp_d' => $this->input->post('no_hp_d'),
                         'email' => $this->input->post('email'),
                         'id_divisi' => $this->input->post('id_divisi'),
+                        'status_karyawan' => $this->input->post('status_karyawan'),
                         'job' => $this->input->post('job'),
                         'level' => $this->input->post('level'),
                         'gaji' => $this->input->post('gaji'),
@@ -406,6 +444,7 @@ class Karyawan extends CI_Controller
                         'no_hp_d' => $this->input->post('no_hp_d'),
                         'email' => $this->input->post('email'),
                         'id_divisi' => $this->input->post('id_divisi'),
+                        'status_karyawan' => $this->input->post('status_karyawan'),
                         'job' => $this->input->post('job'),
                         'level' => $this->input->post('level'),
                         'gaji' => $this->input->post('gaji'),
