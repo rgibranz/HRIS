@@ -28,24 +28,35 @@
                 <td><?= $no++; ?></td>
                 <td><?= $value->jenis_cuti; ?></td>
                 <td><?= $value->tgl_pengajuan; ?></td>
+
                 <td>
-                  <?php if ($value->status == "accept") { ?>
-                <p class="text-success"><?= $value->status; ?></p>
-              <?php }
-                  if ($value->status == "reject") { ?>
-                <p class="text-danger"><?= $value->status; ?></p>
-              <?php }
-                  if ($value->status == "diajukan") { ?>
-                <p class="text-warning"><?= $value->status; ?></p>
-              <?php  } ?>
-              </td>
-              <td>
-                <?php if ($value->status != "diajukan") { ?>
-                   <a href="<?= base_url('form/view_cuti_user/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                <?php } else { ?>
-                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_cuti ?>"><i class="fa fa-trash"></i></button>
-                <?php } ?>
-              </td>
+                  <?php if ($value->status_manajer == "accept") { ?>
+                    <?php if ($value->status_direktur == "accept") { ?>
+                      <p class="text-success">accept</p>
+                    <?php } else { ?>
+                      <p class="text-warning">Menungu Konfirmasi Direktur</p>
+                    <?php } ?>
+                  <?php }
+                  if ($value->status_manajer == "reject") { ?>
+                    <?php if ($value->status_direktur == "reject") { ?>
+                      <p class="text-danger">Pengajuan Cuti di Tolak Oleh direktur</p>
+                    <?php } else { ?>
+                      <p class="text-danger">Pengajuan Cuti di Tolak Oleh Manajer</p>
+
+                    <?php } ?>
+                  <?php }
+                  if ($value->status_manajer == "diajukan") { ?>
+                    <p class="text-warning">Menungu Konfirmasi Manajer</p>
+                  <?php  } ?>
+                </td>
+
+                <td>
+                  <?php if ($value->status_manajer != "diajukan") { ?>
+                    <a href="<?= base_url('form/view_cuti_user/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                  <?php } else { ?>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_cuti ?>"><i class="fa fa-trash"></i></button>
+                  <?php } ?>
+                </td>
 
 
 
@@ -58,34 +69,34 @@
     </div>
 
     <!-- model Delete-->
-    <?php foreach ($list_cuti as $key => $value) {?>
-        <div class="modal fade" id="delete<?=$value->id_cuti?>">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Hapus <?= $title ?></h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?php echo form_open('form/delete'); ?>
+    <?php foreach ($list_cuti as $key => $value) { ?>
+      <div class="modal fade" id="delete<?= $value->id_cuti ?>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Hapus <?= $title ?></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <?php echo form_open('form/delete'); ?>
 
-            <h5>Apakah anda ingin membatalkan Pengajuan ini ?</h5>
+              <h5>Apakah anda ingin membatalkan Pengajuan ini ?</h5>
 
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a href="<?= base_url('form/delete/' . $value->id_cuti) ?>" class="btn btn-danger">Delete</a>
+            </div>
           </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <a href="<?= base_url('form/delete/' . $value->id_cuti)?>" class="btn btn-danger">Delete</a>
-          </div>
+          <?php echo form_close(); ?>
+          <!-- /.modal-content -->
         </div>
-        <?php echo form_close(); ?>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-    <?php }?>
+      <!-- /.modal -->
+    <?php } ?>
 
     <!--End Modal Delete-->
 
