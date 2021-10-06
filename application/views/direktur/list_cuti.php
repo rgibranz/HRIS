@@ -25,18 +25,9 @@
             <?php
             $no = 1;
             foreach ($list_cuti as $key => $value) {
-              if ($value->status_manajer ==  "") {
+              if ($value->status_manajer !=  "") {
             ?>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
 
-                </tr>
-              <?php } else { ?>
                 <tr>
                   <td><?= $no++; ?></td>
                   <td><?= $value->nama_karyawan ?></td>
@@ -53,6 +44,7 @@
                       <p class="text-warning">Menungu Konfirmasi</p>
                     <?php  } ?>
                   </td>
+
 
                   <td> <a href="<?= base_url('form/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
                 </tr>

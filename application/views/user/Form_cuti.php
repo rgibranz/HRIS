@@ -53,35 +53,46 @@
                         <div class="form-group">
                             <label>Sisa Cuti</label>
                             <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti ?>" class="form-control" id="exampleInputEmail1" readonly>
+                            <small class="text-danger"><?= form_error('sisa_cuti'); ?></small>
+
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Mulai dari Tanggal</label>
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun">
-                            </div>
-                        </div>
+                <div class="col-md-3">
+                <div class="form-group">
+                  <label>Mulai dari Tanggal</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    <input type="text" name="mulai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal-bulan-Tahun"/>
+                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
+                    <small class="text-danger"><?= form_error('mulai_cuti'); ?></small>
+                  </div>
+                </div>
+              </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Sampai dengan</label>
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun">
-                            </div>
-                        </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Sampai Tanggal</label>
+                  <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                    <input type="text" name="sampai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
+                    <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
+                    <small class="text-danger"><?= form_error('sampai_tanggal'); ?></small>
+                  </div>
+                </div>
+              </div>
 
                 </div>
 
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Keterangan</label>
-                        <textarea class="form-control" name="alasan_cuti" cols="30" rows="3"></textarea>
+                        <textarea class="form-control" name="keterangan_manajer" cols="30" rows="3"></textarea>
+                        <small class="text-danger"><?= form_error('keterangan_menejer'); ?></small>
                     </div>
                 </div>
 
@@ -123,5 +134,11 @@
             $('#reservationdate').datetimepicker({
                 format: 'DD-MM-YYYY'
             });
+
+                        //Date range picker
+                        $('#reservationdate2').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
         })
+        
     </script>

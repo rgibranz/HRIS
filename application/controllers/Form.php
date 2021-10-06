@@ -46,7 +46,8 @@ class Form extends CI_Controller
         $this->form_validation->set_rules('mulai_bekerja', 'mulai_bekerja', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('jenis_cuti', 'jenis_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('lama_cuti', 'lama_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
-        $this->form_validation->set_rules('tanggal', 'tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
+        $this->form_validation->set_rules('mulai_tanggal', 'mulai_tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
+        $this->form_validation->set_rules('sampai_tanggal', 'sampai_tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('sisa_cuti', 'sisa_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
 
 
@@ -61,23 +62,34 @@ class Form extends CI_Controller
             $this->load->view('layout/wrapper_user', $data, FALSE);
         } else {
 
-            $row_tgl = $this->input->post("tanggal");
-            $tgl = date_format(new DateTime($row_tgl), "Y-m-d");
+            $row_mb_tgl = $this->input->post("mulai_bekerja");
+            $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
+
+            $row_m_tgl = $this->input->post("mulai_tanggal");
+            $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
+
+            $row_s_tgl = $this->input->post("sampai_tanggal");
+            $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
 
             $data = array(
                 'id_karyawan' => $this->input->post('id_karyawan'),
                 'nama_karyawan' => $this->input->post('nama_karyawan'),
-                'mulai_bekerja' => $this->input->post('mulai_bekerja'),
+                'mulai_bekerja' => $mb_tgl,
                 'jenis_cuti' => $this->input->post('jenis_cuti'),
+                'lokasi_cuti' => $this->input->post('lokasi_cuti'),
                 'lama_cuti' => $this->input->post('lama_cuti'),
-                'sisa_cuti_k' => $this->input->post('sisa_cuti'),
-                'tanggal' => $tgl,
+                'sisa_cuti' => $this->input->post('sisa_cuti'),
+                'mulai_tanggal' => $m_tgl,
+                'sampai_tanggal' => $s_tgl,
+                'keterangan_cuti' => $this->input->post('keterangan_cuti'),
                 'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-                'status' => 'diajukan'
+                'status' => 'diajukan',
+                'status_manajer' => 'diajukan',
+                'status_direktur' => 'diajukan'
             );
 
             $this->cuti->add($data);
-            $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
+            $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
             redirect('dasboard_user');
         }
     }
@@ -170,48 +182,28 @@ class Form extends CI_Controller
 
     public function cuti_edit()
     {
-        $status = $this->input->post('status');
         $status_manajer = $this->input->post('status_manajer');
         $status_direktur = $this->input->post('status_direktur');
 
+        if ($status_direktur == "accept") {
 
-        if ($status == "accept") {
-            $sisa_cuti = $this->input->post('sisa_cuti_k');
+            $sisa_cuti = $this->input->post('sisa_cuti');
             $lama_cuti = $this->input->post('lama_cuti');
             $hasil = $sisa_cuti - $lama_cuti;
 
-
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
-                'mulai_bekerja' => $this->input->post('mulai_bekerja'),
-                'jenis_cuti' => $this->input->post('jenis_cuti'),
-                'lama_cuti' => $this->input->post('lama_cuti'),
-                'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-                'status' => $this->input->post('status'),
-
+                'status_direktur' => $this->input->post('status_direktur'),
+                'keterangan_direktur' => $this->input->post('keterangan_direktur'),
             );
 
             $sisa_data = array(
                 'id_karyawan' => $this->input->post('id_karyawan'),
-                'sisa_cuti' => $hasil
+                'sisa_cuti' => $hasil,
             );
+
             $this->cuti->edit_cuti($data);
             $this->form->edit($sisa_data);
-            $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
-            redirect('form/list_cuti_admin');
-        }
-        if ($status_direktur == "accept") {
-
-            $data = array(
-                'id_cuti' => $this->input->post('id_cuti'),
-                'mulai_bekerja' => $this->input->post('mulai_bekerja'),
-                'jenis_cuti' => $this->input->post('jenis_cuti'),
-                'lama_cuti' => $this->input->post('lama_cuti'),
-                'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-                'status_direktur' => $this->input->post('status_direktur')
-            );
-
-            $this->cuti->edit_cuti($data);
             $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
             redirect('form/list_cuti_admin');
         }
@@ -219,12 +211,8 @@ class Form extends CI_Controller
 
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
-                'nama_karyawan' => $this->input->post('nama_karyawan'),
-                'mulai_bekerja' => $this->input->post('mulai_bekerja'),
-                'jenis_cuti' => $this->input->post('jenis_cuti'),
-                'lama_cuti' => $this->input->post('lama_cuti'),
-                'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
                 'status_manajer' => $this->input->post('status_manajer'),
+                'keterangan_manajer' => $this->input->post('keterangan_manajer'),
             );
             $this->cuti->edit_cuti($data);
             $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
