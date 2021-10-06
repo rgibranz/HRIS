@@ -451,7 +451,7 @@ class Karyawan extends CI_Controller
                         'password' => $password,
                         'img' => $upload_data['uploads']['file_name'],
                     );
-                    $this->karyawan->edit()($data);
+                    $this->karyawan->edit($data);
                     $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
                     redirect('karyawan');
                 }
@@ -459,6 +459,37 @@ class Karyawan extends CI_Controller
         }
         //end
     }
+
+    public function tambah_cuti_all()
+    {
+       $this->karyawan->tambah_cuti_all($this->input->post('tambah_cuti'));
+       redirect('karyawan');
+    }
+
+    public function kurangi_cuti_all()
+    {
+        $this->karyawan->kurangi_cuti_all($this->input->post('kurangi_cuti'));
+        redirect('karyawan');
+    }
+
+    public function kurang_cuti()
+    {
+        $data = array(
+            'id_karyawan' => $this->input->post('id_karyawan'),
+            'kurangi_cuti' => $this->input->post('kurangi_cuti')
+        );
+        $this->karyawan->kurang_cuti($data);
+    }
+
+    public function tambah_cuti()
+    {
+        $data = array(
+            'id_karyawan' => $this->input->post('id_karyawan'),
+            'tambah_cuti' => $this->input->post('tambah_karyawan')
+        );
+        $this->karyawan->tambah_cuti($data);
+    }
+
 
     public function delete($id_karyawan = NULL)
     {

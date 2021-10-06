@@ -88,6 +88,21 @@ class M_karyawan extends CI_Model {
         $this->db->update('karyawan', $data);
     }
 
+
+    public function tambah_cuti_all($jumlah)
+    {
+
+        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` + $jumlah");
+        return $query;
+    }
+
+    public function kurangi_cuti_all($jumlah)
+    {
+
+        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` - $jumlah");
+        return $query;
+    }
+
     public function delete($data)
     {
         $this->db->where('id_karyawan', $data['id_karyawan']);

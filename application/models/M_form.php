@@ -8,7 +8,6 @@ class M_form extends CI_Model {
     {
         $this->db->where('id_karyawan', $sisa_data['id_karyawan']);
         $this->db->update('karyawan', $sisa_data);
-
     }
 
     

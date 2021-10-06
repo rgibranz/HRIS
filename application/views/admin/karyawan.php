@@ -13,6 +13,15 @@
 
       <div  class="card-body">
 
+        <div class="row mb-3">
+          <div class="ml-2">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_cuti">Tambah Cuti</button>
+          </div>
+          <div class="col-2 mr-5">
+            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#kurangi_cuti">Kurangi Cuti</button>
+          </div>
+        </div>
+
       <!--Table-->
         <table class="table table-bordered text-center" id="example1">
           <thead>
@@ -21,6 +30,7 @@
               <th>Nama Karyawan</th>
               <th>divisi</th>
               <th>Job</th>
+              <th>sisa cuti</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -34,6 +44,7 @@
                 <td><?= $value->nama_karyawan ?></td>
                 <td><?= $value->nama_divisi?></td>
                 <td><?= $value->job?></td>
+                <td><?= $value->sisa_cuti?></td>
                 <td>
                   <a href="<?= base_url('karyawan/edit/' . $value->id_karyawan)?>" class="btn btn-warning btn-sm"  ><i class="fa fa-edit"></i></a>
                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?=$value->id_karyawan?>"><i class="fa fa-trash"></i></button>
@@ -76,5 +87,73 @@
     <!-- /.modal -->
     <?php }?>
 <!--End Modal Delete-->
+
+        <!-- model Tambah cuti-->
+    <div class="modal fade" id="tambah_cuti">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Tambah Cuti Semua Karyawan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php echo form_open('karyawan/tambah_cuti'); ?>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Jumlah Cuti</label>
+                <input type="text" name="tambah_cuti">
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </div>
+        </div>
+        <?php echo form_close(); ?>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+<!--End Modal Tambah cuti-->
+
+        <!-- model kurangi cuti-->
+    <div class="modal fade" id="kurangi_cuti">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">kurangi Cuti Semua Karyawan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php echo form_open('karyawan/kurangi_cuti_all'); ?>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Jumlah Cuti</label>
+                <input type="text" name="kurangi_cuti">
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger">Kurangi</button>
+          </div>
+        </div>
+        <?php echo form_close(); ?>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+<!--End Modal Tambah cuti-->
 
   </div>
