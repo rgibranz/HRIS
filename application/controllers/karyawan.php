@@ -397,8 +397,6 @@ class Karyawan extends CI_Controller
                     $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
                     redirect('karyawan');
                 }
-
-
             } else {
 
                 $gambar = $this->karyawan->get_data($id_karyawan);
@@ -462,32 +460,70 @@ class Karyawan extends CI_Controller
 
     public function tambah_cuti_all()
     {
-       $this->karyawan->tambah_cuti_all($this->input->post('tambah_cuti'));
-       redirect('karyawan');
+        $this->karyawan->tambah_cuti_all($this->input->post('tambah_cuti'));
+        redirect('karyawan');
     }
 
     public function kurangi_cuti_all()
     {
-        $this->karyawan->kurangi_cuti_all($this->input->post('kurangi_cuti'));
+        $kurangi_cuti = intval($this->input->post('kurangi_cuti'));
+        $karyawan = $this->karyawan->get_all_data();
+
+        foreach ($karyawan as $key) {
+            $sisa_cuti = intval($key->sisa_cuti);
+
+            if ($sisa_cuti <= $kurangi_cuti) {
+                // jika cuti kurang
+                $data = array(
+                    'kurangi_cuti' => '0'
+                );
+                $this->karyawan->kurangi_cuti_all($data);
+            } else {
+                // jika cuti bisa di kurang
+                $data = array(
+                    'kurangi_cuti' => $kurangi_cuti,
+                );
+                $this->karyawan->kurangi_cuti_all($data);
+            }
+        }
+        // redirect('karyawan');
+        // $this->karyawan->kurangi_cuti_all($this->input->post('kurangi_cuti'));
         redirect('karyawan');
     }
 
-    public function kurang_cuti()
+    public function kurangi_cuti()
     {
-        $data = array(
-            'id_karyawan' => $this->input->post('id_karyawan'),
-            'kurangi_cuti' => $this->input->post('kurangi_cuti')
-        );
-        $this->karyawan->kurang_cuti($data);
+        $id_karyawan = intval($this->input->post('id_karyawan'));
+        $kurangi_cuti = intval($this->input->post('kurangi_cuti'));
+        $karyawan = $this->karyawan->get_data($id_karyawan);
+        if ($karyawan->sisa_cuti <= $kurangi_cuti) {
+            $data = array(
+                'id_karyawan' => $id_karyawan,
+                'kurangi_cuti' => '0'
+            );
+            $this->karyawan->kurangi_cuti($data);
+            redirect('karyawan');
+        } else {
+            $data = array(
+                'id_karyawan' => $id_karyawan,
+                'kurangi_cuti' => $kurangi_cuti,
+            );
+            $this->karyawan->kurangi_cuti($data);
+            redirect('karyawan');
+        }
     }
 
     public function tambah_cuti()
     {
+        $id_karyawan = intval($this->input->post('id_karyawan'));
+        $tambah_cuti = intval($this->input->post('tambah_cuti'));
         $data = array(
-            'id_karyawan' => $this->input->post('id_karyawan'),
-            'tambah_cuti' => $this->input->post('tambah_karyawan')
+            'id_karyawan' => $id_karyawan,
+            'tambah_cuti' => $tambah_cuti
         );
+
         $this->karyawan->tambah_cuti($data);
+        redirect('karyawan');
     }
 
 

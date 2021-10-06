@@ -13,6 +13,15 @@ class M_karyawan extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function get_all_data_sisacuti()
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('divisi', 'divisi.id_divisi = karyawan.id_divisi', 'left');
+        $this->db->order_by('id_karyawan', 'desc');
+        return $this->db->get()->row();
+    }
+
     public function get_data($id_karyawan)
     {
         $this->db->select('*');
@@ -96,10 +105,24 @@ class M_karyawan extends CI_Model {
         return $query;
     }
 
-    public function kurangi_cuti_all($jumlah)
+    public function kurangi_cuti_all($data)
     {
 
-        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` - $jumlah");
+        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` - $data[kurangi_cuti]");
+        return $query;
+    }
+
+    public function tambah_cuti($data)
+    {
+
+        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` + $data[tambah_cuti] WHERE id_karyawan = $data[id_karyawan]");
+        return $query;
+    }
+
+    public function kurangi_cuti($data)
+    {
+
+        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` - $data[kurangi_cuti] WHERE id_karyawan = $data[id_karyawan]");
         return $query;
     }
 

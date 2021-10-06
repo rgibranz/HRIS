@@ -83,7 +83,6 @@ class Form extends CI_Controller
                 'sampai_tanggal' => $s_tgl,
                 'keterangan_cuti' => $this->input->post('keterangan_cuti'),
                 'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-                'status' => 'diajukan',
                 'status_manajer' => 'diajukan',
                 'status_direktur' => 'diajukan'
             );

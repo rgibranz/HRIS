@@ -124,8 +124,6 @@
                 <label>Gaji</label>
                 <input type="text" value="<?= $karyawan->gaji ?>" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
-            </div>
-
 
           </div>
           <div class="col-md-3">
