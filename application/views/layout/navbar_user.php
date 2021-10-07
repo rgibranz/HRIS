@@ -81,7 +81,7 @@
                      <a href="#" class="nav-link <?php if ($this->uri->segment(2) == 'detail_biodata') {
                                                         echo "active";
                                                     } ?>">
-                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <i class="nav-icon ion ion-android-person"></i>
                          <p>
                              Biodata
                              <i class="right fas fa-angle-left"></i>
@@ -109,7 +109,7 @@
 
                  <li class="nav-item">
                      <a href="<?= base_url('auth/logout_user') ?>" class="nav-link " id="log_out">
-                         <i class="nav-icon fas fa-sign-out"></i>
+                         <i class="nav-icon ion ion-log-out" aria-hidden="true"></i>
                          <p>
                              Log out
                          </p>

@@ -101,3 +101,15 @@
     <!--End Modal Delete-->
 
   </div>
+
+  <?php if ($this->session->flashdata('pesan')) : ?>
+    <script>
+      swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Cuti Berhasil di ajukan",
+        button: false,
+        timer: 3000,
+      });
+    </script>
+  <?php endif; ?>

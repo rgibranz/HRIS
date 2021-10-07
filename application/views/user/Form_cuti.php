@@ -60,31 +60,31 @@
                 </div>
 
                 <div class="row">
-                <div class="col-md-3">
-                <div class="form-group">
-                  <label>Mulai dari Tanggal</label>
-                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" name="mulai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal-bulan-Tahun"/>
-                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Mulai dari Tanggal</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="text" name="mulai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal-bulan-Tahun" />
+                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <small class="text-danger"><?= form_error('mulai_cuti'); ?></small>
+                            </div>
+                        </div>
                     </div>
-                    <small class="text-danger"><?= form_error('mulai_cuti'); ?></small>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Sampai Tanggal</label>
-                  <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                    <input type="text" name="sampai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
-                    <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sampai Tanggal</label>
+                            <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                                <input type="text" name="sampai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
+                                <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <small class="text-danger"><?= form_error('sampai_tanggal'); ?></small>
+                            </div>
+                        </div>
                     </div>
-                    <small class="text-danger"><?= form_error('sampai_tanggal'); ?></small>
-                  </div>
-                </div>
-              </div>
 
                 </div>
 
@@ -135,10 +135,20 @@
                 format: 'DD-MM-YYYY'
             });
 
-                        //Date range picker
-                        $('#reservationdate2').datetimepicker({
+            //Date range picker
+            $('#reservationdate2').datetimepicker({
                 format: 'DD-MM-YYYY'
             });
         })
-        
     </script>
+
+    <?php if ($this->session->flashdata('invalidcuti')) : ?>
+        <script>
+            swal.fire({
+                title: "Gagal Mengajuakn Cuti",
+                text: "Jumlah cuti yang anda miliki tidak cukup",
+                button: false,
+                timer: 5000,
+            });
+        </script>
+    <?php endif; ?>
