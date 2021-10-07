@@ -46,7 +46,7 @@
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('auth/logout_user') ?>" class="nav-link">
+                     <a href="<?= base_url('auth/logout_user') ?>" class="nav-link" id="log_out">
                          <i class="nav-icon fas fa-sign"></i>
                          <p>
                              Log Out

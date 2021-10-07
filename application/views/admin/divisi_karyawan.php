@@ -3,9 +3,13 @@
     <div class="card card-primary">
       <div class="card-header">
         <div class="card-title"> List <?= $title ?></div>
-
+        <div class="card-tools">
+          <a href="<?= base_url('karyawan/add_karyawan/' . $id_divisi) ?>" class="btn btn-primary btn-sm">
+            <i class=" fa fa-plus"></i>
+            Add
+          </a>
+        </div>
       </div>
-
       <div class="card-body">
 
         <!--Table-->

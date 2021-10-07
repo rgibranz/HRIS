@@ -8,7 +8,7 @@
         echo validation_errors('<div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h5><i class="icon fas fa-info"></i>', '</h5></div>'); ?>
-        <?php echo form_open_multipart('karyawan/add') ?>
+        <?php echo form_open_multipart('karyawan/add_karyawan') ?>
         <div class="row">
           <div class="col-lg-9">
 
@@ -76,14 +76,8 @@
 
               <div class="form-group">
                 <label> Divisi</label>
-                <select name="id_divisi" class="form-control">
-                  <option value="">--Pilih divisi --</option>
-                  <?php
-                  $x = 1;
-                  foreach ($divisi as $key => $value) { ?>
-                    <option value="<?= $x++ ?>" hidden></option>
-                    <option value="<?= $value->id_divisi ?>"><?= $value->nama_divisi ?></option>
-                  <?php } ?>
+                <select name="id_divisi" class="form-control" readonly>
+                  <option value="<?= $divisi->id_divisi ?>"><?= $divisi->nama_divisi ?></option>
                 </select>
               </div>
 

@@ -88,7 +88,7 @@
               <div class="form-group">
                 <label> Status Karyawan</label>
                 <select name="status_karyawan" class="form-control">
-                  <option value="<?= $karyawan->status_karyawan?>"><?= $karyawan->status_karyawan?></option>
+                  <option value="<?= $karyawan->status_karyawan ?>"><?= $karyawan->status_karyawan ?></option>
                   <option value="Probation">Probation</option>
                   <option value="Karyawan tetap">Karyawan Tetap</option>
                   <option value="Freelance">Freelance</option>
@@ -110,13 +110,13 @@
                 <label> Role User</label>
                 <select name="level" class="form-control">
                   <option value="<?= $karyawan->level ?>"><?= $karyawan->level ?></option>
-                  <?php 
+                  <?php
                   $x = 1;
-                  foreach ($role as $key => $value) {?>
-                  <option value="<?= $x++ ?>" hidden></option>
-                  <option value="<?= $value->users_role?>"><?= $value->users_role?></option>
+                  foreach ($role as $key => $value) { ?>
+                    <option value="<?= $x++ ?>" hidden></option>
+                    <option value="<?= $value->users_role ?>"><?= $value->users_role ?></option>
                   <?php } ?>
-            
+
                 </select>
               </div>
 
@@ -125,7 +125,10 @@
                 <input type="text" value="<?= $karyawan->gaji ?>" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
+            </div>
+
           </div>
+
           <div class="col-md-3">
 
             <div class="form-group text-center">
@@ -134,13 +137,12 @@
 
             <div class="form-group">
               <label for="exampleInputFile">Upload Gambar</label>
-              <input type="file" class="form-control" id="preview_gambar" name="img" >
+              <input type="file" class="form-control" id="preview_gambar" name="img">
             </div>
 
           </div>
+
         </div>
-
-
 
         <div class="row">
           <div class="col-md-6 text-left">
@@ -152,36 +154,34 @@
         </div>
 
       </div>
-
+      <?php echo form_close() ?>
+      <!--End Formulir-->
     </div>
-    <?php echo form_close() ?>
-    <!--End Formulir-->
   </div>
-</div>
 
 
 
-<script>
-  $(function() {
-    //Date range picker
-    $('#reservationdate').datetimepicker({
-      format: 'YYYY-MM-DD'
-    });
-  })
-</script>
+  <script>
+    $(function() {
+      //Date range picker
+      $('#reservationdate').datetimepicker({
+        format: 'YYYY-MM-DD'
+      });
+    })
+  </script>
 
-<script>
-  function bacaGambar(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        $('#gambar_load').attr('src', e.target.result);
+  <script>
+    function bacaGambar(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#gambar_load').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
       }
-      reader.readAsDataURL(input.files[0]);
     }
-  }
 
-  $("#preview_gambar").change(function() {
-    bacaGambar(this);
-  });
-</script>
+    $("#preview_gambar").change(function() {
+      bacaGambar(this);
+    });
+  </script>

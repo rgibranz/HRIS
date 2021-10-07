@@ -1,36 +1,36 @@
 </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
+<!-- /.row -->
+</div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+  <div class="p-3">
+    <h5>Title</h5>
+    <p>Sidebar content</p>
   </div>
-  <!-- /.content-wrapper -->
+</aside>
+<!-- /.control-sidebar -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+<!-- Main Footer -->
+<footer class="main-footer">
+  <!-- To the right -->
+  <div class="float-right d-none d-sm-inline">
+    Anything you want
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+</footer>
 </div>
 <!-- ./wrapper -->
 
 
 <script>
-  $(function () {
+  $(function() {
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
@@ -49,10 +49,39 @@
 
 <script>
   window.setTimeout(function() {
-    $(".alert").fadeTo(500,0).slideUp(500,function(){
+    $(".alert").fadeTo(500, 0).slideUp(500, function() {
       $(this).remove()
     });
-  },3000)
+  }, 3000)
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#log_out').on('click', function(e) {
+      e.preventDefault();
+      const href = $(this).attr('href');
+
+      Swal.fire({
+        title: 'Yakin ingin Logout?',
+        imageUrl: '<?= base_url() ?>assets/gambar/icon/logout.jpg',
+        imageWidth: 150,
+        imageAlt: 'Custom image',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: 'rgb(28, 173, 28)',
+        confirmButtonText: 'Keluar',
+        cancelButtonText: 'Batal',
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger mr-3',
+        reverseButtons: true,
+        buttonsStyling: false
+      }).then(function(result) {
+        if (result.value) {
+          document.location.href = href;
+        }
+      })
+    })
+  })
 </script>
 
 </body>

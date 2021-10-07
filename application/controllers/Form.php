@@ -205,9 +205,28 @@ class Form extends CI_Controller
             $this->form->edit($sisa_data);
             $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
             redirect('form/list_cuti_admin');
+        } else {
+            $data = array(
+                'id_cuti' => $this->input->post('id_cuti'),
+                'status_direktur' => $this->input->post('status_direktur'),
+                'keterangan_direktur' => $this->input->post('keterangan_direktur'),
+            );
+
+            $this->cuti->edit_cuti($data);
+            $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
+            redirect('form/list_cuti_admin');
         }
         if ($status_manajer == "accept") {
 
+            $data = array(
+                'id_cuti' => $this->input->post('id_cuti'),
+                'status_manajer' => $this->input->post('status_manajer'),
+                'keterangan_manajer' => $this->input->post('keterangan_manajer'),
+            );
+            $this->cuti->edit_cuti($data);
+            $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
+            redirect('form/list_cuti_admin');
+        } else {
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
                 'status_manajer' => $this->input->post('status_manajer'),

@@ -38,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
-  
+
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
   <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -52,12 +52,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- AdminLTE App -->
   <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
   <!-- date-range-picker -->
-<script src="<?= base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Select2 -->
-<script src="<?= base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="<?= base_url() ?>assets/plugins/moment/moment.min.js"></script>
-<script src="<?= base_url() ?>assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="<?= base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Select2 -->
+  <script src="<?= base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
+  <!-- InputMask -->
+  <script src="<?= base_url() ?>assets/plugins/moment/moment.min.js"></script>
+  <script src="<?= base_url() ?>assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!--sweetalert2-->
+  <script src="<?= base_url() ?>assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+
 </head>

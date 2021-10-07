@@ -2,7 +2,7 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
      <a href="index3.html" class="brand-link">
-         <img src="<?= base_url()?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+         <img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
          <span class="brand-text font-weight-light">AdminLTE 3</span>
      </a>
 
@@ -11,10 +11,10 @@
          <!-- Sidebar user panel (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
-                 <img src="<?= base_url('assets/gambar/user/' . $karyawan->img)?>" class="img-circle elevation-3" alt="User Image">
+                 <img src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" class="img-circle elevation-3" alt="User Image">
              </div>
              <div class="info">
-                 <a href="#" class="d-block"><?php echo $this->session->userdata('nama_karyawan')?></a>
+                 <a href="#" class="d-block"><?php echo $this->session->userdata('nama_karyawan') ?></a>
              </div>
          </div>
 
@@ -25,9 +25,9 @@
                with font-awesome or any other icon font library -->
 
                  <li class="nav-item">
-                     <a href="<?= base_url('dasboard_user')?>" class="nav-link <?php if ($this->uri->segment(1) == 'dasboard_user') {
-                         echo "active";
-                     }?>">
+                     <a href="<?= base_url('dasboard_user') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'dasboard_user') {
+                                                                                    echo "active";
+                                                                                } ?>">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>
                              DASBOARD
@@ -36,77 +36,79 @@
                  </li>
 
 
-                 <li class="nav-item has-treeview <?php if ($this->uri->segment(1) =='form') {
-                     echo "menu-open";
-                 }if ($this->uri->segment(1) =='list_cuti') {
-                    echo "menu-open";
-                }?>">
-            <a href="#" class="nav-link <?php if ($this->uri->segment(1) == 'form') {
-                         echo "active";
-                     }?>">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Cuti
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="<?= base_url('form/list_cuti')?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti') {
-                         echo "active";
-                     }?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List Cuti</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= base_url('form/ajukan_cuti')?>" class="nav-link <?php if ($this->uri->segment(2) == 'ajukan_cuti') {
-                         echo "active";
-                     }?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajukan Cuti</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+                 <li class="nav-item has-treeview <?php if ($this->uri->segment(1) == 'form') {
+                                                        echo "menu-open";
+                                                    }
+                                                    if ($this->uri->segment(1) == 'list_cuti') {
+                                                        echo "menu-open";
+                                                    } ?>">
+                     <a href="#" class="nav-link <?php if ($this->uri->segment(1) == 'form') {
+                                                        echo "active";
+                                                    } ?>">
+                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <p>
+                             Cuti
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= base_url('form/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti') {
+                                                                                                echo "active";
+                                                                                            } ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>List Cuti</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('form/ajukan_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'ajukan_cuti') {
+                                                                                                echo "active";
+                                                                                            } ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Ajukan Cuti</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
 
-                 
-          <li class="nav-item has-treeview <?php if ($this->uri->segment(2) =='detail_biodata') {
-                     echo "menu-open";
-                 }if ($this->uri->segment(2) =='edit_biodata') {
-                    echo "menu-open";
-                }?>">
-            <a href="#" class="nav-link <?php if ($this->uri->segment(2) == 'detail_biodata') {
-                         echo "active";
-                     }?>">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Biodata
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= base_url('karyawan/detail_biodata/'  . $this->session->userdata('nama_karyawan') )?>" class="nav-link <?php if ($this->uri->segment(2) == 'detail_biodata') {
-                         echo "active";
-                     }?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Detail Biodata</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= base_url('karyawan/edit_biodata/'  . $this->session->userdata('nama_karyawan') )?>" class="nav-link <?php if ($this->uri->segment(2) == 'edit_biodata') {
-                         echo "active";
-                     }?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Edit Biodata</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+
+                 <li class="nav-item has-treeview <?php if ($this->uri->segment(2) == 'detail_biodata') {
+                                                        echo "menu-open";
+                                                    }
+                                                    if ($this->uri->segment(2) == 'edit_biodata') {
+                                                        echo "menu-open";
+                                                    } ?>">
+                     <a href="#" class="nav-link <?php if ($this->uri->segment(2) == 'detail_biodata') {
+                                                        echo "active";
+                                                    } ?>">
+                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <p>
+                             Biodata
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="<?= base_url('karyawan/detail_biodata/'  . $this->session->userdata('nama_karyawan')) ?>" class="nav-link <?php if ($this->uri->segment(2) == 'detail_biodata') {
+                                                                                                                                                    echo "active";
+                                                                                                                                                } ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Detail Biodata</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="<?= base_url('karyawan/edit_biodata/'  . $this->session->userdata('nama_karyawan')) ?>" class="nav-link <?php if ($this->uri->segment(2) == 'edit_biodata') {
+                                                                                                                                                    echo "active";
+                                                                                                                                                } ?>">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Edit Biodata</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('auth/logout_user')?>" class="nav-link ">
+                     <a href="<?= base_url('auth/logout_user') ?>" class="nav-link " id="log_out">
                          <i class="nav-icon fas fa-sign-out"></i>
                          <p>
                              Log out

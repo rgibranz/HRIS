@@ -24,10 +24,11 @@ class Karyawan extends CI_Controller
     }
 
 
-    public function divisi_karyawan($id_divisi = NULL)
+    public function divisi_karyawan($id_divisi)
     {
         $data = array(
             'title' => 'anggota devisi',
+            'id_divisi' => $id_divisi,
             'karyawan' => $this->karyawan->get_data_d_karyawan($id_divisi),
             'isi' => 'admin/divisi_karyawan'
         );
@@ -151,6 +152,127 @@ class Karyawan extends CI_Controller
                 $this->karyawan->add($data);
                 $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
                 redirect('karyawan');
+            }
+        }
+    }
+
+    public function add_karyawan($id_divisi = NULL)
+    {
+        $this->form_validation->set_rules(
+            'nama_karyawan',
+            'Nama Karang',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+        $this->form_validation->set_rules(
+            'tmpt_lahir',
+            'Tempat Lahir',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+        $this->form_validation->set_rules(
+            'tgl_lahir',
+            'Tanggal Lahir',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+        $this->form_validation->set_rules(
+            'alamat_ktp',
+            'Alamat',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+        $this->form_validation->set_rules(
+            'no_hp',
+            'Nomor Hp',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+        $this->form_validation->set_rules(
+            'email',
+            'email',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+
+        $this->form_validation->set_rules(
+            'id_divisi',
+            'id_divisi',
+            'required',
+            array('required' => '%s Harus di pilih !!!')
+        );
+
+        $this->form_validation->set_rules(
+            'password',
+            'password',
+            'required',
+            array('required' => '%s Harus Diisi !!!')
+        );
+
+        $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+        if ($this->form_validation->run() == FALSE) {
+
+            $data = array(
+                'title' => 'Tambah Karyawan',
+
+                'karyawan' => $this->karyawan->get_all_data(),
+                'role' => $this->karyawan->get_all_role(),
+                'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
+                'isi' => 'admin/add_karyawan_divisi'
+            );
+
+            $this->load->view('layout/wrapper', $data, FALSE);
+        } else {
+
+            $config['upload_path'] = './assets/gambar/user';
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['max_size']  = '2000';
+            $this->upload->initialize($config);
+            $field_name = "img";
+            if (!$this->upload->do_upload($field_name)) {
+                $data = array(
+                    'title' => 'Tambah Karyawan',
+                    'karyawan' => $this->karyawan->get_all_data(),
+                    'divisi' => $this->m_divisi->get_all_data(),
+                    'error_upload' => $this->upload->display_errors(),
+                    'isi' => 'admin/add_karyawan'
+                );
+
+                $this->load->view('layout/wrapper', $data, FALSE);
+            } else {
+
+                $upload_data = array('uploads' => $this->upload->data());
+                $config['image_library'] = 'gb2';
+                $config['source_image'] = './assets/gambar/user' . $upload_data['uploads']['file_name'];
+                $this->load->library('image_lib', $config);
+                $data = array(
+                    'nama_karyawan' => $this->input->post('nama_karyawan'),
+                    'tmpt_lahir' => $this->input->post('tmpt_lahir'),
+                    'tgl_lahir' => $this->input->post('tgl_lahir'),
+                    'alamat_ktp' => $this->input->post('alamat_ktp'),
+                    'alamat_domisili' => $this->input->post('alamat_domisili'),
+                    'no_hp' => $this->input->post('no_hp'),
+                    'no_hp_d' => $this->input->post('no_hp_d'),
+                    'email' => $this->input->post('email'),
+                    'id_divisi' => $this->input->post('id_divisi'),
+                    'status_karyawan' => $this->input->post('status_karyawan'),
+                    'job' => $this->input->post('job'),
+                    'password' => $password,
+                    'level' => $this->input->post('level'),
+                    'gaji' => $this->input->post('gaji'),
+                    'img' => $upload_data['uploads']['file_name'],
+                    'sisa_cuti' => $this->input->post('sisa_cuti')
+                );
+
+                $this->karyawan->add($data);
+                $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
+                redirect('karyawan/divisi_karyawan/' . $this->input->post('id_divisi'));
             }
         }
     }
@@ -498,10 +620,11 @@ class Karyawan extends CI_Controller
         $id_karyawan = intval($this->input->post('id_karyawan'));
         $kurangi_cuti = intval($this->input->post('kurangi_cuti'));
         $karyawan = $this->karyawan->get_data($id_karyawan);
-        if ($karyawan->sisa_cuti <= $kurangi_cuti) {
+        $sisa_cuti = $karyawan->sisa_cuti;
+        if ($sisa_cuti <= $kurangi_cuti) {
             $data = array(
                 'id_karyawan' => $id_karyawan,
-                'kurangi_cuti' => '0'
+                'kurangi_cuti' => $sisa_cuti,
             );
             $this->karyawan->kurangi_cuti($data);
             redirect('karyawan');
