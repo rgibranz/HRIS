@@ -1,8 +1,9 @@
-<?php 
+<?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_karyawan extends CI_Model {
+class M_karyawan extends CI_Model
+{
 
     public function get_all_data()
     {
@@ -39,7 +40,7 @@ class M_karyawan extends CI_Model {
         $this->db->order_by('id_cuti', 'desc');
         return $this->db->get()->result();
     }
-    
+
     public function get_data_cuti($id_karyawan)
     {
         $this->db->select('*');
@@ -61,13 +62,13 @@ class M_karyawan extends CI_Model {
 
     public function get_all_role()
     {
-    $this->db->select('*');
-    $this->db->from('users_role');
-    $this->db->order_by('id_user', 'asc');
-    return $this->db->get()->result();
+        $this->db->select('*');
+        $this->db->from('users_role');
+        $this->db->order_by('id_user', 'asc');
+        return $this->db->get()->result();
     }
 
-    
+
     public function get_data_d_karyawan($id_divisi)
     {
         $this->db->select('*');
@@ -81,14 +82,12 @@ class M_karyawan extends CI_Model {
     public function add($data)
     {
         $this->db->insert('karyawan', $data);
-
     }
 
     public function edit($data)
     {
         $this->db->where('id_karyawan', $data['id_karyawan']);
         $this->db->update('karyawan', $data);
-
     }
 
     public function edit_biodata($data)
@@ -102,13 +101,6 @@ class M_karyawan extends CI_Model {
     {
 
         $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` + $jumlah");
-        return $query;
-    }
-
-    public function kurangi_cuti_all($data)
-    {
-
-        $query = $this->db->query("UPDATE `karyawan` SET `sisa_cuti`= `sisa_cuti` - $data[kurangi_cuti]");
         return $query;
     }
 

@@ -475,20 +475,22 @@ class Karyawan extends CI_Controller
             if ($sisa_cuti <= $kurangi_cuti) {
                 // jika cuti kurang
                 $data = array(
-                    'kurangi_cuti' => '0'
+                    'id_karyawan' => $key->id_karyawan,
+                    'kurangi_cuti' => $sisa_cuti,
                 );
-                $this->karyawan->kurangi_cuti_all($data);
+                $this->karyawan->kurangi_cuti($data);
             } else {
                 // jika cuti bisa di kurang
                 $data = array(
+                    'id_karyawan' => $key->id_karyawan,
                     'kurangi_cuti' => $kurangi_cuti,
                 );
-                $this->karyawan->kurangi_cuti_all($data);
+                $this->karyawan->kurangi_cuti($data);
             }
         }
-        // redirect('karyawan');
-        // $this->karyawan->kurangi_cuti_all($this->input->post('kurangi_cuti'));
         redirect('karyawan');
+        // $this->karyawan->kurangi_cuti_all($this->input->post('kurangi_cuti'));
+
     }
 
     public function kurangi_cuti()
