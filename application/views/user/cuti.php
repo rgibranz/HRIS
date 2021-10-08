@@ -86,7 +86,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Keterangan</label>
-                    <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly></textarea>
+                    <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_cuti ?></textarea>
                 </div>
             </div>
 

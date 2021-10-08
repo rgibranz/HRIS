@@ -73,18 +73,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Sampai Tanggal</label>
-                            <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                <input type="text" name="sampai_tanggal" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
-                                <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                                <small class="text-danger"><?= form_error('sampai_tanggal'); ?></small>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 

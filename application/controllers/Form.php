@@ -46,7 +46,7 @@ class Form extends CI_Controller
         $this->form_validation->set_rules('jenis_cuti', 'jenis_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('lama_cuti', 'lama_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('mulai_tanggal', 'mulai_tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
-        $this->form_validation->set_rules('sampai_tanggal', 'sampai_tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
+        // $this->form_validation->set_rules('sampai_tanggal', 'sampai_tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('sisa_cuti', 'sisa_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
 
 
@@ -77,9 +77,9 @@ class Form extends CI_Controller
 
             $row_m_tgl = $this->input->post("mulai_tanggal");
             $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
-
-            $row_s_tgl = $this->input->post("sampai_tanggal");
-            $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
+            $s_tgl = date('Y-m-d', strtotime('+' . $lama_cuti . 'days', strtotime($m_tgl)));
+            // $row_s_tgl = $this->input->post("sampai_tanggal");
+            // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
 
             $data = array(
                 'id_karyawan' => $this->input->post('id_karyawan'),
@@ -150,8 +150,9 @@ class Form extends CI_Controller
         }
     }
 
-    public function view_cuti($id_cuti = NULL, $id_karyawan = NuLL)
+    public function view_cuti($id_cuti, $id_karyawan = NULL)
     {
+
         $level = $this->session->userdata('level_user');
         if ($level == 'admin') {
             $data = array(
@@ -218,8 +219,7 @@ class Form extends CI_Controller
         if ($status_direktur == "reject") {
             // jika di reject maka sisa cuti kembali.
             $sisa_cuti = $this->input->post('sisa_cuti');
-            $lama_cuti = $this->input->post('lama_cuti');
-            $hasil = $sisa_cuti + $lama_cuti;
+
 
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
@@ -229,7 +229,7 @@ class Form extends CI_Controller
 
             $sisa_data = array(
                 'id_karyawan' => $this->input->post('id_karyawan'),
-                'sisa_cuti' => $hasil,
+                'sisa_cuti' => $sisa_cuti,
             );
 
             $this->cuti->edit_cuti($data);
@@ -248,11 +248,9 @@ class Form extends CI_Controller
             $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
             redirect('form/list_cuti_admin');
         }
-        if ($status_manajer = "reject") {
+        if ($status_manajer == "reject") {
             // jika di reject maka sisa cuti kembali.
             $sisa_cuti = $this->input->post('sisa_cuti');
-            $lama_cuti = $this->input->post('lama_cuti');
-            $hasil = $sisa_cuti + $lama_cuti;
 
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
@@ -262,7 +260,7 @@ class Form extends CI_Controller
 
             $sisa_data = array(
                 'id_karyawan' => $this->input->post('id_karyawan'),
-                'sisa_cuti' => $hasil,
+                'sisa_cuti' => $sisa_cuti,
             );
 
             $this->form->edit($sisa_data);

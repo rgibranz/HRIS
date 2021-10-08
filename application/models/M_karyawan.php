@@ -40,12 +40,23 @@ class M_karyawan extends CI_Model
         $this->db->order_by('id_cuti', 'desc');
         return $this->db->get()->result();
     }
+    public function get_cuti_karyawan($id_karyawan)
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->where('id_karyawan', $id_karyawan);
+        $this->db->order_by('id_karyawan', 'desc');
+
+        return $this->db->get()->row();
+    }
 
     public function get_data_cuti($id_karyawan)
     {
         $this->db->select('*');
         $this->db->from('cuti');
         $this->db->where('cuti.id_karyawan', $id_karyawan);
+        $this->db->order_by('id_cuti', 'desc');
+
 
         return $this->db->get()->result();
     }
