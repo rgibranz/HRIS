@@ -126,17 +126,20 @@
                 </div>
             <?php } ?>
 
-            <input type="text" value="$list_cuti->id_cuti" hidden>
-
 
             <div class="row">
-                <div class="col-md-6 text-left">
-                    <a href="<?= base_url('dasboard_user') ?>" class=" btn btn-outline-secondary">Batal</a>
-                </div>
-                <div class="col-md-6 text-right">
-                    <input value="reject" name="status_manajer" type="submit" class="btn btn-outline-danger"></input>
-                    <input value="accept" name="status_manajer" type="submit" class="btn btn-outline-success"></input>
-                </div>
+
+                <?php if ($list_cuti->status_manajer != "reject" && $list_cuti->status_manajer != "accept") {
+                ?>
+                    <div class="col-md-6 text-left">
+                        <a href="<?= base_url('dasboard_user') ?>" class=" btn btn-outline-secondary">Batal</a>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <input value="reject" name="status_manajer" type="submit" class="btn btn-outline-danger"></input>
+                        <input value="accept" name="status_manajer" type="submit" class="btn btn-outline-success"></input>
+                    </div>
+                <?php
+                } ?>
             </div>
         </div>
 
