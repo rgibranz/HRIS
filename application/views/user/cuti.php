@@ -55,7 +55,7 @@
 
                 <div class="row">
 
-                
+
                     <div class="col-md-3">
 
                         <div class="form-group">
@@ -82,13 +82,13 @@
 
             </div>
 
-            
+
             <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Keterangan</label>
-                        <textarea class="form-control" name="alasan_cuti" cols="30" rows="3" readonly></textarea>
-                    </div>
+                <div class="form-group">
+                    <label>Keterangan</label>
+                    <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly></textarea>
                 </div>
+            </div>
 
             <div>
                 <div class="form-group">

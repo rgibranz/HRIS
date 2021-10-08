@@ -91,8 +91,8 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Keterangan</label>
-                        <textarea class="form-control" name="keterangan_manajer" cols="30" rows="3"></textarea>
-                        <small class="text-danger"><?= form_error('keterangan_menejer'); ?></small>
+                        <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3"></textarea>
+                        <small class="text-danger"><?= form_error('keterangan_cuti'); ?></small>
                     </div>
                 </div>
 
