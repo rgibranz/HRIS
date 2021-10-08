@@ -1,60 +1,43 @@
-<div class="col-lg-3 col-6">
-
-    <!-- small box -->
-    <div class="small-box bg-info">
-        <div class="inner">
-            <h3>Divisi</h3>
-
-            <p><?= $karyawan->nama_divisi ?></p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-android-contacts"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-</div>
-<div class="col-lg-3 col-6">
-
-    <!-- small box -->
-    <div class="small-box bg-info">
-        <div class="inner">
-            <h3>Posisi</h3>
-
-            <p><?= $karyawan->job ?></p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-ios-briefcase"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-</div>
-
-<div class="col-lg-3 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-        <div class="inner">
-            <h3>Gaji</h3>
-
-            <p><?= "Rp " . number_format($karyawan->gaji, 2, ',', '.'); ?></p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-cash"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-</div>
-
-<div class="col-lg-3 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-        <div class="inner">
-            <h3>Status</h3>
-
-            <p><?= $karyawan->status_karyawan ?></p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-android-bookmark"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-</div>
+          <div class="col-md-6 offset-md-3">
+              <!-- Widget: user widget style 1 -->
+              <div class="card card-widget widget-user">
+                  <!-- Add the bg color to the header using any of the bg-* classes -->
+                  <div class="widget-user-header bg-warning">
+                      <img src="<?= base_url('assets/gambar/icon/Untitled-1cc.png') ?>" height="75px">
+                  </div>
+                  <div class="widget-user-image mt-3">
+                      <img class="img-circle elevation-3" src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" alt="User Avatar">
+                  </div>
+                  <div class="card-footer">
+                      <div class="row">
+                          <div class="col-sm-4 border-right">
+                              <div class="description-block">
+                                  <h5 class="description-header">Jabatan</h5>
+                                  <span class="description-text"><?= $karyawan->job ?></span>
+                              </div>
+                              <!-- /.description-block -->
+                          </div>
+                          <!-- /.col -->
+                          <div class="col-sm-4 border-right">
+                              <div class="description-block">
+                                  <h5 class="description-header">Nama</h5>
+                                  <span class="description-text"><?= $karyawan->nama_karyawan ?></span>
+                              </div>
+                              <!-- /.description-block -->
+                          </div>
+                          <!-- /.col -->
+                          <div class="col-sm-4">
+                              <div class="description-block">
+                                  <h5 class="description-header">Divisi</h5>
+                                  <span class="description-text"><?= $karyawan->nama_divisi ?></span>
+                              </div>
+                              <!-- /.description-block -->
+                          </div>
+                          <!-- /.col -->
+                      </div>
+                      <!-- /.row -->
+                  </div>
+              </div>
+              <!-- /.widget-user -->
+          </div>
+          <!-- /.col -->

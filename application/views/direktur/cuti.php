@@ -57,7 +57,9 @@
                         <div class="form-group">
                             <label>Mulai dari</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" value="<?= $list_cuti->mulai_tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" readonly>
+                                <input type="text" value="<?php $date = explode('-',  $list_cuti->mulai_tanggal);
+                                                            echo $new_data = $date[2] . '-' . $date[1] . '-' . $date[0];
+                                                            ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" readonly>
 
                             </div>
                         </div>
@@ -65,8 +67,10 @@
 
                     <div class="col-md-3">
                         <label>Sampai dengan</label>
-                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="text" value="<?= $list_cuti->sampai_tanggal ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal/Bulan/Tahun" readonly>
+                        <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                            <input type="text" value="<?php $date = explode('-',  $list_cuti->sampai_tanggal);
+                                                        echo $new_data = $date[2] . '-' . $date[1] . '-' . $date[0];
+                                                        ?>" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal/Bulan/Tahun" readonly>
 
                         </div>
                     </div>
@@ -74,7 +78,7 @@
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Keterangan Cuti</label>
+                        <label>Keterangan Cuti Karyawan</label>
                         <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_cuti ?></textarea>
                     </div>
                 </div>
@@ -87,7 +91,9 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Tanggal Pengajuan</label>
-                        <h5> <?= $list_cuti->tgl_pengajuan ?> </h5>
+                        <h5> <?php $date = explode('-',  $list_cuti->tgl_pengajuan);
+                                echo $new_data = $date[2] . '-' . $date[1] . '-' . $date[0];
+                                ?> </h5>
                         <input type="text" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>" hidden>
                     </div>
                 </div>
@@ -104,13 +110,21 @@
                     <input type="text" name="id_cuti" value="<?= $list_cuti->id_cuti ?>" hidden>
                 </div>
             </div>
-
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Keterangan Cuti</label>
-                    <textarea class="form-control" name="keterangan_direktur" cols="10" rows="3"></textarea>
+            <?php if ($list_cuti->keterangan_direktur != '') { ?>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Keterangan direktur</label>
+                        <textarea class="form-control" name="keterangan_direktur" cols="10" rows="3" readonly><?= $list_cuti->keterangan_direktur ?></textarea>
+                    </div>
                 </div>
-            </div>
+            <?php } else { ?>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Keterangan Manajer</label>
+                        <textarea class="form-control" name="keterangan_direktur" cols="10" rows="3"></textarea>
+                    </div>
+                </div>
+            <?php } ?>
 
             <input type="text" value="$list_cuti->id_cuti" hidden>
 
@@ -120,8 +134,8 @@
                     <a href="<?= base_url('dasboard_user') ?>" class=" btn btn-outline-secondary">Batal</a>
                 </div>
                 <div class="col-md-6 text-right">
-                    <input value="accept" name="status_direktur" type="submit" class="btn btn-outline-success"></input>
-                    <input value="reject" name="status_direktur" type="submit" class="btn btn-outline-danger"></input>
+                    <input value="reject" name="status_manajer" type="submit" class="btn btn-outline-danger"></input>
+                    <input value="accept" name="status_manajer" type="submit" class="btn btn-outline-success"></input>
                 </div>
             </div>
         </div>
@@ -130,14 +144,3 @@
         <!--End Formulir-->
     </div>
 </div>
-
-
-
-<script>
-    $(function() {
-        //Date range picker
-        $('#reservationdate').datetimepicker({
-            format: 'DD-MM-YYYY'
-        });
-    })
-</script>

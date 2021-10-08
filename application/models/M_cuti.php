@@ -19,6 +19,14 @@ class M_cuti extends CI_Model {
         return $this->db->get('cuti');
 
     }
+    public function view($id_cuti)
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->where('id_cuti', $id_cuti);
+        return $this->db->get()->row();
+    }
+
 
     public function add($data)
     {
@@ -44,5 +52,3 @@ class M_cuti extends CI_Model {
 }
 
 /* End of file M_cuti.php */
-
-?>
