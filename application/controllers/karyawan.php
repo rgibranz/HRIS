@@ -10,17 +10,41 @@ class Karyawan extends CI_Controller
         parent::__construct();
         $this->load->model('m_karyawan', 'karyawan');
         $this->load->model('m_divisi');
+        $this->load->library('pagination');
     }
+
 
     public function index()
     {
+        $perpage = 5;
+        $offset = $this->uri->segment(1);
+        // $data['semua_pengguna'] = $this->pagination_model->getDataPagination($perpage, $offset)->result();
+        // 'semua_pengguna' => $this->karyawan->getDataPagination($perpage, $offset),
+        // 'per_page' => $perpage,
+
+        $pagination = array(
+            'base_url' => base_url(),
+            'total_rows' => $this->db->query("SELECT * FROM karyawan")->num_rows(),
+            'per_page' => 3,
+            'num_links' => 2,
+            'uri_segment' => 3,
+            'first_link' => '< Pertama ',
+            'last_link' => 'Terakhir > ',
+            'next_link' => '> ',
+            'prev_link' => '< ',
+        );
+
+        $this->pagination->initialize($pagination);
+
         $data = array(
             'title' => 'Karyawan',
+            'semua_pengguna' => $this->karyawan->getDataPagination($perpage, $offset),
             'karyawan' => $this->karyawan->get_all_data(),
             'role' => $this->karyawan->get_all_role(),
-            'isi' => 'admin/karyawan'
+            'pagination' => $pagination,
+            'isi' => 'admin/list_karyawan'
         );
-        $this->load->view('layout/wrapper', $data, FALSE);
+        $this->load->view('layout/wrapper', $data, $pagination, FALSE);
     }
 
 
