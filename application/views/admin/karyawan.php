@@ -23,6 +23,8 @@
         </div>
 
         <!--Table-->
+
+
         <table class="table table-bordered text-center" id="example1">
           <thead>
             <tr>

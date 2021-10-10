@@ -50,14 +50,10 @@ class M_karyawan extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function getDataPagination($limit, $offset)
+    public function getDataPagination($limit, $start)
     {
-        $this->db->select('*');
-        $this->db->from('karyawan');
-        $this->db->order_by('id_karyawan', 'ASC');
-        $this->db->limit($limit, $offset);
-
-        return $this->db->get()->result();
+        $query = $this->db->get('karyawan', $limit, $start);
+        return $query;
     }
 
     public function get_data_cuti($id_karyawan)

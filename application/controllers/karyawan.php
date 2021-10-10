@@ -11,40 +11,60 @@ class Karyawan extends CI_Controller
         $this->load->model('m_karyawan', 'karyawan');
         $this->load->model('m_divisi');
         $this->load->library('pagination');
+        $this->load->helper('url');
     }
 
 
     public function index()
     {
-        $perpage = 5;
-        $offset = $this->uri->segment(1);
+
         // $data['semua_pengguna'] = $this->pagination_model->getDataPagination($perpage, $offset)->result();
         // 'semua_pengguna' => $this->karyawan->getDataPagination($perpage, $offset),
         // 'per_page' => $perpage,
 
-        $pagination = array(
-            'base_url' => base_url(),
-            'total_rows' => $this->db->query("SELECT * FROM karyawan")->num_rows(),
-            'per_page' => 3,
-            'num_links' => 2,
-            'uri_segment' => 3,
-            'first_link' => '< Pertama ',
-            'last_link' => 'Terakhir > ',
-            'next_link' => '> ',
-            'prev_link' => '< ',
-        );
+        //konfigurasi pagination
+        $config['base_url'] = base_url('karyawan/index'); //site url
+        $config['total_rows'] = $this->db->count_all('karyawan'); //total row
+        $config['per_page'] = 4;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+        $config['attributes']['rel'] = FALSE;
 
-        $this->pagination->initialize($pagination);
+
+        // Membuat Style pagination untuk BootStrap v4
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+
+        $this->pagination->initialize($config);
 
         $data = array(
             'title' => 'Karyawan',
-            'semua_pengguna' => $this->karyawan->getDataPagination($perpage, $offset),
             'karyawan' => $this->karyawan->get_all_data(),
             'role' => $this->karyawan->get_all_role(),
-            'pagination' => $pagination,
+            'pagination' => $this->pagination->create_links(),
+            'data' => $this->karyawan->getDataPagination($config["per_page"], $data['page']),
             'isi' => 'admin/list_karyawan'
         );
-        $this->load->view('layout/wrapper', $data, $pagination, FALSE);
+        $this->load->view('layout/wrapper', $data, FALSE);
     }
 
 
