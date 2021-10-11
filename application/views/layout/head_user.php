@@ -62,5 +62,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!--sweetalert2-->
   <script src="<?= base_url() ?>assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+  <!--webcam-->
+  <script type="text/javascript" src="<?= base_url() ?>assets/plugins/webcamjs/webcam.min.js"></script>
+
 
 </head>
