@@ -26,6 +26,8 @@ class Absen extends CI_Controller
 
     public function dami()
     {
+        $id_karyawan = $this->input->post('id_karyawan', true);
+        $nama_karyawan = $this->input->post('nama_karyawan', true);
         $image = $this->input->post('image');
         $image = str_replace('data:image/jpeg;base64,', '', $image);
         $image = base64_decode($image);
@@ -33,12 +35,12 @@ class Absen extends CI_Controller
         file_put_contents(FCPATH . '/assets/gambar/absen/' . $filename, $image);
 
         $data = array(
-            'id_karyawan' => $this->input->post('id_karyawan', true),
-            'nama_karyawan' => $this->input->post('nama_karyawan', true),
+            'id_karyawan' => $id_karyawan,
+            'nama_karyawan' => $nama_karyawan,
             'image' => $filename,
         );
 
-        var_dump($data);
+        var_dump($image);
     }
 }
 
