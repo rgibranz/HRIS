@@ -1,6 +1,7 @@
 <div class="col-lg-12">
   <div class="card">
     <div class="card-body">
+      <h5>Form <?= $title ?></h5>
       <hr>
       <div class="card-text">
         <!--Start Formulir-->
@@ -22,18 +23,30 @@
 
             <div class="row">
 
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tempat Lahir</label>
                   <input type="text" name="tmpt_lahir" class="form-control" id="exampleInputEmail1" placeholder="Tempat Lahir">
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <!-- <div class="col-md-3">
                 <div class="form-group">
                   <label>Tanggal lahir</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Tanggal lahir</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal-bulan-Tahun" />
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
@@ -100,7 +113,7 @@
 
               <div class="form-group">
                 <label>Posisi</label>
-                <input type="text" name="job" class="form-control" placeholder="Nama Karyawan">
+                <input type="text" name="job" class="form-control" placeholder="Jabatan/Posis">
               </div>
 
 
@@ -130,13 +143,13 @@
 
               <div class="form-group">
                 <label for="">Jumalah Cuti </label>
-                <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun">
+                <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
             </div>
           </div>
 
-          <div class="col-md-3">
+          <div class=" col-md-3">
 
             <div class="form-group text-center">
               <img src="" alt="" width="200px" height="240px" id="gambar_load">
@@ -162,9 +175,10 @@
         </div>
 
 
+
+        <?php echo form_close(); ?>
+        <!--End Formulir-->
       </div>
-      <?php echo form_close(); ?>
-      <!--End Formulir-->
     </div>
   </div>
 

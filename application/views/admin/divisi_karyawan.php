@@ -44,8 +44,33 @@
       </div>
     </div>
 
-    <!-- model Delete-->
+    <?php foreach ($karyawan as $key => $value) { ?>
+      <div class="modal fade" id="delete<?= $value->id_karyawan ?>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Hapus <?= $title ?></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <?php echo form_open('karyawan/delete'); ?>
 
-    <!--End Modal Delete-->
+              <h5>Apakah anda kayakin Menghapus Data ini ?</h5>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a href="<?= base_url('karyawan/delete/' . $value->id_karyawan) ?>" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+          <?php echo form_close(); ?>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+    <?php } ?>
 
   </div>

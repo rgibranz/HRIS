@@ -124,7 +124,7 @@
 
               <div class="form-group">
                 <label for="">Jumalah Cuti </label>
-                <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun">
+                <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
             </div>

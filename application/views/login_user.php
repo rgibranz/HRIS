@@ -70,11 +70,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
-                        <a href="<?= base_url() ?>" class="btn btn-success">Kembali</a>
-                    </div>
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-4  offset-md-4">
                         <button type="submit" class="btn btn-primary btn-block">Log in</button>
                     </div>
                     <!-- /.col -->
