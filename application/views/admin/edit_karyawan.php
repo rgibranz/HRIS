@@ -1,6 +1,7 @@
 <div class="col-lg-12">
   <div class="card">
     <div class="card-body">
+      Edit Data Karywan <?= $karyawan->nama_karyawan ?>
       <hr>
       <div class="card-text">
         <!--Start Formulir-->

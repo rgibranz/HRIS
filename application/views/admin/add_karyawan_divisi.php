@@ -1,6 +1,9 @@
 <div class="col-lg-12">
   <div class="card">
+
     <div class="card-body">
+      <h5>Form <?= $title ?></h5>
+
       <hr>
       <div class="card-text">
         <!--Start Formulir-->
