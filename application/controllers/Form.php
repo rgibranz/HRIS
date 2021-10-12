@@ -35,7 +35,7 @@ class Form extends CI_Controller
         $data = array(
             'title' => 'Ajukan Cuti',
             'karyawan' => $this->karyawan->get_data($id_karyawan),
-            'isi' => 'user/form_cuti'
+            'isi' => 'user/ Form_cuti'
         );
         $this->load->view('layout/wrapper_user', $data, FALSE);
     }
