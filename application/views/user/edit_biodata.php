@@ -106,7 +106,7 @@
                     <div class="col-md-3">
 
                         <div class="form-group text-center">
-                            <img src="" alt="" width="200px" height="240px" id="gambar_load">
+                            <img src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" alt="" width="200px" height="240px" id="gambar_load">
                         </div>
 
                         <div class="form-group">
