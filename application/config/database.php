@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -75,10 +75,14 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '151.106.119.126',
-	'username' => 'korpora2018_demo_hris',
-	'password' => 'demo_hris',
-	'database' => 'korpora2018_demo_hris',
+	// 'hostname' => '151.106.119.126',
+	// 'username' => 'korpora2018_demo_hris',
+	// 'password' => 'demo_hris',
+	// 'database' => 'korpora2018_demo_hris',
+	'hostname' => '127.0.0.1',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'db_hris',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
