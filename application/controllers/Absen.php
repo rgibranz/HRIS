@@ -28,8 +28,11 @@ class Absen extends CI_Controller
 
     public function masuk()
     {
+        $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+        $id_karyawan = $get_id['id_karyawan'];
         $data = array(
             'title' => 'Absen Masuk',
+            'karyawan' => $this->karyawan->get_data($id_karyawan),
             'isi' => 'user/absen_masuk'
         );
         $this->load->view('layout/wrapper_user', $data, FALSE);
@@ -37,8 +40,12 @@ class Absen extends CI_Controller
 
     public function pulang()
     {
+        $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+        $id_karyawan = $get_id['id_karyawan'];
+
         $data = array(
             'title' => 'Absen Pulang',
+            'karyawan' => $this->karyawan->get_data($id_karyawan),
             'isi' => 'user/absen_pulang'
         );
         $this->load->view('layout/wrapper_user', $data, FALSE);

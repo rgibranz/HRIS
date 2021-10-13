@@ -113,7 +113,7 @@
 
               <div class="form-group">
                 <label>Posisi</label>
-                <input type="text" name="job" class="form-control" placeholder="Jabatan/Posis">
+                <input type="text" name="job" class="form-control" placeholder="Jabatan/Posisi">
               </div>
 
 
