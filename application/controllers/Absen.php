@@ -17,13 +17,39 @@ class Absen extends CI_Controller
     {
         $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
         $id_karyawan = $get_id['id_karyawan'];
-        $data = array(
-            'title' => 'History Absen',
-            'karyawan' => $this->karyawan->get_data($id_karyawan),
-            'absen' => $this->absen->get_data($id_karyawan),
-            'isi' => 'user/absen'
-        );
-        $this->load->view('layout/wrapper_user', $data, FALSE);
+        $level = $this->session->userdata('level_user');
+
+        if ($level != 'user') {
+            if ($level == 'direktur') {
+                $data = array(
+                    'title' => 'History Absen',
+                    'karyawan' => $this->karyawan->get_data($id_karyawan),
+                    'absen' => $this->absen->get_data($id_karyawan),
+                    'absen_end' => $this->absen->get_data_absen($id_karyawan),
+                    'isi' => 'direktur/absen'
+                );
+                $this->load->view('layout/wrapper_user', $data, FALSE);
+            } elseif ($level == 'manajer') {
+                $data = array(
+                    'title' => 'History Absen',
+                    'karyawan' => $this->karyawan->get_data($id_karyawan),
+                    'absen' => $this->absen->get_data($id_karyawan),
+                    'absen_end' => $this->absen->get_data_absen($id_karyawan),
+                    'isi' => 'manajer/absen'
+                );
+                $this->load->view('layout/wrapper_user', $data, FALSE);
+            }
+        } else {
+
+            $data = array(
+                'title' => 'History Absen',
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
+                'absen' => $this->absen->get_data($id_karyawan),
+                'absen_end' => $this->absen->get_data_absen($id_karyawan),
+                'isi' => 'user/absen'
+            );
+            $this->load->view('layout/wrapper_user', $data, FALSE);
+        }
     }
 
     public function masuk()
@@ -32,24 +58,13 @@ class Absen extends CI_Controller
         $id_karyawan = $get_id['id_karyawan'];
         $data = array(
             'title' => 'Absen Masuk',
+            'absen' => $this->absen->get_data_absen($id_karyawan),
             'karyawan' => $this->karyawan->get_data($id_karyawan),
             'isi' => 'user/absen_masuk'
         );
         $this->load->view('layout/wrapper_user', $data, FALSE);
     }
 
-    public function pulang()
-    {
-        $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-        $id_karyawan = $get_id['id_karyawan'];
-
-        $data = array(
-            'title' => 'Absen Pulang',
-            'karyawan' => $this->karyawan->get_data($id_karyawan),
-            'isi' => 'user/absen_pulang'
-        );
-        $this->load->view('layout/wrapper_user', $data, FALSE);
-    }
     public function add()
     {
         date_default_timezone_set('Asia/Jakarta');
@@ -58,7 +73,13 @@ class Absen extends CI_Controller
         $nama_karyawan = $this->session->userdata('nama_karyawan');
         $status = $this->input->post('status');
         $tgl = date('y-m-d');
-        $waktu = date('h:i:sa');
+        $waktu = date('h:i:s');
+        $date = array(
+            'tgl' => $tgl,
+            'waktu' => $waktu,
+        );
+        $this->session->set_userdata($date);
+
         $img = $_POST['image'];
         $folderPath =  "assets/gambar/absen/";
 
@@ -77,10 +98,21 @@ class Absen extends CI_Controller
             'id_karyawan' => $id_karyawan,
             'nama_karyawan' => $nama_karyawan,
             'tgl' => $tgl,
-            'waktu' => $waktu,
-            'status' => $status
+            'waktu_datang' => $waktu,
         );
         $this->absen->add($data);
+        redirect('absen');
+    }
+
+    public function pulang($id_absen)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $waktu = date('h:i:s');
+        $data = array(
+            'id_absen' => $id_absen,
+            'waktu_pulang' => $waktu,
+        );
+        $this->absen->update($data);
         redirect('absen');
     }
 }

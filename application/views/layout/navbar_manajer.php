@@ -35,6 +35,15 @@
                      </a>
                  </li>
 
+                 <li class="nav-item">
+                     <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
+                                                                            echo "active";
+                                                                        } ?>">
+                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <p>
+                             Absen
+                         </p>
+                     </a>
                  </li>
 
                  <li class="nav-item">
