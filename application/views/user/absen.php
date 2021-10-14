@@ -13,23 +13,29 @@
               <div class="row mb-3">
                   <div class="ml-2">
                       <a href="<?= base_url('absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
+
                       <?php
-                        date_default_timezone_set('Asia/Jakarta');
-                        // waktu pulang
-                        $wkt_datang = $absen_end->waktu_datang;
-                        $timestamp = strtotime($wkt_datang) + 60 * 4;
-                        $time = date('H:i:s', $timestamp);
-                        $wkt_pulang = date('h:i:s');
-                        //end waktu pulang
-
-                        if ($absen_end->waktu_pulang != '') { ?>
+                        if ($absen_end == '') { ?>
                           <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
-                      <?php } elseif ($time <=  $wkt_pulang) { ?>
-                          <a href="<?= base_url('absen/pulang/' . $absen_end->id_absen) ?>" class="btn btn-primary btn-sm">Absen Pulang</a>
-                      <?php } else { ?>
-                          <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
+                          <?php
+                        } else {
+                            date_default_timezone_set('Asia/Jakarta');
+                            // waktu pulang
+                            $wkt_datang = $absen_end->waktu_datang;
+                            $timestamp = strtotime($wkt_datang) + 60 * 4;
+                            $time = date('H:i:s', $timestamp);
+                            $wkt_pulang = date('h:i:s');
+                            //end waktu pulang
 
-                      <?php } ?>
+                            if ($absen_end->waktu_pulang != '') { ?>
+                              <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
+                          <?php } elseif ($time <=  $wkt_pulang) { ?>
+                              <a href="<?= base_url('absen/pulang/' . $absen_end->id_absen) ?>" class="btn btn-primary btn-sm">Absen Pulang</a>
+                          <?php } else { ?>
+                              <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
+
+                      <?php }
+                        } ?>
                   </div>
 
               </div>

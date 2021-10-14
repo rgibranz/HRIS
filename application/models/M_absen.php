@@ -10,6 +10,14 @@ class M_absen extends CI_Model
         $this->db->insert('absen', $data);
     }
 
+    public function get_all_data()
+    {
+        $this->db->select('*');
+        $this->db->from('absen');
+
+        return $this->db->get()->result();
+    }
+
     // mengambil semua data per user
     public function get_data($id_karyawan)
     {
@@ -17,6 +25,25 @@ class M_absen extends CI_Model
         $this->db->from('absen');
         $this->db->where('absen.id_karyawan', $id_karyawan);
         $this->db->order_by('id_absen', 'desc');
+
+        return $this->db->get()->result();
+    }
+    // sorting berdasarkan bulan
+    public function get_data_bulan($id_karyawan)
+    {
+        $this->db->select('*');
+        $this->db->from('absen');
+        $this->db->where('absen.id_karyawan', $id_karyawan);
+
+        $this->db->order_by('id_absen', 'desc');
+
+        return $this->db->get()->result();
+    }
+
+    public function get_bulan()
+    {
+        $this->db->select('*');
+        $this->db->from('bulan');
 
         return $this->db->get()->result();
     }
@@ -34,6 +61,12 @@ class M_absen extends CI_Model
         $this->db->where('id_absen', $data['id_absen']);
         $this->db->update('absen', $data);
     }
-}
 
-/* End of file M_absen.php */
+    public function list_absen_admin($tahun, $bulan)
+    {
+        $query = $this->db->query("SELECT * FROM absen WHERE YEAR(tgl) = $tahun AND MONTH(tgl) = $bulan");
+        return $query->result();
+    }
+
+    /* End of file M_absen.php */
+}

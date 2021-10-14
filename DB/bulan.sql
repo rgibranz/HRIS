@@ -24,44 +24,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absen`
+-- Struktur dari tabel `bulan`
 --
 
-CREATE TABLE `absen` (
-  `id_absen` int(11) NOT NULL,
-  `id_karyawan` int(11) NOT NULL,
-  `nama_karyawan` varchar(255) DEFAULT NULL,
-  `tgl` date DEFAULT NULL,
-  `waktu_datang` time DEFAULT NULL,
-  `waktu_pulang` time DEFAULT NULL
+CREATE TABLE `bulan` (
+  `id_bulan` int(11) NOT NULL,
+  `nama_bulan` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `absen`
+-- Dumping data untuk tabel `bulan`
 --
 
-INSERT INTO `absen` (`id_absen`, `id_karyawan`, `nama_karyawan`, `tgl`, `waktu_datang`, `waktu_pulang`) VALUES
-(37, 8, 'Rifki Raharjo', '2021-10-14', '01:12:39', NULL);
+INSERT INTO `bulan` (`id_bulan`, `nama_bulan`) VALUES
+(1, 'Januari'),
+(2, 'Febuari'),
+(3, 'Maret'),
+(4, 'April'),
+(5, 'Mei'),
+(6, 'Juni'),
+(7, 'Juli'),
+(8, 'Agustus'),
+(9, 'Sebtember'),
+(10, 'Okteber'),
+(11, 'November'),
+(12, 'Desember');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `absen`
+-- Indeks untuk tabel `bulan`
 --
-ALTER TABLE `absen`
-  ADD PRIMARY KEY (`id_absen`);
+ALTER TABLE `bulan`
+  ADD PRIMARY KEY (`id_bulan`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT untuk tabel `absen`
+-- AUTO_INCREMENT untuk tabel `bulan`
 --
-ALTER TABLE `absen`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+ALTER TABLE `bulan`
+  MODIFY `id_bulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
