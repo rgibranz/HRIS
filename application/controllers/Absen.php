@@ -31,7 +31,8 @@ class Absen extends CI_Controller
                     'isi' => 'direktur/absen'
                 );
                 $this->load->view('layout/wrapper_user', $data, FALSE);
-            } elseif ($level == 'manajer') {
+            }
+            if ($level == 'manajer') {
                 $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
                 $id_karyawan = $get_id['id_karyawan'];
                 $data = array(
@@ -42,13 +43,15 @@ class Absen extends CI_Controller
                     'isi' => 'manajer/absen'
                 );
                 $this->load->view('layout/wrapper_user', $data, FALSE);
-            } else {
+            }
+            if ($level == 'admin') {
                 $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
                 $id_karyawan = $get_id['id_karyawan'];
                 $data = array(
                     'title' => 'History Absen',
                     'karyawan' => $this->karyawan->get_data($id_karyawan),
                     'all_absen' => $this->absen->get_all_data($id_karyawan),
+                    'all_karyawan' => $this->karyawan->get_all_data(),
                     'bulan' => $this->absen->get_bulan(),
                     'absen_end' => $this->absen->get_data_absen($id_karyawan),
                     'isi' => 'admin/absen'
@@ -136,12 +139,14 @@ class Absen extends CI_Controller
 
     public function list_absen()
     {
+
         $tahun = $this->input->post('tahun');
         $bulan = $this->input->post('bulan');
-
+        $nama = $this->input->post('nama');
         $data = array(
             'title' => 'List Absen Karyawan',
-            'list_absen' => $this->absen->list_absen_admin($tahun, $bulan),
+            'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
+            'list_absen' => $this->absen->list_absen_admin($nama, $tahun, $bulan),
             'isi' => 'admin/list_absen'
         );
         $this->load->view('layout/wrapper', $data, FALSE);

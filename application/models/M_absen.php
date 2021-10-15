@@ -62,9 +62,9 @@ class M_absen extends CI_Model
         $this->db->update('absen', $data);
     }
 
-    public function list_absen_admin($tahun, $bulan)
+    public function list_absen_admin($nama, $tahun, $bulan)
     {
-        $query = $this->db->query("SELECT * FROM absen WHERE YEAR(tgl) = $tahun AND MONTH(tgl) = $bulan");
+        $query = $this->db->query("SELECT * FROM absen WHERE id_karyawan = $nama AND YEAR(tgl) = $tahun AND MONTH(tgl) = $bulan");
         return $query->result();
     }
 
