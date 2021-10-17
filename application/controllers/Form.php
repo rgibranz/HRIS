@@ -42,7 +42,6 @@ class Form extends CI_Controller
 
     public function cuti_add()
     {
-        $this->form_validation->set_rules('mulai_bekerja', 'mulai_bekerja', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('jenis_cuti', 'jenis_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('lama_cuti', 'lama_cuti', 'required|trim', array('required' => 'Harus Di isi !!!'));
         $this->form_validation->set_rules('mulai_tanggal', 'mulai_tanggal', 'required|trim', array('required' => 'Harus Di isi !!!'));
@@ -110,48 +109,57 @@ class Form extends CI_Controller
 
     public function list_cuti()
     {
-        $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-        $id_karyawan = $s_id['id_karyawan'];
-        $data = array(
-            'title' => 'Ajukan Cuti',
-            'karyawan' => $this->karyawan->get_data($id_karyawan),
-            'list_cuti' => $this->karyawan->get_data_cuti($id_karyawan),
-            'isi' => 'user/list_cuti'
-        );
-        $this->load->view('layout/wrapper_user', $data, FALSE);
-    }
-
-    public function list_cuti_admin()
-    {
         $level = $this->session->userdata('level_user');
         if ($level == "manajer") {
+            $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+            $id_karyawan = $s_id['id_karyawan'];
             $data = array(
-                'title' => 'Ajukan Cuti',
+                'title' => 'list Cuti',
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
                 'list_cuti' => $this->karyawan->get_all_data_cuti(),
                 'isi' => 'manajer/list_cuti'
             );
             $this->load->view('layout/wrapper_manajer', $data, FALSE);
         }
         if ($level == "direktur") {
+            $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+            $id_karyawan = $s_id['id_karyawan'];
             $data = array(
-                'title' => 'Ajukan Cuti',
+                'title' => 'list Cuti',
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
                 'list_cuti' => $this->karyawan->get_all_data_cuti(),
                 'isi' => 'direktur/list_cuti'
             );
             $this->load->view('layout/wrapper_direktur', $data, FALSE);
         }
         if ($level == "admin") {
+            $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+            $id_karyawan = $s_id['id_karyawan'];
             $data = array(
-                'title' => 'Ajukan Cuti',
+                'title' => 'liest cuti Cuti',
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
                 'list_cuti' => $this->karyawan->get_all_data_cuti(),
                 'isi' => 'admin/list_cuti'
             );
             $this->load->view('layout/wrapper', $data, FALSE);
         }
+        if ($level == "user") {
+            $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+            $id_karyawan = $s_id['id_karyawan'];
+            $data = array(
+                'title' => 'Ajukan Cuti',
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
+                'list_cuti' => $this->karyawan->get_data_cuti($id_karyawan),
+                'isi' => 'user/list_cuti'
+            );
+            $this->load->view('layout/wrapper_user', $data, FALSE);
+        }
     }
 
-    public function view_cuti($id_cuti, $id_karyawan = NULL)
+    public function view_cuti($id_cuti)
     {
+        $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+        $id_karyawan = $s_id['id_karyawan'];
 
         $level = $this->session->userdata('level_user');
         if ($level == 'admin') {

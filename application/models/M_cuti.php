@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_cuti extends CI_Model {
+class M_cuti extends CI_Model
+{
 
     public function get_data($id_karyawan)
     {
@@ -11,19 +12,19 @@ class M_cuti extends CI_Model {
         $this->db->where('id_karyawan', $id_karyawan);
 
         return $this->db->get()->row();
-        
     }
 
     public function get_all_data()
     {
         return $this->db->get('cuti');
-
     }
     public function view($id_cuti)
     {
         $this->db->select('*');
         $this->db->from('cuti');
         $this->db->where('id_cuti', $id_cuti);
+        $this->db->order_by('id_cuti', 'desc');
+
         return $this->db->get()->row();
     }
 
@@ -31,24 +32,20 @@ class M_cuti extends CI_Model {
     public function add($data)
     {
         $this->db->insert('cuti', $data);
-        
     }
 
     public function edit_cuti($data)
     {
         $this->db->where('id_cuti', $data['id_cuti']);
         $this->db->update('cuti', $data);
-
     }
 
-    
+
     public function delete($data)
     {
         $this->db->where('id_cuti', $data['id_cuti']);
         $this->db->delete('cuti', $data);
     }
-    
-
 }
 
 /* End of file M_cuti.php */

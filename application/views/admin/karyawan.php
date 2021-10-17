@@ -40,7 +40,7 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($karyawan as $key => $value) { ?>
+            foreach ($all_karyawan as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
                 <td><?= $value->nama_karyawan ?></td>
@@ -62,7 +62,7 @@
     </div>
 
     <!-- model Delete-->
-    <?php foreach ($karyawan as $key => $value) { ?>
+    <?php foreach ($all_karyawan as $key => $value) { ?>
       <div class="modal fade" id="delete<?= $value->id_karyawan ?>">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -105,13 +105,14 @@
           <div class="modal-body">
             <?php echo form_open('karyawan/tambah_cuti_all'); ?>
 
-            <div class="col-sm-3">
+            <div class="col">
               <div class="form-group">
                 <label>Jumlah Cuti</label>
-                <input type="text" name="tambah_cuti">
+                <input type="text" class="form-control" name="tambah_cuti">
               </div>
             </div>
           </div>
+
 
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -162,7 +163,7 @@
 
 
     <!-- model Tambah cuti-->
-    <?php foreach ($karyawan as $key => $value) { ?>
+    <?php foreach ($all_karyawan as $key => $value) { ?>
       <div class="modal fade" id="tambah_cuti<?= $value->id_karyawan ?>">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -199,7 +200,7 @@
     <!--End Modal Tambah cuti-->
 
     <!-- model kurangi  cuti-->
-    <?php foreach ($karyawan as $key => $value) { ?>
+    <?php foreach ($all_karyawan as $key => $value) { ?>
       <div class="modal fade" id="kurangi_cuti<?= $value->id_karyawan ?>">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -215,7 +216,7 @@
               <div class="col">
                 <div class="form-group">
                   <label>Jumlah Cuti</label>
-                  <input type="text" class="from-control" name="kurangi_cuti">
+                  <input type="text" class="form-control" name="kurangi_cuti">
                   <input type="text" name="id_karyawan" value="<?= $value->id_karyawan ?>" hidden>
                 </div>
               </div>

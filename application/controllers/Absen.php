@@ -30,7 +30,7 @@ class Absen extends CI_Controller
                     'absen_end' => $this->absen->get_data_absen($id_karyawan),
                     'isi' => 'direktur/absen'
                 );
-                $this->load->view('layout/wrapper_user', $data, FALSE);
+                $this->load->view('layout/wrapper_direktur', $data, FALSE);
             }
             if ($level == 'manajer') {
                 $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
@@ -42,7 +42,7 @@ class Absen extends CI_Controller
                     'absen_end' => $this->absen->get_data_absen($id_karyawan),
                     'isi' => 'manajer/absen'
                 );
-                $this->load->view('layout/wrapper_user', $data, FALSE);
+                $this->load->view('layout/wrapper_manajer', $data, FALSE);
             }
             if ($level == 'admin') {
                 $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
@@ -56,7 +56,7 @@ class Absen extends CI_Controller
                     'absen_end' => $this->absen->get_data_absen($id_karyawan),
                     'isi' => 'admin/absen'
                 );
-                $this->load->view('layout/wrapper_user', $data, FALSE);
+                $this->load->view('layout/wrapper', $data, FALSE);
             }
         } else {
             $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();

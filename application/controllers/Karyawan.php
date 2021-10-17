@@ -17,48 +17,10 @@ class Karyawan extends CI_Controller
 
     public function index()
     {
-
-        // // $data['semua_pengguna'] = $this->pagination_model->getDataPagination($perpage, $offset)->result();
-        // // 'semua_pengguna' => $this->karyawan->getDataPagination($perpage, $offset),
-        // // 'per_page' => $perpage,
-
-        // //konfigurasi pagination
-        // $config['base_url'] = base_url('karyawan/index'); //site url
-        // $config['total_rows'] = $this->db->count_all('karyawan'); //total row
-        // $config['per_page'] = 4;  //show record per halaman
-        // $config["uri_segment"] = 3;  // uri parameter
-        // $choice = $config["total_rows"] / $config["per_page"];
-        // $config["num_links"] = floor($choice);
-        // $config['attributes']['rel'] = FALSE;
-
-
-        // // Membuat Style pagination untuk BootStrap v4
-        // $config['first_link']       = 'First';
-        // $config['last_link']        = 'Last';
-        // $config['next_link']        = 'Next';
-        // $config['prev_link']        = 'Prev';
-        // $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-        // $config['full_tag_close']   = '</ul></nav></div>';
-        // $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        // $config['num_tag_close']    = '</span></li>';
-        // $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        // $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-        // $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        // $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-        // $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        // $config['prev_tagl_close']  = '</span>Next</li>';
-        // $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        // $config['first_tagl_close'] = '</span></li>';
-        // $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        // $config['last_tagl_close']  = '</span></li>';
-        // $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-
-        // $this->pagination->initialize($config);
-
         $data = array(
             'title' => 'Karyawan',
-            'karyawan' => $this->karyawan->get_all_data(),
+            'all_karyawan' => $this->karyawan->get_all_data(),
+            'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
             'role' => $this->karyawan->get_all_role(),
             // 'pagination' => $this->pagination->create_links(),
             // 'data' => $this->karyawan->getDataPagination($config["per_page"], $data['page']),
@@ -72,8 +34,9 @@ class Karyawan extends CI_Controller
     {
         $data = array(
             'title' => 'anggota devisi',
+            'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
             'id_divisi' => $id_divisi,
-            'karyawan' => $this->karyawan->get_data_d_karyawan($id_divisi),
+            'divisi_karyawan' => $this->karyawan->get_data_d_karyawan($id_divisi),
             'isi' => 'admin/divisi_karyawan'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
@@ -141,10 +104,11 @@ class Karyawan extends CI_Controller
 
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         if ($this->form_validation->run() == FALSE) {
-
+            $s_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+            $id_karyawan = $s_id['id_karyawan'];
             $data = array(
                 'title' => 'Tambah Karyawan',
-                'karyawan' => $this->karyawan->get_all_data(),
+                'karyawan' => $this->karyawan->get_data($id_karyawan),
                 'role' => $this->karyawan->get_all_role(),
                 'divisi' => $this->m_divisi->get_all_data(),
                 'isi' => 'admin/add_karyawan'
@@ -176,6 +140,7 @@ class Karyawan extends CI_Controller
                 $this->load->library('image_lib', $config);
                 $data = array(
                     'nama_karyawan' => $this->input->post('nama_karyawan'),
+                    'mulai_bekerja' => $this->input->post('mulai_bekerja'),
                     'tmpt_lahir' => $this->input->post('tmpt_lahir'),
                     'tgl_lahir' => $this->input->post('tgl_lahir'),
                     'alamat_ktp' => $this->input->post('alamat_ktp'),
@@ -524,6 +489,7 @@ class Karyawan extends CI_Controller
                     $data = array(
                         'id_karyawan' => $id_karyawan,
                         'nama_karyawan' => $this->input->post('nama_karyawan'),
+                        'mulai_bekerja' => $this->input->post('mulai_bekerja'),
                         'tmpt_lahir' => $this->input->post('tmpt_lahir'),
                         'tgl_lahir' => $this->input->post('tgl_lahir'),
                         'alamat_ktp' => $this->input->post('alamat_ktp'),
@@ -545,6 +511,7 @@ class Karyawan extends CI_Controller
                     $data = array(
                         'id_karyawan' => $id_karyawan,
                         'nama_karyawan' => $this->input->post('nama_karyawan'),
+                        'mulai_bekerja' => $this->input->post('mulai_bekerja'),
                         'tmpt_lahir' => $this->input->post('tmpt_lahir'),
                         'tgl_lahir' => $this->input->post('tgl_lahir'),
                         'alamat_ktp' => $this->input->post('alamat_ktp'),
@@ -578,6 +545,7 @@ class Karyawan extends CI_Controller
                     $data = array(
                         'id_karyawan' => $id_karyawan,
                         'nama_karyawan' => $this->input->post('nama_karyawan'),
+                        'mulai_bekerja' => $this->input->post('mulai_bekerja'),
                         'tmpt_lahir' => $this->input->post('tmpt_lahir'),
                         'tgl_lahir' => $this->input->post('tgl_lahir'),
                         'alamat_ktp' => $this->input->post('alamat_ktp'),
@@ -600,6 +568,7 @@ class Karyawan extends CI_Controller
                     $data = array(
                         'id_karyawan' => $id_karyawan,
                         'nama_karyawan' => $this->input->post('nama_karyawan'),
+                        'mulai_bekerja' => $this->input->post('mulai_bekerja'),
                         'tmpt_lahir' => $this->input->post('tmpt_lahir'),
                         'tgl_lahir' => $this->input->post('tgl_lahir'),
                         'alamat_ktp' => $this->input->post('alamat_ktp'),

@@ -80,7 +80,7 @@
   </div>
 
   <!-- model Delete-->
-  <?php foreach ($karyawan as $key => $value) { ?>
+  <?php foreach ($all_karyawan as $key => $value) { ?>
     <div class="modal fade" id="delete<?= $value->id_karyawan ?>">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -217,7 +217,7 @@
   <!--End Modal Tambah cuti-->
 
   <!-- model kurangi  cuti-->
-  <?php foreach ($karyawan as $key => $value) { ?>
+  <?php foreach ($all_karyawan as $key => $value) { ?>
     <div class="modal fade" id="kurangi_cuti<?= $value->id_karyawan ?>">
       <div class="modal-dialog">
         <div class="modal-content">

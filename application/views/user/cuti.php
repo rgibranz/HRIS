@@ -90,6 +90,21 @@
                 </div>
             </div>
 
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Keterangan Konfirmasi Manajer</label>
+                    <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_manajer ?></textarea>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Keterangan Konfirmasi direktur</label>
+                    <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_direktur ?></textarea>
+                </div>
+            </div>
+
             <div>
                 <div class="form-group">
                     <label>Tanggal Pengajuan</label>

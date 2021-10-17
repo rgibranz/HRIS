@@ -36,7 +36,7 @@
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Absen') {
+                     <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
                                                                             echo "active";
                                                                         } ?>">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -72,9 +72,9 @@
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?= base_url('form/list_cuti_admin') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
-                                                                                            echo "active";
-                                                                                        } ?>">
+                     <a href="<?= base_url('form/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
+                                                                                        echo "active";
+                                                                                    } ?>">
                          <i class="nav-icon fas fa-users"></i>
                          <p>
                              list cuti

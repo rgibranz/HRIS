@@ -27,7 +27,7 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($karyawan as $key => $value) { ?>
+            foreach ($divisi_karyawan as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
                 <td><?= $value->nama_karyawan ?></td>
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <?php foreach ($karyawan as $key => $value) { ?>
+    <?php foreach ($divisi_karyawan as $key => $value) { ?>
       <div class="modal fade" id="delete<?= $value->id_karyawan ?>">
         <div class="modal-dialog">
           <div class="modal-content">

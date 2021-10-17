@@ -10,6 +10,7 @@ class Divisi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_divisi');
+        $this->load->model('m_karyawan', 'karyawan');
     }
 
     public function index()
@@ -20,6 +21,7 @@ class Divisi extends CI_Controller
 
             $data = array(
                 'title' => 'divisi',
+                'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
                 'divisi' => $this->m_divisi->get_all_data(),
                 'isi' => 'admin/divisi',
             );

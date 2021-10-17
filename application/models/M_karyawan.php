@@ -73,6 +73,8 @@ class M_karyawan extends CI_Model
         $this->db->from('cuti');
         $this->db->join('karyawan', 'karyawan.id_karyawan = cuti.id_karyawan', 'left');
         $this->db->where('cuti.id_cuti', $id_cuti);
+        $this->db->order_by('id_cuti', 'desc');
+
 
         return $this->db->get()->row();
     }

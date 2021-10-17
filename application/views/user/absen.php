@@ -22,7 +22,7 @@
                             date_default_timezone_set('Asia/Jakarta');
                             // waktu pulang
                             $wkt_datang = $absen_end->waktu_datang;
-                            $timestamp = strtotime($wkt_datang) + 60 * 4;
+                            $timestamp = strtotime($wkt_datang) + 15;
                             $time = date('H:i:s', $timestamp);
                             $wkt_pulang = date('h:i:s');
                             //end waktu pulang

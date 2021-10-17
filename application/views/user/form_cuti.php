@@ -8,16 +8,13 @@
                 <?php echo form_open_multipart('form/cuti_add') ?>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Nama Lengkap</label>
-                        <h5><?= $karyawan->nama_karyawan ?></h5>
                         <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan" value="<?= $karyawan->nama_karyawan ?>" hidden>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Mulai Bekerja</label>
-                        <input type="text" name="mulai_bekerja" class="form-control" id="exampleInputEmail1" placeholder="Tanggal-Bulan-Tahun">
+                        <input type="text" name="mulai_bekerja" class="form-control" id="exampleInputEmail1" placeholder="Tanggal-Bulan-Tahun" value="<?= $karyawan->mulai_bekerja ?>" hidden>
                         <small class="text-danger"><?= form_error('mulai_bekerja'); ?></small>
                     </div>
                 </div>
@@ -30,31 +27,20 @@
                             <small class="text-danger"><?= form_error('jenis_cuti'); ?></small>
                         </div>
                     </div>
-
+                    <!-- 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Lokasi selama Cuti</label>
                             <input type="text" name="lokasi_cuti" class="form-control" id="exampleInputEmail1" placeholder="Jenis Cuti">
                             <small class="text-danger"><?= form_error('jenis_cuti'); ?></small>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
+                    </div> -->
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Lama Cuti</label>
                             <input type="text" name="lama_cuti" class="form-control" id="exampleInputEmail1" placeholder="Lama Cuti">
                             <small class="text-danger"><?= form_error('lama_cuti'); ?></small>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Sisa Cuti</label>
-                            <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti ?>" class="form-control" id="exampleInputEmail1" readonly>
-                            <small class="text-danger"><?= form_error('sisa_cuti'); ?></small>
-
                         </div>
                     </div>
                 </div>
@@ -73,8 +59,18 @@
                         </div>
                     </div>
 
-
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Sisa Cuti</label>
+                            <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti ?>" class="form-control" id="exampleInputEmail1" readonly>
+                            <small class="text-danger"><?= form_error('sisa_cuti'); ?></small>
+                        </div>
+                    </div>
                 </div>
+
+
+
+
 
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -113,30 +109,31 @@
             <!--End Formulir-->
         </div>
     </div>
+</div>
 
 
 
+<script>
+    $(function() {
+        //Date range picker
+        $('#reservationdate').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+
+        //Date range picker
+        $('#reservationdate2').datetimepicker({
+            format: 'DD-MM-YYYY'
+        });
+    })
+</script>
+
+<?php if ($this->session->flashdata('invalidcuti')) : ?>
     <script>
-        $(function() {
-            //Date range picker
-            $('#reservationdate').datetimepicker({
-                format: 'DD-MM-YYYY'
-            });
-
-            //Date range picker
-            $('#reservationdate2').datetimepicker({
-                format: 'DD-MM-YYYY'
-            });
-        })
+        swal.fire({
+            title: "Gagal Mengajuakn Cuti",
+            text: "Jumlah cuti yang anda miliki tidak cukup",
+            button: false,
+            timer: 5000,
+        });
     </script>
-
-    <?php if ($this->session->flashdata('invalidcuti')) : ?>
-        <script>
-            swal.fire({
-                title: "Gagal Mengajuakn Cuti",
-                text: "Jumlah cuti yang anda miliki tidak cukup",
-                button: false,
-                timer: 5000,
-            });
-        </script>
-    <?php endif; ?>
+<?php endif; ?>
