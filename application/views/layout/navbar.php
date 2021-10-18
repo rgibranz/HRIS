@@ -1,22 +1,14 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
-     <a href="index3.html" class="brand-link">
-         <img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-         <span class="brand-text font-weight-light">AdminLTE 3</span>
+     <a href="#" class="brand-link">
+         <img src="<?= base_url() ?>assets/gambar/icon/Untitled-1cc.png" alt="Logo" width="200" style="opacity: .8">
      </a>
 
      <!-- Sidebar -->
      <div class="sidebar">
          <!-- Sidebar user panel (optional) -->
-         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-             <div class="image">
-                 <img src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" class="img-circle elevation-2" alt="User Image">
-             </div>
-             <div class="info">
-                 <a href="#" class="d-block"><?php echo $this->session->userdata('nama_karyawan') ?></a>
-             </div>
-         </div>
+
 
          <!-- Sidebar Menu -->
          <nav class="mt-2">
@@ -39,7 +31,7 @@
                      <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
                                                                             echo "active";
                                                                         } ?>">
-                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <i class="nav-icon fas fa-calendar-alt"></i>
                          <p>
                              List Absen
                          </p>
@@ -53,7 +45,7 @@
                                                                             if ($this->uri->segment(1) == 'divisi_karyawan') {
                                                                                 echo "actives";
                                                                             } ?>">
-                         <i class="nav-icon fas fa-th"></i>
+                         <i class="nav-icon fas fa-users"></i>
                          <p>
                              Divisi
                          </p>
@@ -64,7 +56,7 @@
                      <a href="<?= base_url('karyawan') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'karyawan') {
                                                                                 echo "active";
                                                                             } ?>">
-                         <i class="nav-icon fas fa-users"></i>
+                         <i class="nav-icon fas fa-user"></i>
                          <p>
                              Karyawan
                          </p>
@@ -75,7 +67,7 @@
                      <a href="<?= base_url('form/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
                                                                                         echo "active";
                                                                                     } ?>">
-                         <i class="nav-icon fas fa-users"></i>
+                         <i class="nav-icon fas fa-clone"></i>
                          <p>
                              list cuti
                          </p>
@@ -84,7 +76,7 @@
 
                  <li class="nav-item">
                      <a href="<?= base_url('auth/logout_user') ?>" class="nav-link" id="log_out">
-                         <i class="nav-icon fas fa-sign"></i>
+                         <i class="nav-icon fas fa-sign-out-alt"></i>
                          <p>
                              Log Out
                          </p>

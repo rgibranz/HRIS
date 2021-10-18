@@ -27,6 +27,13 @@ class M_cuti extends CI_Model
 
         return $this->db->get()->row();
     }
+     
+    public function get_data_cuti($id_karyawan)
+    {
+        $query = $this->db->query("SELECT * FROM `cuti` WHERE id_karyawan = $id_karyawan ORDER BY id_cuti DESC LIMIT 1");
+
+        return $query->row();
+    }
 
 
     public function add($data)

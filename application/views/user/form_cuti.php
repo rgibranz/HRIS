@@ -39,7 +39,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Lama Cuti</label>
-                            <input type="text" name="lama_cuti" class="form-control" id="exampleInputEmail1" placeholder="Lama Cuti">
+                            <input type="text" name="lama_cuti" class="form-control" id="exampleInputEmail1" placeholder="Lama Cuti" onkeypress="return event.charCode >= 48 && event.charCode <=57">
                             <small class="text-danger"><?= form_error('lama_cuti'); ?></small>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
 
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <a href="<?= base_url('dasboard_user') ?>" class=" btn btn-outline-secondary">Batal</a>
+                        <button class=" btn btn-outline-secondary" onclick="window.history.back()">Batal</button>
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn btn-outline-success">Ajukan</button>
@@ -130,8 +130,19 @@
 <?php if ($this->session->flashdata('invalidcuti')) : ?>
     <script>
         swal.fire({
-            title: "Gagal Mengajuakn Cuti",
+            title: "Gagal Mengajukan Cuti",
             text: "Jumlah cuti yang anda miliki tidak cukup",
+            button: false,
+            timer: 5000,
+        });
+    </script>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('masihjalan')) : ?>
+    <script>
+        swal.fire({
+            title: "Gagal Mengajukan Cuti",
+            text: "Masih dalam Proses Pertinjauan",
             button: false,
             timer: 5000,
         });

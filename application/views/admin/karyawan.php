@@ -30,6 +30,7 @@
             <tr>
               <th>No</th>
               <th>Nama Karyawan</th>
+              <th>Email</th>
               <th>divisi</th>
               <th>Job</th>
               <th>sisa cuti</th>
@@ -44,14 +45,15 @@
               <tr>
                 <td><?= $no++; ?></td>
                 <td><?= $value->nama_karyawan ?></td>
+                <td><?=$value->email?></td>
                 <td><?= $value->nama_divisi ?></td>
                 <td><?= $value->job ?></td>
                 <td><?= $value->sisa_cuti ?></td>
                 <td>
-                  <a href="<?= base_url('karyawan/edit/' . $value->id_karyawan) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>Edit</a>
+                  <a href="<?= base_url('karyawan/edit/' . $value->id_karyawan) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_cuti<?= $value->id_karyawan ?>">Tambah cuti</button>
                   <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#kurangi_cuti<?= $value->id_karyawan ?>">Kurangi Cuti</button>
-                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_karyawan ?>"><i class="fa fa-trash"> Hapus</i></button>
+                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_karyawan ?>"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             <?php } ?>

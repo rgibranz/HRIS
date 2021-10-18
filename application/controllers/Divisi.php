@@ -20,7 +20,7 @@ class Divisi extends CI_Controller
 
 
             $data = array(
-                'title' => 'divisi',
+                'title' => 'Divisi',
                 'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
                 'divisi' => $this->m_divisi->get_all_data(),
                 'isi' => 'admin/divisi',
