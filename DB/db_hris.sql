@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Okt 2021 pada 10.24
+-- Waktu pembuatan: 18 Okt 2021 pada 08.11
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -20,8 +20,62 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_hris`
 --
-CREATE DATABASE IF NOT EXISTS `db_hris` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `db_hris`;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `absen`
+--
+
+CREATE TABLE `absen` (
+  `id_absen` int(11) NOT NULL,
+  `id_karyawan` int(11) NOT NULL,
+  `nama_karyawan` varchar(255) DEFAULT NULL,
+  `tgl` date DEFAULT NULL,
+  `waktu_datang` time DEFAULT NULL,
+  `waktu_pulang` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `absen`
+--
+
+INSERT INTO `absen` (`id_absen`, `id_karyawan`, `nama_karyawan`, `tgl`, `waktu_datang`, `waktu_pulang`) VALUES
+(37, 8, 'Rifki Raharjo', '2021-10-14', '01:12:39', NULL),
+(38, 8, 'Rifki Raharjo', '2022-10-14', '03:38:23', NULL),
+(39, 8, 'Rifki Raharjo', '2021-10-15', '02:17:27', '02:19:45'),
+(40, 8, 'Rifki Raharjo', '2021-10-18', '12:05:53', '12:09:17'),
+(41, 20, 'manajer', '2021-10-18', '12:10:51', '12:16:39');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bulan`
+--
+
+CREATE TABLE `bulan` (
+  `id_bulan` int(11) NOT NULL,
+  `nama_bulan` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `bulan`
+--
+
+INSERT INTO `bulan` (`id_bulan`, `nama_bulan`) VALUES
+(1, 'Januari'),
+(2, 'Febuari'),
+(3, 'Maret'),
+(4, 'April'),
+(5, 'Mei'),
+(6, 'Juni'),
+(7, 'Juli'),
+(8, 'Agustus'),
+(9, 'Sebtember'),
+(10, 'Okteber'),
+(11, 'November'),
+(12, 'Desember');
+
 -- --------------------------------------------------------
 
 --
@@ -65,7 +119,11 @@ INSERT INTO `cuti` (`id_cuti`, `id_karyawan`, `nama_karyawan`, `mulai_bekerja`, 
 (31, 8, 'Rifki Raharjo', '2020-06-11', 'sakit', 'rumah', '2', 8, '2021-10-08', '2021-10-10', 'sakit', '2021-10-08', 'accept', 'Oke', 'reject', 'ditolak'),
 (32, 8, 'Rifki Raharjo', '2020-06-11', 'sakit', 'rumah sakit', '2', 8, '2021-10-08', '2021-10-10', 'sakit', '2021-10-08', 'accept', 'Ok', 'accept', 'Ok'),
 (33, 8, 'Rifki Raharjo', '2020-06-11', 'sakit', 'rumah', '2', 5, '2021-10-08', '2021-10-08', 'oke', '2021-10-08', 'reject', 'oke', 'diajukan', NULL),
-(34, 8, 'Rifki Raharjo', '2020-02-11', 'sakit', 'rumah', '2', 5, '2021-10-08', '2021-10-10', 'oke', '2021-10-08', 'diajukan', NULL, 'diajukan', NULL);
+(36, 8, 'Rifki Raharjo', '2020-02-11', 'sakit', 'rumah', '1', 2, '2021-10-15', '2021-10-16', 'sakit', '2021-10-15', 'accept', 'ok', 'accept', 'ok'),
+(37, 8, 'Rifki Raharjo', '2021-09-26', 'sakit', NULL, '1', 1, '2021-10-18', '2021-10-19', 'sakit', '2021-10-18', 'accept', 'oke', 'accept', 'Oke'),
+(38, 8, 'Rifki Raharjo', '2021-09-26', 'sakit', NULL, '2', 3, '2021-10-18', '2021-10-20', 'sakit', '2021-10-18', 'accept', 'oke', 'accept', 'oke'),
+(39, 8, 'Rifki Raharjo', '2021-09-26', 'sakit', NULL, '1', 1, '2021-10-18', '2021-10-19', 'sakit', '2021-10-18', 'reject', 'permintan reject dari karyawan bersankutan', 'diajukan', NULL),
+(40, 8, 'Rifki Raharjo', '2021-09-26', 'sakit', NULL, '1', 1, '2021-10-18', '2021-10-19', '', '2021-10-18', 'accept', 'oke', 'reject', 'tidak ada keterangan');
 
 -- --------------------------------------------------------
 
@@ -111,6 +169,7 @@ CREATE TABLE `gaji` (
 CREATE TABLE `karyawan` (
   `id_karyawan` int(11) NOT NULL,
   `nama_karyawan` varchar(100) DEFAULT NULL,
+  `mulai_bekerja` date DEFAULT NULL,
   `tmpt_lahir` varchar(35) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `alamat_ktp` text DEFAULT NULL,
@@ -132,21 +191,22 @@ CREATE TABLE `karyawan` (
 -- Dumping data untuk tabel `karyawan`
 --
 
-INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `tmpt_lahir`, `tgl_lahir`, `alamat_ktp`, `alamat_domisili`, `no_hp`, `no_hp_d`, `email`, `id_divisi`, `status_karyawan`, `job`, `password`, `level`, `gaji`, `img`, `sisa_cuti`) VALUES
-(7, 'test 10', 'jakarta', '2021-09-26', 'jalan', NULL, '0822297636384', '', 'androrif29@gmail.com', 1, 'test', 'magang', '$2y$10$i/bECnX5rtGqnObNObvVdulvXxiiGOob4zIYh3a7fwHTuwBbk/./C', 'admin', '0', '', 0),
-(8, 'Rifki Raharjo', 'jakarta', '2021-09-26', 'jalan 1', '', '029239541', '029239541', 'user@user.com', 1, 'Magang', 'magang', '$2y$10$qD5kCVMSR7nOuPz/QpgPSeq6TJ0/Kxl0/i8twnltAV.HDiHt0Z95O', 'user', '0', '1633663549.jpg', 3),
-(9, 'test 12', 'jakarta', '2021-09-27', 'jalan 12', NULL, '0822923', '', 'androrif31@gmail.com', 2, NULL, 'Fullstack', '$2y$10$wcT7nVNsV8Ugsd18GZzq4.rqnlQlVreOI6ALc77DUH9JPRt.375j2', 'user', '4500000', '', 0),
-(10, 'test 1', 'jakarta', '2021-09-28', 'jalan', '', '082222', '082222', 'androrif32@gmail.com', 1, 'Probation', 'test', '$2y$10$fkgm6uKKO/tP3Yc1EsPDL.Z2pDvz35sqwcJo8AY4b1Ljstrzvg2B6', 'user', '450000', '1633418154.jpg', 0),
-(11, 'test 13', 'jakarta', '2021-09-28', 'sadsad', '', '0231651', '0231651', 'androrif34@gmail.com', 1, 'Probation', 'magang', '$2y$10$7hPawGZCziLNUZR0sSLnAuM.8Oe5Ak30KAv06/rhTEllYFnLgVRE.', '', '123333', '1633417082.jpg', 0),
-(14, 'HRD', 'asdsad', '2021-09-17', 'asdsadasd', '', '035218230', '035218230', 'abd@abd.com', 1, NULL, 'magang', '$2y$10$g8CKbWaX4.lfT8WJLwCk.Ol22stmRB8Mr5q1tURbw1CWNp2m3IZGG', 'admin', '12333', '1632826200.png', 0),
-(20, 'manajer', 'jakarta', '2021-09-30', 'sdasd', '', '293090', '2903902', 'manajer@manajer.com', 1, NULL, 'sdsad', '$2y$10$fR/KLn9dpJXuHvbQZXaRl.ID3TxFw6/DMLWZVENhOZrFgooPf/wUO', 'manajer', '123', '641968.jpg', 0),
-(21, 'Test karyawan', 'jakarta', '2021-10-05', 'Jakarta', '', '039393', '039393', 'karyawan@karyawan.com', 1, 'Probation', 'IT', '$2y$10$CMnp5CRZfiusoi.zuOu2HO3KmrfF4uIN9CAX6ulAcGQUajC98KV4i', 'user', '12033', '6419681.jpg', 0),
-(22, 'direktur', 'jakarta', '2021-10-06', 'jalan 1', '', '0290210', '0290210', 'direktur@direktur.com', 2, 'Karyawan tetap', 'Direktur', '$2y$10$bmmzM7A3ynLPC4Lmz1Crte3un0idIr2HBYQxaRjhF1NqcUVZLV5/m', 'direktur', '1233333', 'index.png', 0),
-(23, 'mas agugng', 'bogor', '2021-10-06', 'jalan', '', '090902', '09209', 'agung@agung.com', 4, 'Karyawan tetap', 'Fullstack', '$2y$10$V/xtKRKepb9ibJMuMz9rMuJpQ9No1/2HOJUlynRnVvubdQDd8wg2K', 'user', '100000000', 'index1.png', 0),
-(24, 'manajer', 'jakarta', '2000-02-29', 'jalan', '', '092029', '0902982', 'gmail@gmail.com', 4, 'Karyawan tetap', 'IT', '$2y$10$dGDJbCB2FRwpxM0FDkDpNOc1MhPHlgsr2TeCiMOsNq52PxkEpQZKS', 'manajer', '10000000000', 'index2.png', 0),
-(25, 'test baru', '11', '2000-02-29', 'jalan', '', '033030', '033020', 'test12@test12', 4, 'Karyawan tetap', 'IT', '$2y$10$OtxZkPV3BGriouFQ7dmvXeMxhMdw/4YSOcMWiR7MksgVBK6WLPuMa', 'user', '1233333', 'index3.png', 11),
-(26, 'test baru', '11', '2021-10-07', 'jalan', '', '020202', '20020', 'test13@test13.com', 2, 'Karyawan tetap', 'IT', '$2y$10$YjL4ySJCGTyQUwiv8g4oE.9qnufQfciI65.Zm2midDtQWn2.k6I3q', 'user', '123333', 'index4.png', 11),
-(27, 'test baru', 'jakarta', '2021-10-14', 'jalan', '', '0202', '', 'an@an2.com', 1, '', 'IT', '$2y$10$ylQhTlUwviuSCMUmIgZ4XO/MK/zR7dLJJe4V1/OgpInCvsEn4gszK', 'user', '1233333', 'index5.png', 10);
+INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `mulai_bekerja`, `tmpt_lahir`, `tgl_lahir`, `alamat_ktp`, `alamat_domisili`, `no_hp`, `no_hp_d`, `email`, `id_divisi`, `status_karyawan`, `job`, `password`, `level`, `gaji`, `img`, `sisa_cuti`) VALUES
+(7, 'test 10', NULL, 'jakarta', '2021-09-26', 'jalan', NULL, '0822297636384', '', 'androrif29@gmail.com', 1, 'test', 'magang', '$2y$10$i/bECnX5rtGqnObNObvVdulvXxiiGOob4zIYh3a7fwHTuwBbk/./C', 'admin', '0', '', 3),
+(8, 'Rifki Raharjo', '2021-09-26', 'jakarta', '2021-09-26', 'jalan 1', '', '029239541', '029239541', 'user@user.com', 1, 'Magang', 'magang', '$2y$10$qD5kCVMSR7nOuPz/QpgPSeq6TJ0/Kxl0/i8twnltAV.HDiHt0Z95O', 'user', '0', '1634533804.png', 1),
+(9, 'test 12', NULL, 'jakarta', '2021-09-27', 'jalan 12', NULL, '0822923', '', 'androrif31@gmail.com', 2, NULL, 'Fullstack', '$2y$10$wcT7nVNsV8Ugsd18GZzq4.rqnlQlVreOI6ALc77DUH9JPRt.375j2', 'user', '4500000', '', 3),
+(10, 'test 1', NULL, 'jakarta', '2021-09-28', 'jalan', '', '082222', '082222', 'androrif32@gmail.com', 1, 'Probation', 'test', '$2y$10$fkgm6uKKO/tP3Yc1EsPDL.Z2pDvz35sqwcJo8AY4b1Ljstrzvg2B6', 'user', '450000', '1633418154.jpg', 3),
+(11, 'test 13', NULL, 'jakarta', '2021-09-28', 'sadsad', '', '0231651', '0231651', 'androrif34@gmail.com', 1, 'Probation', 'magang', '$2y$10$7hPawGZCziLNUZR0sSLnAuM.8Oe5Ak30KAv06/rhTEllYFnLgVRE.', '', '123333', '1633417082.jpg', 3),
+(14, 'HRD', NULL, 'asdsad', '2021-09-17', 'asdsadasd', '', '035218230', '035218230', 'abd@abd.com', 1, NULL, 'magang', '$2y$10$g8CKbWaX4.lfT8WJLwCk.Ol22stmRB8Mr5q1tURbw1CWNp2m3IZGG', 'admin', '12333', '1632826200.png', 3),
+(20, 'manajer', NULL, 'jakarta', '2021-09-30', 'sdasd', '', '293090', '2903902', 'manajer@manajer.com', 1, NULL, 'sdsad', '$2y$10$fR/KLn9dpJXuHvbQZXaRl.ID3TxFw6/DMLWZVENhOZrFgooPf/wUO', 'manajer', '123', '641968.jpg', 3),
+(21, 'Test karyawan', NULL, 'jakarta', '2021-10-05', 'Jakarta', '', '039393', '039393', 'karyawan@karyawan.com', 1, 'Probation', 'IT', '$2y$10$CMnp5CRZfiusoi.zuOu2HO3KmrfF4uIN9CAX6ulAcGQUajC98KV4i', 'user', '12033', '6419681.jpg', 3),
+(22, 'direktur', NULL, 'jakarta', '2021-10-06', 'jalan 1', '', '0290210', '0290210', 'direktur@direktur.com', 2, 'Karyawan tetap', 'Direktur', '$2y$10$bmmzM7A3ynLPC4Lmz1Crte3un0idIr2HBYQxaRjhF1NqcUVZLV5/m', 'direktur', '1233333', 'index.png', 3),
+(23, 'mas agugng', NULL, 'bogor', '2021-10-06', 'jalan', '', '090902', '09209', 'agung@agung.com', 4, 'Karyawan tetap', 'Fullstack', '$2y$10$V/xtKRKepb9ibJMuMz9rMuJpQ9No1/2HOJUlynRnVvubdQDd8wg2K', 'user', '100000000', 'index1.png', 3),
+(24, 'manajer', NULL, 'jakarta', '2000-02-29', 'jalan', '', '092029', '0902982', 'gmail@gmail.com', 4, 'Karyawan tetap', 'IT', '$2y$10$dGDJbCB2FRwpxM0FDkDpNOc1MhPHlgsr2TeCiMOsNq52PxkEpQZKS', 'manajer', '10000000000', 'index2.png', 3),
+(26, 'test baru', NULL, '11', '2021-10-07', 'jalan', '', '020202', '20020', 'test13@test13.com', 2, 'Karyawan tetap', 'IT', '$2y$10$YjL4ySJCGTyQUwiv8g4oE.9qnufQfciI65.Zm2midDtQWn2.k6I3q', 'user', '123333', 'index4.png', 14),
+(27, 'test baru', NULL, 'jakarta', '2021-10-14', 'jalan', '', '0202', '', 'an@an2.com', 1, '', 'IT', '$2y$10$ylQhTlUwviuSCMUmIgZ4XO/MK/zR7dLJJe4V1/OgpInCvsEn4gszK', 'user', '1233333', 'index5.png', 13),
+(28, 'tester_1', '2020-02-12', 'jakarta', '2000-02-02', 'tester1', '', '039393', '039304', 'test11@gmail.com', 4, 'Karyawan tetap', 'IT', '$2y$10$WjQr/4hMTYYAUConJ0BO9eyyFr7DMNy1Fe2FxQphD8BVo4nR2AaUu', 'admin', '111111111111111111', '1.PNG', 15),
+(29, 'tester_2', NULL, 'jakarta', '2000-02-09', 'tester11', '', '08228282', '08228282', 'tester21@gmail.com', 4, 'Karyawan tetap', 'IT', '$2y$10$xDJPRYUpOphsmV0XbwWWS.Bgsaf2Ad4MWTsQROadtQvLIuNwrU9cW', 'user', '111111111111111111', '2.PNG', 15);
 
 -- --------------------------------------------------------
 
@@ -172,6 +232,18 @@ INSERT INTO `users_role` (`id_user`, `users_role`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `absen`
+--
+ALTER TABLE `absen`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indeks untuk tabel `bulan`
+--
+ALTER TABLE `bulan`
+  ADD PRIMARY KEY (`id_bulan`);
 
 --
 -- Indeks untuk tabel `cuti`
@@ -208,10 +280,22 @@ ALTER TABLE `users_role`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `absen`
+--
+ALTER TABLE `absen`
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT untuk tabel `bulan`
+--
+ALTER TABLE `bulan`
+  MODIFY `id_bulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT untuk tabel `cuti`
 --
 ALTER TABLE `cuti`
-  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `divisi`
@@ -229,7 +313,7 @@ ALTER TABLE `gaji`
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `users_role`
