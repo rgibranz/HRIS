@@ -230,7 +230,7 @@ class Karyawan extends CI_Controller
             $data = array(
                 'title' => 'Tambah Karyawan',
 
-                'karyawan' => $this->karyawan->get_all_data(),
+                'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
                 'role' => $this->karyawan->get_all_role(),
                 'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
                 'isi' => 'admin/add_karyawan_divisi'

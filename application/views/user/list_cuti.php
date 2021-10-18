@@ -33,7 +33,8 @@
                   <?php if ($value->status_manajer == "accept") { ?>
                     <?php if ($value->status_direktur == "accept") { ?>
                       <p class="text-success">accept</p>
-                    <?php } else { ?>
+                    <?php }
+                    if ($value->status_direktur == "diajukan") { ?>
                       <p class="text-warning">Menungu Konfirmasi Direktur</p>
                     <?php } ?>
                   <?php }
@@ -44,6 +45,9 @@
                       <p class="text-danger">Pengajuan Cuti di Tolak Oleh Manajer</p>
 
                     <?php } ?>
+                  <?php }
+                  if ($value->status_direktur == "reject") { ?>
+                    <p class="text-danger">Pengajuan Cuti di Tolak Oleh direktur</p>
                   <?php }
                   if ($value->status_manajer == "diajukan") { ?>
                     <p class="text-warning">Menungu Konfirmasi Manajer</p>

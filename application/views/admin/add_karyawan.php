@@ -57,9 +57,9 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Tanggal lahir</label>
-                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Tanggal-bulan-Tahun" />
-                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                  <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
+                    <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
                   </div>
@@ -202,6 +202,9 @@
   $(function() {
     //Date range picker
     $('#reservationdate').datetimepicker({
+      format: 'YYYY-MM-DD'
+    });
+    $('#reservationdate2').datetimepicker({
       format: 'YYYY-MM-DD'
     });
   })

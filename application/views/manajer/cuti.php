@@ -28,12 +28,12 @@
                             <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->jenis_cuti ?>" readonly>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <div class="form-group">
                             <label>lokasi semala cuti</label>
                             <input type="text" name="lokasi_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->lokasi_cuti ?>" readonly>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-md-3">

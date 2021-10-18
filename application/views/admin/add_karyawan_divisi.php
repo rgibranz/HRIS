@@ -22,6 +22,18 @@
               </div>
             </div>
 
+            <div class="col-md-8">
+              <div class="form-group">
+                <label>Tanggal Mulai Bekerja</label>
+                <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                  <input type="text" name="mulai_bekerja" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
+                  <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
             <div class="row">
 
@@ -173,6 +185,9 @@
   $(function() {
     //Date range picker
     $('#reservationdate').datetimepicker({
+      format: 'YYYY-MM-DD'
+    });
+    $('#reservationdate2').datetimepicker({
       format: 'YYYY-MM-DD'
     });
   })
