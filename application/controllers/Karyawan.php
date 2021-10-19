@@ -262,6 +262,7 @@ class Karyawan extends CI_Controller
                 $this->load->library('image_lib', $config);
                 $data = array(
                     'nama_karyawan' => $this->input->post('nama_karyawan'),
+                    'mulai_bekerja' => $this->input->post('mulai_bekerja'),
                     'tmpt_lahir' => $this->input->post('tmpt_lahir'),
                     'tgl_lahir' => $this->input->post('tgl_lahir'),
                     'alamat_ktp' => $this->input->post('alamat_ktp'),
@@ -526,7 +527,7 @@ class Karyawan extends CI_Controller
                         'gaji' => $this->input->post('gaji'),
                         'password' => $password,
                     );
-                    $this->karyawan->edit()($data);
+                    $this->karyawan->edit($data);
                     $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
                     redirect('karyawan');
                 }
