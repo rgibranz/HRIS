@@ -321,73 +321,64 @@ class Karyawan extends CI_Controller
     public function edit_biodata_aksi($id_karyawan = NULL)
     {
 
-        $this->form_validation->set_rules(
-            'img',
-            'img',
-            'trim',
-        );
-
-
-        if ($this->form_validation->run() == FALSE) {
-
-
+        $config['upload_path'] = './assets/gambar/user';
+        $config['allowed_types'] = 'jpeg|jpg|png';
+        $config['file_name'] = time();
+        $config['max_size']  = '2000';
+        $this->upload->initialize($config);
+        $field_name = "img";
+        if (!$this->upload->do_upload($field_name)) {
             $data = array(
-                'title' => 'Edit Biodata',
-                'karyawan' => $this->karyawan->get_data($id_karyawan),
-                'divisi' => $this->m_divisi->get_all_data(),
-                'isi' => 'user/edit_biodata',
-
+                'id_karyawan' => $id_karyawan,
+                'nama_karyawan' => $this->input->post('nama_karyawan'),
+                'tmpt_lahir' => $this->input->post('tmpt_lahir'),
+                'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'alamat_ktp' => $this->input->post('alamat_ktp'),
+                'alamat_domisili' => $this->input->post('alamat_domisili'),
+                'no_hp' => $this->input->post('no_hp'),
+                'no_hp_d' => $this->input->post('no_hp_d'),
+                'email' => $this->input->post('email'),
+                'id_divisi' => $this->input->post('id_divisi'),
+                'job' => $this->input->post('job'),
+                'level' => $this->input->post('level'),
+                'gaji' => $this->input->post('gaji'),
             );
+            $this->karyawan->edit_biodata($data);
+            $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
+            redirect('karyawan/detail_biodata');
+
+
             $this->load->view('layout/wrapper_user', $data, FALSE);
         } else {
 
-            $config['upload_path'] = './assets/gambar/user';
-            $config['allowed_types'] = 'jpeg|jpg|png';
-            $config['file_name'] = time();
-            $config['max_size']  = '2000';
-            $this->upload->initialize($config);
-            $field_name = "img";
-            if (!$this->upload->do_upload($field_name)) {
-                $data = array(
-                    'title' => 'Edit Biodata',
-                    'karyawan' => $this->karyawan->get_data($id_karyawan),
-                    'divisi' => $this->m_divisi->get_all_data(),
-                    'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'user/edit_biodata'
-                );
-
-                $this->load->view('layout/wrapper_user', $data, FALSE);
-            } else {
-
-                $gambar = $this->karyawan->get_data($id_karyawan);
-                if ($gambar->gambar != "") {
-                    unlink('./assets/gambar/user/' . $gambar->img);
-                }
-
-                $upload_data = array('uploads' => $this->upload->data());
-                $config['image_library'] = 'gb2';
-                $config['source_image'] = './assets/gambar/user' . $upload_data['uploads']['file_name'];
-                $this->load->library('image_lib', $config);
-                $data = array(
-                    'id_karyawan' => $id_karyawan,
-                    'nama_karyawan' => $this->input->post('nama_karyawan'),
-                    'tmpt_lahir' => $this->input->post('tmpt_lahir'),
-                    'tgl_lahir' => $this->input->post('tgl_lahir'),
-                    'alamat_ktp' => $this->input->post('alamat_ktp'),
-                    'alamat_domisili' => $this->input->post('alamat_domisili'),
-                    'no_hp' => $this->input->post('no_hp'),
-                    'no_hp_d' => $this->input->post('no_hp_d'),
-                    'email' => $this->input->post('email'),
-                    'id_divisi' => $this->input->post('id_divisi'),
-                    'job' => $this->input->post('job'),
-                    'level' => $this->input->post('level'),
-                    'gaji' => $this->input->post('gaji'),
-                    'img' => $upload_data['uploads']['file_name'],
-                );
-                $this->karyawan->edit_biodata($data);
-                $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
-                redirect('karyawan/detail_biodata');
+            $gambar = $this->karyawan->get_data($id_karyawan);
+            if ($gambar->gambar != "") {
+                unlink('./assets/gambar/user/' . $gambar->img);
             }
+
+            $upload_data = array('uploads' => $this->upload->data());
+            $config['image_library'] = 'gb2';
+            $config['source_image'] = './assets/gambar/user' . $upload_data['uploads']['file_name'];
+            $this->load->library('image_lib', $config);
+            $data = array(
+                'id_karyawan' => $id_karyawan,
+                'nama_karyawan' => $this->input->post('nama_karyawan'),
+                'tmpt_lahir' => $this->input->post('tmpt_lahir'),
+                'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'alamat_ktp' => $this->input->post('alamat_ktp'),
+                'alamat_domisili' => $this->input->post('alamat_domisili'),
+                'no_hp' => $this->input->post('no_hp'),
+                'no_hp_d' => $this->input->post('no_hp_d'),
+                'email' => $this->input->post('email'),
+                'id_divisi' => $this->input->post('id_divisi'),
+                'job' => $this->input->post('job'),
+                'level' => $this->input->post('level'),
+                'gaji' => $this->input->post('gaji'),
+                'img' => $upload_data['uploads']['file_name'],
+            );
+            $this->karyawan->edit_biodata($data);
+            $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
+            redirect('karyawan/detail_biodata');
         }
     }
 
