@@ -5,25 +5,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Biodata extends CI_Controller
 {
 
-    public function index()
+    public function __construct()
     {
+        parent::__construct();
+        $this->load->model('m_users', 'users');
+        $this->load->model('m_divisi');
     }
 
-    public function biodata()
+
+    public function index()
     {
         $s_id = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
         $id_users = $s_id['id_users'];
-
         $data = array(
             'title' => 'Biodata',
             'users' => $this->users->get_data($id_users),
-            'divisi' => $this->m_divisi->get_all_data(),
-            'error_upload' => $this->upload->display_errors(),
-            'isi' => 'user/biodata',
+            'isi' => 'users/biodata',
 
         );
         $this->load->view('layout/wrapper', $data, FALSE);
     }
+
 
     public function edit_biodata($id_users = NULL)
     {
@@ -34,7 +36,7 @@ class Biodata extends CI_Controller
             'users' => $this->users->get_data($id_users),
             'divisi' => $this->m_divisi->get_all_data(),
             'error_upload' => $this->upload->display_errors(),
-            'isi' => 'user/edit_biodata',
+            'isi' => 'users/edit_biodata',
 
         );
         $this->load->view('layout/wrapper', $data, FALSE);
@@ -67,7 +69,7 @@ class Biodata extends CI_Controller
             );
             $this->users->edit_biodata($data);
             $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
-            redirect('users/detail_biodata');
+            redirect('karyawan/biodata');
 
 
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -100,7 +102,7 @@ class Biodata extends CI_Controller
             );
             $this->users->edit_biodata($data);
             $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
-            redirect('karyawan/detail_biodata');
+            redirect('karyawan/biodata');
         }
     }
 }

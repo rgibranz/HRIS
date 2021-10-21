@@ -5,12 +5,12 @@
             <div class="card-text">
                 <!--Start Formulir-->
 
-                <?php echo form_open_multipart('form/cuti_edit/') ?>
+                <?php echo form_open_multipart('manajer/Cuti/edit/') ?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <h5><?= $list_cuti->nama_karyawan ?></h5>
-                        <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->nama_karyawan ?>" hidden>
+                        <h5><?= $list_cuti->nama_users ?></h5>
+                        <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->nama_users ?>" hidden>
                     </div>
                 </div>
 
@@ -28,12 +28,7 @@
                             <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->jenis_cuti ?>" readonly>
                         </div>
                     </div>
-                    <!-- <div class="col-md-3">
-                        <div class="form-group">
-                            <label>lokasi semala cuti</label>
-                            <input type="text" name="lokasi_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->lokasi_cuti ?>" readonly>
-                        </div>
-                    </div> -->
+
                 </div>
                 <div class="row">
                     <div class="col-md-3">
@@ -78,7 +73,7 @@
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Keterangan Cuti Karyawan</label>
+                        <label>Keterangan Cuti users</label>
                         <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_cuti ?></textarea>
                     </div>
                 </div>
@@ -101,7 +96,7 @@
 
             <div>
                 <div class="form-group">
-                    <input type="text" name="id_karyawan" value="<?= $list_cuti->id_karyawan ?>" hidden>
+                    <input type="text" name="id_users" value="<?= $list_cuti->id_users ?>" hidden>
                 </div>
             </div>
 
@@ -132,7 +127,7 @@
                 <?php if ($list_cuti->status_manajer != "reject" && $list_cuti->status_manajer != "accept") {
                 ?>
                     <div class="col-md-6 text-left">
-                        <a href="<?= base_url('dasboard_user') ?>" class=" btn btn-outline-secondary">Batal</a>
+                        <a href="<?= base_url('manajer/dashboard') ?>" class=" btn btn-outline-secondary">Batal</a>
                     </div>
                     <div class="col-md-6 text-right">
                         <input value="reject" name="status_manajer" type="submit" class="btn btn-outline-danger"></input>

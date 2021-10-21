@@ -5,12 +5,12 @@
             <div class="card-text">
                 <!--Start Formulir-->
 
-                <?php echo form_open_multipart('form/cuti_edit/') ?>
+                <?php echo form_open_multipart('direktur/cuti/edit/') ?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <h5><?= $list_cuti->nama_karyawan ?></h5>
-                        <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->nama_karyawan ?>" hidden>
+                        <h5><?= $list_cuti->nama_users ?></h5>
+                        <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->nama_users ?>" hidden>
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Keterangan Cuti Karyawan</label>
+                        <label>Keterangan Cuti users</label>
                         <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_cuti ?></textarea>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
 
             <div>
                 <div class="form-group">
-                    <input type="text" name="id_karyawan" value="<?= $list_cuti->id_karyawan ?>" hidden>
+                    <input type="text" name="id_users" value="<?= $list_cuti->id_users ?>" hidden>
                 </div>
             </div>
 

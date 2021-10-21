@@ -33,52 +33,6 @@ class M_users extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function get_all_data_cuti()
-    {
-        $this->db->select('*');
-        $this->db->from('cuti');
-        $this->db->order_by('id_cuti', 'desc');
-        return $this->db->get()->result();
-    }
-    public function get_cuti_users($id_users)
-    {
-        $this->db->select('*');
-        $this->db->from('users');
-        $this->db->where('id_users', $id_users);
-        $this->db->order_by('id_users', 'desc');
-
-        return $this->db->get()->row();
-    }
-
-    public function getDataPagination($limit, $start)
-    {
-        $query = $this->db->get('users', $limit, $start);
-        return $query;
-    }
-
-    public function get_data_cuti($id_users)
-    {
-        $this->db->select('*');
-        $this->db->from('cuti');
-        $this->db->where('cuti.id_users', $id_users);
-        $this->db->order_by('id_cuti', 'desc');
-
-
-        return $this->db->get()->result();
-    }
-
-    public function get_data_cuti_s($id_cuti)
-    {
-        $this->db->select('*');
-        $this->db->from('cuti');
-        $this->db->join('users', 'users.id_users = cuti.id_users', 'left');
-        $this->db->where('cuti.id_cuti', $id_cuti);
-        $this->db->order_by('id_cuti', 'desc');
-
-
-        return $this->db->get()->row();
-    }
-
     public function get_all_role()
     {
         $this->db->select('*');
@@ -86,7 +40,6 @@ class M_users extends CI_Model
         $this->db->order_by('id_user', 'asc');
         return $this->db->get()->result();
     }
-
 
     public function get_data_d_users($id_divisi)
     {
@@ -115,6 +68,9 @@ class M_users extends CI_Model
         $this->db->update('users', $data);
     }
 
+    /**
+     * TAMBAH KURANG CUTI
+     */
 
     public function tambah_cuti_all($jumlah)
     {

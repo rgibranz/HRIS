@@ -56,7 +56,7 @@
 
                 <td>
                   <?php if ($value->status_manajer != "diajukan") { ?>
-                    <a href="<?= base_url('form/view_cuti_user/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                    <a href="<?= base_url('karyawan/cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                   <?php } else { ?>
                     <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_cuti ?>"><i class="fa fa-trash"></i></button>
                   <?php } ?>
@@ -84,14 +84,14 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('form/delete'); ?>
+              <?php echo form_open('karyawan/cuti/delete'); ?>
 
               <h5>Apakah anda ingin membatalkan Pengajuan ini ?</h5>
 
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <a href="<?= base_url('form/delete/' . $value->id_cuti) ?>" class="btn btn-danger">Delete</a>
+              <a href="<?= base_url('karyawan/cuti/delete/' . $value->id_cuti) ?>" class="btn btn-danger">Delete</a>
             </div>
           </div>
           <?php echo form_close(); ?>

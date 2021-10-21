@@ -14,12 +14,17 @@ class Dashboard extends CI_Controller
     {
         $s_id = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
         $id_users = $s_id['id_users'];
-        $data = array(
-            'title' => 'Dasboard',
-            'karyawan' => $this->users->get_data($id_users),
-            'isi' => 'karyawan/dasboard'
-        );
-        $this->load->view('layout/wrapper', $data, FALSE);
+        $level = $this->session->userdata('level_user');
+        if ($level == 'karyawan') {
+            $data = array(
+                'title' => 'Dashboard',
+                'users' => $this->users->get_data($id_users),
+                'isi' => 'users/Dashboard'
+            );
+            $this->load->view('layout/wrapper', $data, FALSE);
+        } else {
+            $this->user_login->logout();
+        }
     }
 }
 

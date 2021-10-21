@@ -1,5 +1,5 @@
         <div class="col-md-12">
-            <form method="POST" action="<?= base_url('absen/add') ?>">
+            <form method="POST" action="<?= base_url('karyawan/absen/add') ?>">
 
                 <div class="row">
                     <div class="col-md-6">

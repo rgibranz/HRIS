@@ -9,8 +9,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <h5><?= $list_cuti->nama_karyawan ?></h5>
-                        <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->nama_karyawan ?>" hidden>
+                        <h5><?= $list_cuti->nama_users ?></h5>
+                        <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->nama_users ?>" hidden>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
 
             <div>
                 <div class="form-group">
-                    <input type="text" name="id_karyawan" value="<?= $list_cuti->id_karyawan ?>" hidden>
+                    <input type="text" name="id_users" value="<?= $list_cuti->id_users ?>" hidden>
                 </div>
             </div>
             <div>

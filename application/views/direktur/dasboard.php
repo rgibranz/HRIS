@@ -6,14 +6,14 @@
                       <img src="<?= base_url('assets/gambar/icon/Untitled-1cc.png') ?>" height="75px">
                   </div>
                   <div class="widget-user-image mt-3">
-                      <img class="img-circle elevation-3" src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" alt="User Avatar">
+                      <img class="img-circle elevation-3" src="<?= base_url('assets/gambar/user/' . $users->img) ?>" alt="User Avatar">
                   </div>
                   <div class="card-footer">
                       <div class="row">
                           <div class="col-sm-4 border-right">
                               <div class="description-block">
                                   <h5 class="description-header">Jabatan</h5>
-                                  <span class="description-text"><?= $karyawan->job ?></span>
+                                  <span class="description-text"><?= $users->job ?></span>
                               </div>
                               <!-- /.description-block -->
                           </div>
@@ -21,7 +21,7 @@
                           <div class="col-sm-4 border-right">
                               <div class="description-block">
                                   <h5 class="description-header">Nama</h5>
-                                  <span class="description-text"><?= $karyawan->nama_karyawan ?></span>
+                                  <span class="description-text"><?= $users->nama_users ?></span>
                               </div>
                               <!-- /.description-block -->
                           </div>
@@ -29,7 +29,7 @@
                           <div class="col-sm-4">
                               <div class="description-block">
                                   <h5 class="description-header">Divisi</h5>
-                                  <span class="description-text"><?= $karyawan->nama_divisi ?></span>
+                                  <span class="description-text"><?= $users->nama_divisi ?></span>
                               </div>
                               <!-- /.description-block -->
                           </div>

@@ -5,16 +5,16 @@
             <div class="card-text">
                 <!--Start Formulir-->
 
-                <?php echo form_open_multipart('form/cuti_add') ?>
+                <?php echo form_open_multipart('karyawan/cuti/add') ?>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan" value="<?= $karyawan->nama_karyawan ?>" hidden>
+                        <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" placeholder="Nama users" value="<?= $users->nama_users ?>" hidden>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" name="mulai_bekerja" class="form-control" id="exampleInputEmail1" placeholder="Tanggal-Bulan-Tahun" value="<?= $karyawan->mulai_bekerja ?>" hidden>
+                        <input type="text" name="mulai_bekerja" class="form-control" id="exampleInputEmail1" placeholder="Tanggal-Bulan-Tahun" value="<?= $users->mulai_bekerja ?>" hidden>
                         <small class="text-danger"><?= form_error('mulai_bekerja'); ?></small>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Sisa Cuti</label>
-                            <input type="text" name="sisa_cuti" value="<?= $karyawan->sisa_cuti ?>" class="form-control" id="exampleInputEmail1" readonly>
+                            <input type="text" name="sisa_cuti" value="<?= $users->sisa_cuti ?>" class="form-control" id="exampleInputEmail1" readonly>
                             <small class="text-danger"><?= form_error('sisa_cuti'); ?></small>
                         </div>
                     </div>
@@ -89,7 +89,9 @@
 
                 <div>
                     <div class="form-group">
-                        <input type="text" name="id_karyawan" value="<?= $karyawan->id_karyawan ?>" hidden>
+                        <input type="text" name="id_users" value="<?= $users->id_users ?>" hidden>
+                        <input type="text" name="nama_divisi" value="<?= $users->nama_divisi ?>">
+
                     </div>
                 </div>
 

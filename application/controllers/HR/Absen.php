@@ -23,7 +23,6 @@ class Absen extends CI_Controller
                 'users' => $this->users->get_data($id_users),
                 'all_absen' => $this->absen->get_all_data($id_users),
                 'all_users' => $this->users->get_all_data(),
-                'bulan' => $this->absen->get_bulan(),
                 'absen_end' => $this->absen->get_data_absen($id_users),
                 'isi' => 'HR/absen'
             );

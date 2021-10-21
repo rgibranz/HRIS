@@ -29,7 +29,7 @@
                 if ($value->status_manajer != "reject") { ?>
                   <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $value->nama_karyawan ?></td>
+                    <td><?= $value->nama_users ?></td>
                     <td><?= $value->jenis_cuti; ?></td>
                     <td><?= $value->tgl_pengajuan; ?></td>
                     <td>
@@ -45,7 +45,7 @@
                     </td>
 
 
-                    <td> <a href="<?= base_url('form/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                    <td> <a href="<?= base_url('direktur/cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
                   </tr>
             <?php  }
               }

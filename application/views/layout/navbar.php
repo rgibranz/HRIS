@@ -111,9 +111,9 @@
                                             with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="<?= base_url('Dashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Dashboard') {
-                                                                                echo "active";
-                                                                            } ?>">
+                    <a href="<?= base_url('Direktur/Dashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Dashboard') {
+                                                                                        echo "active";
+                                                                                    } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -122,9 +122,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                            echo "active";
-                                                                        } ?>">
+                    <a href="<?= base_url('Direktur/Absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
+                                                                                    echo "active";
+                                                                                } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Absen
@@ -133,7 +133,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('form/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
+                    <a href="<?= base_url('Direktur/Cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
                                                                                     echo "active";
                                                                                 } ?>">
                         <i class="nav-icon fas fa-users"></i>
@@ -161,7 +161,7 @@
 
     <!--END Dirktur-->
 <?php }
-    if ($this->session->userdata('level_user') == 'Manajer') { ?>
+    if ($this->session->userdata('level_user') == 'manajer') { ?>
     <!-- Sidebar Manajer -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -172,9 +172,9 @@
                                                 with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="<?= base_url('Dashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Dashboard') {
-                                                                                echo "active";
-                                                                            } ?>">
+                    <a href="<?= base_url('Manajer/Dashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Dashboard') {
+                                                                                        echo "active";
+                                                                                    } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -183,9 +183,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                            echo "active";
-                                                                        } ?>">
+                    <a href="<?= base_url('Manajer/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
+                                                                                    echo "active";
+                                                                                } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Absen
@@ -194,7 +194,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('form/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
+                    <a href="<?= base_url('Manajer/cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
                                                                                     echo "active";
                                                                                 } ?>">
                         <i class="nav-icon fas fa-users"></i>
@@ -223,7 +223,7 @@
 <?php }
     if ($this->session->userdata('level_user') == 'karyawan') { ?>
 
-    <!-- Sidebar direktur -->
+    <!-- Sidebar karyawan -->
     <div class="sidebar">
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -232,9 +232,9 @@
                with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="<?= base_url('Dashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Dashboard') {
-                                                                                echo "active";
-                                                                            } ?>">
+                    <a href="<?= base_url('Karyawan/dashboard') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'dashboard') {
+                                                                                        echo "active";
+                                                                                    } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -242,10 +242,36 @@
                     </a>
                 </li>
 
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Biodata
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Karyawan/Biodata/') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti') {
+                                                                                                echo "active";
+                                                                                            } ?>"> <i class="far fa-circle nav-icon"></i>
+                                <p>Lihat Biodata</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Karyawan/Biodata/edit_biodata') ?>" class="nav-link <?php if ($this->uri->segment(3) == 'edit_biodata') {
+                                                                                                            echo "active";
+                                                                                                        } ?>"> <i class="far fa-circle nav-icon"></i>
+                                <p>Ajukan Cuti</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
-                    <a href="<?= base_url('absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                            echo "active";
-                                                                        } ?>">
+                    <a href="<?= base_url('karyawan/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
+                                                                                    echo "active";
+                                                                                } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Absen
@@ -253,15 +279,30 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="<?= base_url('form/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
-                                                                                    echo "active";
-                                                                                } ?>">
-                        <i class="nav-icon fas fa-users"></i>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            list cuti
+                            Cuti
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Karyawan/cuti/list_cuti') ?>" class="nav-link <?php if ($this->uri->segment(3) == 'list_cuti') {
+                                                                                                        echo "active";
+                                                                                                    } ?>"> <i class="far fa-circle nav-icon"></i>
+                                <p>List Cuti</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Karyawan/cuti/ajukan_cuti') ?>" class="nav-link <?php if ($this->uri->segment(3) == 'ajukan_cuti') {
+                                                                                                        echo "active";
+                                                                                                    } ?>"> <i class="far fa-circle nav-icon"></i>
+                                <p>Ajukan Cuti</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
@@ -274,10 +315,12 @@
                 </li>
 
             </ul>
+
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar direktur-->
+    <!-- /.sidebar Karyawan-->
     </aside>
 <?php } ?>
 

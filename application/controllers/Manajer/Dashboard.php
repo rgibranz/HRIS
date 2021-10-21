@@ -16,8 +16,8 @@ class Dashboard extends CI_Controller
         $id_users = $s_id['id_users'];
         $data = array(
             'title' => 'Dasboard',
-            'karyawan' => $this->users->get_data($id_users),
-            'isi' => 'karyawan/dasboard'
+            'users' => $this->users->get_data($id_users),
+            'isi' => 'manajer/dasboard'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
     }

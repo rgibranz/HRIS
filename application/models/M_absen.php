@@ -19,39 +19,20 @@ class M_absen extends CI_Model
     }
 
     // mengambil semua data per user
-    public function get_data($id_karyawan)
+    public function get_data($id_users)
     {
         $this->db->select('*');
         $this->db->from('absen');
-        $this->db->where('absen.id_karyawan', $id_karyawan);
+        $this->db->where('absen.id_users', $id_users);
         $this->db->order_by('id_absen', 'desc');
-
-        return $this->db->get()->result();
-    }
-    // sorting berdasarkan bulan
-    public function get_data_bulan($id_karyawan)
-    {
-        $this->db->select('*');
-        $this->db->from('absen');
-        $this->db->where('absen.id_karyawan', $id_karyawan);
-
-        $this->db->order_by('id_absen', 'desc');
-
-        return $this->db->get()->result();
-    }
-
-    public function get_bulan()
-    {
-        $this->db->select('*');
-        $this->db->from('bulan');
 
         return $this->db->get()->result();
     }
 
     //mengambil data terakhir yang masuk per user
-    public function get_data_absen($id_karyawan)
+    public function get_data_absen($id_users)
     {
-        $query = $this->db->query("SELECT * FROM `absen` WHERE id_karyawan = $id_karyawan ORDER BY id_absen DESC LIMIT 1");
+        $query = $this->db->query("SELECT * FROM `absen` WHERE id_users = $id_users ORDER BY id_absen DESC LIMIT 1");
 
         return $query->row();
     }
@@ -64,7 +45,7 @@ class M_absen extends CI_Model
 
     public function list_absen_admin($nama, $tahun, $bulan)
     {
-        $query = $this->db->query("SELECT * FROM absen WHERE id_karyawan = $nama AND YEAR(tgl) = $tahun AND MONTH(tgl) = $bulan");
+        $query = $this->db->query("SELECT * FROM absen WHERE id_users = $nama AND YEAR(tgl) = $tahun AND MONTH(tgl) = $bulan");
         return $query->result();
     }
 

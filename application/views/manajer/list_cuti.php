@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card card-primary">
       <div class="card-header">
-        <div class="card-title"><?= $title ?> <?= $karyawan->nama_divisi ?></div>
+        <div class="card-title"><?= $title ?> <?= $users->nama_divisi ?></div>
 
       </div>
 
@@ -25,11 +25,11 @@
             <?php
             $no = 1;
             foreach ($list_cuti as $key => $value) {
-              if ($value->nama_divisi == $karyawan->nama_divisi) {
+              if ($value->nama_divisi == $users->nama_divisi) {
             ?>
                 <tr>
                   <td><?= $no++; ?></td>
-                  <td><?= $value->nama_karyawan ?></td>
+                  <td><?= $value->nama_users ?></td>
                   <td><?= $value->jenis_cuti; ?></td>
                   <td><?= $value->tgl_pengajuan; ?></td>
                   <td>
@@ -44,7 +44,7 @@
                     <?php  } ?>
                   </td>
 
-                  <td> <a href="<?= base_url('form/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                  <td> <a href="<?= base_url('Manajer/Cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
                 </tr>
             <?php   }
             } ?>
