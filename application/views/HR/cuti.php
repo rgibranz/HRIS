@@ -28,12 +28,7 @@
                             <input type="text" name="jenis_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->jenis_cuti ?>" readonly>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>lokasi semala cuti</label>
-                            <input type="text" name="lokasi_cuti" class="form-control" id="exampleInputEmail1" value="<?= $list_cuti->lokasi_cuti ?>" readonly>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-3">
@@ -75,21 +70,21 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Keterangan Cuti</label>
-                        <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_cuti?></textarea>
+                        <textarea class="form-control" name="keterangan_cuti" cols="30" rows="3" readonly><?= $list_cuti->keterangan_cuti ?></textarea>
                     </div>
                 </div>
-                
+
 
             </div>
 
 
             <div>
                 <div class="col-md-3">
-                <div class="form-group">
-                    <label>Tanggal Pengajuan</label>
-                    <h5> <?= $list_cuti->tgl_pengajuan ?> </h5>
-                    <input type="text" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>" hidden>
-                </div>
+                    <div class="form-group">
+                        <label>Tanggal Pengajuan</label>
+                        <h5> <?= $list_cuti->tgl_pengajuan ?> </h5>
+                        <input type="text" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>" hidden>
+                    </div>
                 </div>
             </div>
 
@@ -104,20 +99,20 @@
                     <input type="text" name="id_cuti" value="<?= $list_cuti->id_cuti ?>" hidden>
                 </div>
             </div>
-            
-            <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Keterangan manajer</label>
-                        <textarea class="form-control" name="keterangan_manajer" cols="10" rows="3" readonly><?= $list_cuti->keterangan_manajer?></textarea>
-                    </div>
-                </div>
 
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Keterangan direktur</label>
-                        <textarea class="form-control" name="keterangan_direktur" cols="10" rows="3" readonly><?= $list_cuti->keterangan_direktur?></textarea>
-                    </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Keterangan manajer</label>
+                    <textarea class="form-control" name="keterangan_manajer" cols="10" rows="3" readonly><?= $list_cuti->keterangan_manajer ?></textarea>
                 </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Keterangan direktur</label>
+                    <textarea class="form-control" name="keterangan_direktur" cols="10" rows="3" readonly><?= $list_cuti->keterangan_direktur ?></textarea>
+                </div>
+            </div>
 
             <input type="text" value="$list_cuti->id_cuti" hidden>
 

@@ -6,12 +6,7 @@ class Absen extends CI_Controller
 {
 
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('m_karyawan', 'karyawan');
-        $this->load->model('m_absen', 'absen');
-    }
+
 
     public function index()
     {
@@ -45,31 +40,8 @@ class Absen extends CI_Controller
                 $this->load->view('layout/wrapper_manajer', $data, FALSE);
             }
             if ($level == 'admin') {
-                $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-                $id_karyawan = $get_id['id_karyawan'];
-                $data = array(
-                    'title' => 'History Absen',
-                    'karyawan' => $this->karyawan->get_data($id_karyawan),
-                    'all_absen' => $this->absen->get_all_data($id_karyawan),
-                    'all_karyawan' => $this->karyawan->get_all_data(),
-                    'bulan' => $this->absen->get_bulan(),
-                    'absen_end' => $this->absen->get_data_absen($id_karyawan),
-                    'isi' => 'admin/absen'
-                );
-                $this->load->view('layout/wrapper', $data, FALSE);
             }
         } else {
-            $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-            $id_karyawan = $get_id['id_karyawan'];
-
-            $data = array(
-                'title' => 'History Absen',
-                'karyawan' => $this->karyawan->get_data($id_karyawan),
-                'absen' => $this->absen->get_data($id_karyawan),
-                'absen_end' => $this->absen->get_data_absen($id_karyawan),
-                'isi' => 'user/absen'
-            );
-            $this->load->view('layout/wrapper_user', $data, FALSE);
         }
     }
 
@@ -135,21 +107,6 @@ class Absen extends CI_Controller
         );
         $this->absen->update($data);
         redirect('absen');
-    }
-
-    public function list_absen()
-    {
-
-        $tahun = $this->input->post('tahun');
-        $bulan = $this->input->post('bulan');
-        $nama = $this->input->post('nama');
-        $data = array(
-            'title' => 'List Absen Karyawan',
-            'karyawan' => $this->karyawan->get_data($this->session->userdata('id_karyawan')),
-            'list_absen' => $this->absen->list_absen_admin($nama, $tahun, $bulan),
-            'isi' => 'admin/list_absen'
-        );
-        $this->load->view('layout/wrapper', $data, FALSE);
     }
 }
 

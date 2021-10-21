@@ -11,14 +11,14 @@
         echo validation_errors('<div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h5><i class="icon fas fa-info"></i>', '</h5></div>'); ?>
-        <?php echo form_open_multipart('karyawan/add_karyawan') ?>
+        <?php echo form_open_multipart('HR/Divisi/add_users') ?>
         <div class="row">
           <div class="col-lg-9">
 
             <div class="col-md-8">
               <div class="form-group">
-                <label>Nama Karyawan</label>
-                <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan">
+                <label>Nama Pekerja</label>
+                <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Lengkap">
               </div>
             </div>
 
@@ -97,11 +97,11 @@
               </div>
 
               <div class="form-group">
-                <label> Status Karyawan</label>
-                <select name="status_karyawan" class="form-control">
-                  <option value="">--Pilih Status Karyawan --</option>
+                <label> Status Pekerja</label>
+                <select name="status_users" class="form-control">
+                  <option value="">--Pilih Status Pekerja --</option>
                   <option value="Probation">Probation</option>
-                  <option value="Karyawan tetap">Karyawan Tetap</option>
+                  <option value="Pekerja tetap">Pekerja Tetap</option>
                   <option value="Freelance">Freelance</option>
                   <option value="Resign">Resign</option>
                 </select>
@@ -163,7 +163,7 @@
 
         <div class="row">
           <div class="col-md-6 text-left">
-            <a href="<?= base_url('karyawan') ?>" class=" btn btn-outline-secondary">Batal</a>
+            <a href="<?= base_url('HR/Divisi/users') ?>" class=" btn btn-outline-secondary">Batal</a>
           </div>
           <div class="col-md-6 text-right">
             <button type="submit" class="btn btn-outline-success">Simpan</button>

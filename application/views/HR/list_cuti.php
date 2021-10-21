@@ -26,39 +26,39 @@
             <?php
             $no = 1;
             foreach ($list_cuti as $key => $value) { ?>
-            <tr>
+              <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $value->nama_karyawan?></td>
+                <td><?= $value->nama_karyawan ?></td>
                 <td><?= $value->jenis_cuti; ?></td>
                 <td><?= $value->tgl_pengajuan; ?></td>
                 <td>
                   <?php if ($value->status_manajer == "accept") { ?>
-                <p class="text-success"><?= $value->status_manajer; ?></p>
-              <?php }
+                    <p class="text-success"><?= $value->status_manajer; ?></p>
+                  <?php }
                   if ($value->status_manajer == "reject") { ?>
-                <p class="text-danger"><?= $value->status_manajer; ?></p>
-              <?php }
+                    <p class="text-danger"><?= $value->status_manajer; ?></p>
+                  <?php }
                   if ($value->status_manajer == "diajukan") { ?>
-                <p class="text-warning">Menungu Konfirmasi</p>
-                <?php } ?>
-              </td>
+                    <p class="text-warning">Menungu Konfirmasi</p>
+                  <?php } ?>
+                </td>
 
-              <td>
+                <td>
                   <?php if ($value->status_direktur == "accept") { ?>
-                <p class="text-success"><?= $value->status_direktur; ?></p>
-              <?php }
+                    <p class="text-success"><?= $value->status_direktur; ?></p>
+                  <?php }
                   if ($value->status_direktur == "reject") { ?>
-                <p class="text-danger"><?= $value->status_direktur; ?></p>
-              <?php }
+                    <p class="text-danger"><?= $value->status_direktur; ?></p>
+                  <?php }
                   if ($value->status_direktur == "diajukan") { ?>
-                <p class="text-warning">Menungu Konfirmasi direktur</p>
-              <?php  } ?>
-              </td>
-                    
-                <td> <a href="<?= base_url('form/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                    <p class="text-warning">Menungu Konfirmasi direktur</p>
+                  <?php  } ?>
+                </td>
+
+                <td> <a href="<?= base_url('HR/Cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
               </tr>
             <?php  } ?>
-            
+
           </tbody>
         </table>
 

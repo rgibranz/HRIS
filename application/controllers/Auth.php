@@ -34,34 +34,53 @@ class Auth extends CI_Controller
         }
     }
 
-
     private function _login()
     {
         $email  = $this->input->post('email');
         $password  = $this->input->post('password');
-        $cek   = $this->db->get_where('karyawan', ['email' => $email])->row_array();
+        $cek   = $this->db->get_where('users', ['email' => $email])->row_array();
         if ($cek) {
             if (password_verify($password, $cek['password'])) {
                 $level = $cek['level'];
-                $nama_user = $cek['nama_karyawan'];
-                if ($level == 'admin') {
+                $nama_user = $cek['nama_users'];
+                if ($level == 'HR') {
                     $data = [
-                        'id_karyawan' => $cek['id_karyawan'],
+                        'id_users' => $cek['id_users'],
                         'email' => $cek['email'],
                         'level_user' => $level,
-                        'nama_karyawan' => $nama_user,
+                        'nama_users' => $nama_user,
                     ];
                     $this->session->set_userdata($data);
-                    redirect('dasboard');
+                    redirect('hr/dashboard');
+                }
+                if ($level == 'direktur') {
+                    $data = [
+                        'id_users' => $cek['id_users'],
+                        'email' => $cek['email'],
+                        'level_user' => $level,
+                        'nama_users' => $nama_user,
+                    ];
+                    $this->session->set_userdata($data);
+                    redirect('direktur/dashboard');
+                }
+                if ($level == 'manajer') {
+                    $data = [
+                        'id_users' => $cek['id_users'],
+                        'email' => $cek['email'],
+                        'level_user' => $level,
+                        'nama_users' => $nama_user,
+                    ];
+                    $this->session->set_userdata($data);
+                    redirect('manajer/dashboard');
                 } else {
                     $data = [
-                        'id_karyawan' => $cek['id_karyawan'],
+                        'id_users' => $cek['id_users'],
                         'email' => $cek['email'],
                         'level_user' => $level,
-                        'nama_karyawan' => $nama_user,
+                        'nama_users' => $nama_user,
                     ];
                     $this->session->set_userdata($data);
-                    redirect('dasboard_user');
+                    redirect('users/dasboard');
                 }
             } else {
                 $this->session->set_flashdata('error', 'Email atau Password salah');

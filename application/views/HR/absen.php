@@ -9,17 +9,17 @@
           </div>
 
           <div class="card-body">
-              <?php echo form_open_multipart('absen/list_absen') ?>
+              <?php echo form_open_multipart('HR/Absen/list_absen') ?>
               <div class="row">
 
                   <div class="col-md-3 offset-md-1">
                       <select name="nama" class="form-control">
-                          <option value="">-- Pilih karyawan --</option>
+                          <option value="">-- Pilih Pekerja --</option>
                           <?php
                             $x = 1;
-                            foreach ($all_karyawan as $key => $value) { ?>
+                            foreach ($all_users as $key => $value) { ?>
                               <option value="<?= $x++ ?>" hidden></option>
-                              <option value="<?= $value->id_karyawan ?>"><?= $value->nama_karyawan ?></option>
+                              <option value="<?= $value->id_users ?>"><?= $value->nama_users ?></option>
                           <?php } ?>
                       </select>
                   </div>

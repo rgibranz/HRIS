@@ -13,7 +13,7 @@
       <ul class="navbar-nav ml-auto">
         <div class="user-panel d-flex">
           <div class="image">
-            <img src="<?= base_url('assets/gambar/user/' . $karyawan->img) ?>" class="img-circle elevation-2" alt="User Image">
+            <img src="<?= base_url('assets/gambar/user/' . $users->img) ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"><?php echo $this->session->userdata('nama_karyawan') ?></a>

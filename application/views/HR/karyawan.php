@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="card-title"> Data <?= $title ?></div>
         <div class="card-tools">
-          <a href="<?= base_url('karyawan/add') ?>" class="btn btn-primary btn-sm">
+          <a href="<?= base_url('HR/Karyawan/add') ?>" class="btn btn-primary btn-sm">
             <i class=" fa fa-plus"></i>
             Add
           </a>
@@ -29,7 +29,7 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Karyawan</th>
+              <th>Nama</th>
               <th>Email</th>
               <th>divisi</th>
               <th>Job</th>
@@ -41,19 +41,19 @@
           <tbody>
             <?php
             $no = 1;
-            foreach ($all_karyawan as $key => $value) { ?>
+            foreach ($all_users as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $value->nama_karyawan ?></td>
-                <td><?=$value->email?></td>
+                <td><?= $value->nama_users ?></td>
+                <td><?= $value->email ?></td>
                 <td><?= $value->nama_divisi ?></td>
                 <td><?= $value->job ?></td>
                 <td><?= $value->sisa_cuti ?></td>
                 <td>
-                  <a href="<?= base_url('karyawan/edit/' . $value->id_karyawan) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_cuti<?= $value->id_karyawan ?>">Tambah cuti</button>
-                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#kurangi_cuti<?= $value->id_karyawan ?>">Kurangi Cuti</button>
-                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_karyawan ?>"><i class="fa fa-trash"></i></button>
+                  <a href="<?= base_url('HR/Karyawan/edit/' . $value->id_users) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_cuti<?= $value->id_users ?>">Tambah cuti</button>
+                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#kurangi_cuti<?= $value->id_users ?>">Kurangi Cuti</button>
+                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_users ?>"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             <?php } ?>
@@ -64,8 +64,8 @@
     </div>
 
     <!-- model Delete-->
-    <?php foreach ($all_karyawan as $key => $value) { ?>
-      <div class="modal fade" id="delete<?= $value->id_karyawan ?>">
+    <?php foreach ($all_users as $key => $value) { ?>
+      <div class="modal fade" id="delete<?= $value->id_users ?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -75,17 +75,15 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('karyawan/delete'); ?>
 
               <h5>Apakah anda kayakin Menghapus Data ini ?</h5>
 
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <a href="<?= base_url('karyawan/delete/' . $value->id_karyawan) ?>" class="btn btn-danger">Delete</a>
+              <a href="<?= base_url('HR/Karyawan/delete/' . $value->id_users) ?>" class="btn btn-danger">Delete</a>
             </div>
           </div>
-          <?php echo form_close(); ?>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
@@ -99,13 +97,13 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Tambah Cuti Semua Karyawan</h4>
+            <h4 class="modal-title">Tambah Cuti Semua users</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('karyawan/tambah_cuti_all'); ?>
+            <?php echo form_open('HR/Karyawan/tambah_cuti_all'); ?>
 
             <div class="col">
               <div class="form-group">
@@ -134,13 +132,13 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Kurangi Semua Cuti Karyawan </h4>
+            <h4 class="modal-title">Kurangi Semua Cuti users </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('karyawan/kurangi_cuti_all'); ?>
+            <?php echo form_open('HR/Karyawan/kurangi_cuti_all'); ?>
 
             <div class="col">
               <div class="form-group">
@@ -165,24 +163,24 @@
 
 
     <!-- model Tambah cuti-->
-    <?php foreach ($all_karyawan as $key => $value) { ?>
-      <div class="modal fade" id="tambah_cuti<?= $value->id_karyawan ?>">
+    <?php foreach ($all_users as $key => $value) { ?>
+      <div class="modal fade" id="tambah_cuti<?= $value->id_users ?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Cuti Semua Karyawan</h4>
+              <h4 class="modal-title">Tambah Cuti Semua users</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('karyawan/tambah_cuti'); ?>
+              <?php echo form_open('HR/Karyawan/tambah_cuti'); ?>
 
               <div class="col">
                 <div class="form-group">
                   <label>Jumlah Cuti</label>
                   <input type="number" class="form-control" name="tambah_cuti">
-                  <input type="text" class="form-control" name="id_karyawan" value="<?= $value->id_karyawan ?>" hidden>
+                  <input type="text" class="form-control" name="id_users" value="<?= $value->id_users ?>" hidden>
                 </div>
               </div>
             </div>
@@ -202,8 +200,8 @@
     <!--End Modal Tambah cuti-->
 
     <!-- model kurangi  cuti-->
-    <?php foreach ($all_karyawan as $key => $value) { ?>
-      <div class="modal fade" id="kurangi_cuti<?= $value->id_karyawan ?>">
+    <?php foreach ($all_users as $key => $value) { ?>
+      <div class="modal fade" id="kurangi_cuti<?= $value->id_users ?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -213,13 +211,13 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('karyawan/kurangi_cuti'); ?>
+              <?php echo form_open('HR/Karyawan/kurangi_cuti'); ?>
 
               <div class="col">
                 <div class="form-group">
                   <label>Jumlah Cuti</label>
                   <input type="text" class="form-control" name="kurangi_cuti">
-                  <input type="text" name="id_karyawan" value="<?= $value->id_karyawan ?>" hidden>
+                  <input type="text" name="id_users" value="<?= $value->id_users ?>" hidden>
                 </div>
               </div>
             </div>

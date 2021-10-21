@@ -9,14 +9,14 @@
         echo validation_errors('<div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h5><i class="icon fas fa-info"></i>', '</h5></div>'); ?>
-        <?php echo form_open_multipart('karyawan/add') ?>
+        <?php echo form_open_multipart('HR/karyawan/add') ?>
         <div class="row">
           <div class="col-lg-9">
 
             <div class="col-md-8">
               <div class="form-group">
-                <label>Nama Karyawan</label>
-                <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan">
+                <label>Nama</label>
+                <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan">
               </div>
             </div>
 
@@ -113,11 +113,11 @@
               </div>
 
               <div class="form-group">
-                <label> Status Karyawan</label>
-                <select name="status_karyawan" class="form-control">
-                  <option value="">--Pilih Status Karyawan --</option>
+                <label> Status Pekerja</label>
+                <select name="status_users" class="form-control">
+                  <option value="">--Pilih Status Pekerja --</option>
                   <option value="Probation">Probation</option>
-                  <option value="Karyawan tetap">Karyawan Tetap</option>
+                  <option value="Pekerja tetap">Pekerja Tetap</option>
                   <option value="Freelance">Freelance</option>
                   <option value="Resign">Resign</option>
                 </select>
