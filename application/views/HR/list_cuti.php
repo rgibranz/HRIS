@@ -28,7 +28,7 @@
             foreach ($list_cuti as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $value->nama_karyawan ?></td>
+                <td><?= $value->nama_users ?></td>
                 <td><?= $value->jenis_cuti; ?></td>
                 <td><?= $value->tgl_pengajuan; ?></td>
                 <td>

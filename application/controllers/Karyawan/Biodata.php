@@ -67,7 +67,7 @@ class Biodata extends CI_Controller
                 'level' => $this->input->post('level'),
                 'gaji' => $this->input->post('gaji'),
             );
-            $this->users->edit_biodata($data);
+            $this->users->edit($data);
             $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
             redirect('karyawan/biodata');
 
@@ -100,7 +100,7 @@ class Biodata extends CI_Controller
                 'gaji' => $this->input->post('gaji'),
                 'img' => $upload_data['uploads']['file_name'],
             );
-            $this->users->edit_biodata($data);
+            $this->users->edit($data);
             $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
             redirect('karyawan/biodata');
         }

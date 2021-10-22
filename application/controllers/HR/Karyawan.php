@@ -20,7 +20,7 @@ class Karyawan extends CI_Controller
                 'title' => 'Karyawan',
                 'all_users' => $this->users->get_all_data(),
                 'users' => $this->users->get_data($this->session->userdata('id_users')),
-                'role' => $this->users->get_all_role(),
+                // 'role' => $this->users->get_all_role(),
                 'isi' => 'HR/Karyawan'
             );
             $this->load->view('layout/wrapper', $data, FALSE);

@@ -14,15 +14,6 @@ class M_users extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function get_all_data_sisacuti()
-    {
-        $this->db->select('*');
-        $this->db->from('users');
-        $this->db->join('divisi', 'divisi.id_divisi = users.id_divisi', 'left');
-        $this->db->order_by('id_users', 'desc');
-        return $this->db->get()->row();
-    }
-
     public function get_data($id_users)
     {
         $this->db->select('*');
@@ -33,15 +24,8 @@ class M_users extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function get_all_role()
-    {
-        $this->db->select('*');
-        $this->db->from('users_role');
-        $this->db->order_by('id_user', 'asc');
-        return $this->db->get()->result();
-    }
 
-    public function get_data_d_users($id_divisi)
+    public function get_data_d_users($id_divisi) // divisi
     {
         $this->db->select('*');
         $this->db->from('users');
@@ -62,14 +46,14 @@ class M_users extends CI_Model
         $this->db->update('users', $data);
     }
 
-    public function edit_biodata($data)
+    public function delete($data)
     {
         $this->db->where('id_users', $data['id_users']);
-        $this->db->update('users', $data);
+        $this->db->delete('users', $data);
     }
 
     /**
-     * TAMBAH KURANG CUTI
+     * TAMBAH KURANG CUTI di tabel users
      */
 
     public function tambah_cuti_all($jumlah)
@@ -91,12 +75,6 @@ class M_users extends CI_Model
 
         $query = $this->db->query("UPDATE `users` SET `sisa_cuti`= `sisa_cuti` - $data[kurangi_cuti] WHERE id_users = $data[id_users]");
         return $query;
-    }
-
-    public function delete($data)
-    {
-        $this->db->where('id_users', $data['id_users']);
-        $this->db->delete('users', $data);
     }
 }
 

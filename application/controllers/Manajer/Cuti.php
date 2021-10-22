@@ -70,7 +70,7 @@ class Cuti extends CI_Controller
                 'sisa_cuti' => $sisa_cuti,
             );
 
-            $this->form->edit($sisa_data);
+            $this->users->edit($sisa_data);
             $this->cuti->edit_cuti($data);
             $this->session->set_flashdata('pesan', 'Data Karyawan Berhasil Di buat');
             redirect('manajer/cuti');

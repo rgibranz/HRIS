@@ -47,7 +47,7 @@
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
                         <h5 class="description-header">Nama</h5>
-                        <span class="description-text"><?= $key->nama_karyawan ?></span>
+                        <span class="description-text"><?= $key->nama_users ?></span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -81,7 +81,7 @@
 
   <!-- model Delete-->
   <?php foreach ($all_karyawan as $key => $value) { ?>
-    <div class="modal fade" id="delete<?= $value->id_karyawan ?>">
+    <div class="modal fade" id="delete<?= $value->id_users ?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -98,7 +98,7 @@
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <a href="<?= base_url('karyawan/delete/' . $value->id_karyawan) ?>" class="btn btn-danger">Delete</a>
+            <a href="<?= base_url('karyawan/delete/' . $value->id_users) ?>" class="btn btn-danger">Delete</a>
           </div>
         </div>
         <?php echo form_close(); ?>
@@ -181,7 +181,7 @@
 
   <!-- model Tambah cuti-->
   <?php foreach ($karyawan as $key => $value) { ?>
-    <div class="modal fade" id="tambah_cuti<?= $value->id_karyawan ?>">
+    <div class="modal fade" id="tambah_cuti<?= $value->id_users ?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -197,7 +197,7 @@
               <div class="form-group">
                 <label>Jumlah Cuti</label>
                 <input type="number" class="form-control" name="tambah_cuti">
-                <input type="text" class="form-control" name="id_karyawan" value="<?= $value->id_karyawan ?>" hidden>
+                <input type="text" class="form-control" name="id_users" value="<?= $value->id_users ?>" hidden>
               </div>
             </div>
           </div>
@@ -218,7 +218,7 @@
 
   <!-- model kurangi  cuti-->
   <?php foreach ($all_karyawan as $key => $value) { ?>
-    <div class="modal fade" id="kurangi_cuti<?= $value->id_karyawan ?>">
+    <div class="modal fade" id="kurangi_cuti<?= $value->id_users ?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -234,7 +234,7 @@
               <div class="form-group">
                 <label>Jumlah Cuti</label>
                 <input type="text" class="from-control" name="kurangi_cuti">
-                <input type="text" name="id_karyawan" value="<?= $value->id_karyawan ?>" hidden>
+                <input type="text" name="id_users" value="<?= $value->id_users ?>" hidden>
               </div>
             </div>
           </div>

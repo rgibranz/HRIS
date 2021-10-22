@@ -22,7 +22,7 @@ class Cuti extends CI_Controller
             $data = array(
                 'title' => 'list Cuti',
                 'users' => $this->users->get_data($id_users),
-                'list_cuti' => $this->users->get_all_data_cuti(),
+                'list_cuti' => $this->cuti->get_all_data_cuti(),
                 'isi' => 'HR/list_cuti'
             );
             $this->load->view('layout/wrapper', $data, FALSE);

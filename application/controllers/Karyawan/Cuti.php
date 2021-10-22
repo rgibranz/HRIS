@@ -116,9 +116,9 @@ class Cuti extends CI_Controller
                 );
 
                 $this->cuti->add($data);
-                $this->form->edit($sisa_data);
+                $this->users->edit($sisa_data);
                 $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
-                redirect('users/Cuti');
+                redirect('karyawan/users/cuti');
             }
             if ($cek_direktur != 'diajukan') {
                 $sisa_cuti = $this->input->post('sisa_cuti');
@@ -175,9 +175,19 @@ class Cuti extends CI_Controller
 
     public function delete($id_cuti = null)
     {
+        // mengambalikan sisa cuti //
+        $s_id = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
+        $cuti = $s_id['sisa_cuti'];
+        $cuti_balik = $cuti + 1;
+        $balik = array(
+            'id_users' => $s_id['id_users'],
+            'sisa_cuti' => $cuti_balik,
+        );
+        //end mengambalikan sisa cuti //
         $data = array('id_cuti' => $id_cuti);
+        $this->users->edit($balik);
         $this->cuti->delete($data);
-        $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !!! ');
+        $this->session->set_flashdata('delete', 'Data Berhasil Di Hapus !!! ');
         redirect('karyawan/cuti/list_cuti');
     }
 }

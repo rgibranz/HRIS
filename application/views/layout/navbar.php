@@ -244,7 +244,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             Biodata
                             <i class="right fas fa-angle-left"></i>
@@ -272,7 +272,7 @@
                     <a href="<?= base_url('karyawan/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
                                                                                     echo "active";
                                                                                 } ?>">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             Absen
                         </p>
@@ -281,7 +281,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-marker"></i>
                         <p>
                             Cuti
                             <i class="right fas fa-angle-left"></i>

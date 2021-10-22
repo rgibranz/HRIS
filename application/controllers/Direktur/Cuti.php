@@ -63,7 +63,6 @@ class Cuti extends CI_Controller
             // jika di reject maka sisa cuti kembali.
             $sisa_cuti = $this->input->post('sisa_cuti');
 
-
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
                 'status_direktur' => $this->input->post('status_direktur'),
@@ -76,7 +75,7 @@ class Cuti extends CI_Controller
             );
 
             $this->cuti->edit_cuti($data);
-            $this->form->edit($sisa_data);
+            $this->users->edit($sisa_data);
             $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
             redirect('Direktur/Cuti');
         }

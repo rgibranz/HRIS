@@ -117,3 +117,15 @@
       });
     </script>
   <?php endif; ?>
+
+  <?php if ($this->session->flashdata('delete')) : ?>
+    <script>
+      swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Berhasil menghapus pengajuan cuti",
+        button: false,
+        timer: 3000,
+      });
+    </script>
+  <?php endif; ?>
