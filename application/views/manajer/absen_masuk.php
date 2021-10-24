@@ -1,8 +1,8 @@
         <div class="col-md-12">
-            <form method="POST" action="<?= base_url('absen/add') ?>">
+            <form method="POST" action="<?= base_url('manajer/absen/add') ?>">
 
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
                         <div id="my_camera"></div>
                         <br />
                         <input type=button value="Take Snapshot" onClick="take_snapshot()">
@@ -10,7 +10,7 @@
                         <input type="text" name="status" value="masuk" hidden readonly>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-lg-6">
                         <div class="card-mx-auto"></div>
                         <div id="results"></div>
                         <br />
@@ -28,8 +28,8 @@
 
         <script language="JavaScript">
             Webcam.set({
-                width: 320,
-                height: 240,
+                width: 430,
+                height: 330,
                 image_format: 'jpeg',
                 jpeg_quality: 90,
                 constraints: {

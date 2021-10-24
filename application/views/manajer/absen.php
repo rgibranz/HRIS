@@ -12,7 +12,7 @@
 
               <div class="row mb-3">
                   <div class="ml-2">
-                      <a href="<?= base_url('absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
+                      <a href="<?= base_url('manajer/absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
 
                       <?php
                         if ($absen_end == '') { ?>

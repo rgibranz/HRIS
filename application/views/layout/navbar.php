@@ -205,6 +205,14 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="<?= base_url('manajer/cuti/ajukan_cuti') ?>" class="nav-link <?php if ($this->uri->segment(3) == 'ajukan_cuti') {
+                                                                                                echo "active";
+                                                                                            } ?>"> <i class="nav-icon fas fa-marker"></i>
+                        <p>Ajukan Cuti</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="<?= base_url('auth/logout_user') ?>" class="nav-link" id="log_out">
                         <i class="nav-icon fas fa-sign"></i>
                         <p>
@@ -242,7 +250,9 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview <?php if ($this->uri->segment(2) == 'Biodata' || $this->uri->segment(3) == 'edit_biodata') {
+                                                        echo "menu-open";
+                                                    } ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -252,7 +262,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('Karyawan/Biodata/') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti') {
+                            <a href="<?= base_url('Karyawan/Biodata/') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'Biodata' && $this->uri->segment(3) == '') {
                                                                                                 echo "active";
                                                                                             } ?>"> <i class="far fa-circle nav-icon"></i>
                                 <p>Lihat Biodata</p>
@@ -262,7 +272,7 @@
                             <a href="<?= base_url('Karyawan/Biodata/edit_biodata') ?>" class="nav-link <?php if ($this->uri->segment(3) == 'edit_biodata') {
                                                                                                             echo "active";
                                                                                                         } ?>"> <i class="far fa-circle nav-icon"></i>
-                                <p>Ajukan Cuti</p>
+                                <p>Edit Cuti</p>
                             </a>
                         </li>
                     </ul>
@@ -279,7 +289,9 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview <?php if ($this->uri->segment(3) == 'list_cuti' || $this->uri->segment(3) == 'ajukan_cuti') {
+                                                        echo 'menu-open';
+                                                    } ?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-marker"></i>
                         <p>
