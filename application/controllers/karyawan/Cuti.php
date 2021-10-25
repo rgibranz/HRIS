@@ -79,7 +79,7 @@ class Cuti extends CI_Controller
                 if ($sisa_cuti < $lama_cuti) {
 
                     $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
-                    redirect('users/Cuti/ajukan_cuti');
+                    redirect('users/cuti/ajukan_cuti');
                 }
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
@@ -127,7 +127,7 @@ class Cuti extends CI_Controller
                 if ($sisa_cuti < $lama_cuti) {
 
                     $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
-                    redirect('users/Cuti/ajukan_cuti');
+                    redirect('users/cuti/ajukan_cuti');
                 }
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
@@ -169,7 +169,7 @@ class Cuti extends CI_Controller
                 redirect('karyawan/cuti/list_cuti');
             }
             $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
-            redirect('karyawan/Cuti/ajukan_cuti');
+            redirect('karyawan/cuti/ajukan_cuti');
         }
     }
 

@@ -57,7 +57,7 @@ class Cuti extends CI_Controller
 
             $this->cuti->edit_cuti($data);
             $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-            redirect('Direktur/Cuti');
+            redirect('direktur/cuti');
         }
         if ($status_direktur == "reject") {
             // jika di reject maka sisa cuti kembali.
@@ -77,7 +77,7 @@ class Cuti extends CI_Controller
             $this->cuti->edit_cuti($data);
             $this->users->edit($sisa_data);
             $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-            redirect('Direktur/Cuti');
+            redirect('direktur/cuti');
         }
     }
 }

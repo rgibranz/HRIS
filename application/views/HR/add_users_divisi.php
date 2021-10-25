@@ -11,7 +11,7 @@
         echo validation_errors('<div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h5><i class="icon fas fa-info"></i>', '</h5></div>'); ?>
-        <?php echo form_open_multipart('HR/Divisi/add_users') ?>
+        <?php echo form_open_multipart('hr/divisi/add_users') ?>
         <div class="row">
           <div class="col-lg-9">
 
@@ -160,7 +160,7 @@
 
         <div class="row">
           <div class="col-md-6 text-left">
-            <a href="<?= base_url('HR/Divisi/users') ?>" class=" btn btn-outline-secondary">Batal</a>
+            <a href="<?= base_url('hr/divisi/users') ?>" class=" btn btn-outline-secondary">Batal</a>
           </div>
           <div class="col-md-6 text-right">
             <button type="submit" class="btn btn-outline-success">Simpan</button>

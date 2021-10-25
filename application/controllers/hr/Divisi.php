@@ -22,7 +22,7 @@ class Divisi extends CI_Controller
                 'title' => 'Divisi',
                 'users' => $this->users->get_data($this->session->userdata('id_users')),
                 'divisi' => $this->m_divisi->get_all_data(),
-                'isi' => 'HR/Divisi',
+                'isi' => 'hr/Divisi',
             );
 
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -39,7 +39,7 @@ class Divisi extends CI_Controller
 
         $this->m_divisi->add($data);
         $this->session->set_flashdata('pesan', 'Data Berhasil Di Tambah !!! ');
-        redirect('HR/Divisi');
+        redirect('hr/Divisi');
     }
 
     public function edit($id_divisi = null)
@@ -50,7 +50,7 @@ class Divisi extends CI_Controller
         );
         $this->m_divisi->edit($data);
         $this->session->set_flashdata('pesan', 'Data Berhasil di Ubah');
-        redirect('HR/Divisi');
+        redirect('hr/Divisi');
     }
 
     public function delete($id_divisi = null)
@@ -58,7 +58,7 @@ class Divisi extends CI_Controller
         $data = array('id_divisi' => $id_divisi);
         $this->m_divisi->delete($data);
         $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !!! ');
-        redirect('HR/Divisi');
+        redirect('hr/Divisi');
     }
 
     // CRUD users di Divisi
@@ -70,7 +70,7 @@ class Divisi extends CI_Controller
             'users' => $this->users->get_data($this->session->userdata('id_users')),
             'id_divisi' => $id_divisi,
             'divisi_users' => $this->users->get_data_d_users($id_divisi),
-            'isi' => 'HR/divisi_users'
+            'isi' => 'hr/divisi_users'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
     }
@@ -142,7 +142,7 @@ class Divisi extends CI_Controller
 
                 'users' => $this->users->get_data($this->session->userdata('id_users')),
                 'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
-                'isi' => 'HR/add_users_divisi'
+                'isi' => 'hr/add_users_divisi'
             );
 
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -191,7 +191,7 @@ class Divisi extends CI_Controller
 
                 $this->users->add($data);
                 $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                redirect('HR/Divisi/users/' . $this->input->post('id_divisi'));
+                redirect('hr/Divisi/users/' . $this->input->post('id_divisi'));
             }
         }
     }
@@ -201,7 +201,7 @@ class Divisi extends CI_Controller
         $data = array('id_users' => $id_users);
         $this->users->delete($data);
         $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !!! ');
-        redirect('HR/divisi/');
+        redirect('hr/divisi/');
     }
 }
 

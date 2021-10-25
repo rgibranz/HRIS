@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="card-title"> Data <?= $title ?></div>
         <div class="card-tools">
-          <a href="<?= base_url('HR/Karyawan/add') ?>" class="btn btn-primary btn-sm">
+          <a href="<?= base_url('hr/karyawan/add') ?>" class="btn btn-primary btn-sm">
             <i class=" fa fa-plus"></i>
             Add
           </a>
@@ -50,7 +50,7 @@
                 <td><?= $value->job ?></td>
                 <td><?= $value->sisa_cuti ?></td>
                 <td>
-                  <a href="<?= base_url('HR/Karyawan/edit/' . $value->id_users) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                  <a href="<?= base_url('hr/karyawan/edit/' . $value->id_users) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah_cuti<?= $value->id_users ?>">Tambah cuti</button>
                   <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#kurangi_cuti<?= $value->id_users ?>">Kurangi Cuti</button>
                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_users ?>"><i class="fa fa-trash"></i></button>
@@ -81,7 +81,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <a href="<?= base_url('HR/Karyawan/delete/' . $value->id_users) ?>" class="btn btn-danger">Delete</a>
+              <a href="<?= base_url('hr/karyawan/delete/' . $value->id_users) ?>" class="btn btn-danger">Delete</a>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -103,7 +103,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('HR/Karyawan/tambah_cuti_all'); ?>
+            <?php echo form_open('hr/karyawan/tambah_cuti_all'); ?>
 
             <div class="col">
               <div class="form-group">
@@ -138,7 +138,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <?php echo form_open('HR/Karyawan/kurangi_cuti_all'); ?>
+            <?php echo form_open('hr/karyawan/kurangi_cuti_all'); ?>
 
             <div class="col">
               <div class="form-group">
@@ -174,7 +174,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('HR/Karyawan/tambah_cuti'); ?>
+              <?php echo form_open('hr/karyawan/tambah_cuti'); ?>
 
               <div class="col">
                 <div class="form-group">
@@ -211,7 +211,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('HR/Karyawan/kurangi_cuti'); ?>
+              <?php echo form_open('hr/karyawan/kurangi_cuti'); ?>
 
               <div class="col">
                 <div class="form-group">

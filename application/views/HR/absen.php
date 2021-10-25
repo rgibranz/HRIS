@@ -9,7 +9,7 @@
           </div>
 
           <div class="card-body">
-              <?php echo form_open_multipart('HR/Absen/list_absen') ?>
+              <?php echo form_open_multipart('hr/absen/list_absen') ?>
               <div class="row">
 
                   <div class="col-md-3 offset-md-1">

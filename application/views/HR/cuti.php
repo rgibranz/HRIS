@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group text-right">
-                <?php echo form_open_multipart('HR/Pdfview/') ?>
+                <?php echo form_open_multipart('hr/Pdfview/') ?>
                 <input type="text" value="<?= $list_cuti->id_cuti ?>" name="id_cuti" hidden>
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-print"></i> Print

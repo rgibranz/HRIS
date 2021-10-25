@@ -24,7 +24,7 @@ class Absen extends CI_Controller
                 'all_absen' => $this->absen->get_all_data($id_users),
                 'all_users' => $this->users->get_all_data(),
                 'absen_end' => $this->absen->get_data_absen($id_users),
-                'isi' => 'HR/absen'
+                'isi' => 'hr/absen'
             );
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {

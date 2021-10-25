@@ -21,7 +21,7 @@ class Karyawan extends CI_Controller
                 'all_users' => $this->users->get_all_data(),
                 'users' => $this->users->get_data($this->session->userdata('id_users')),
                 // 'role' => $this->users->get_all_role(),
-                'isi' => 'HR/Karyawan'
+                'isi' => 'hr/Karyawan'
             );
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
@@ -97,7 +97,7 @@ class Karyawan extends CI_Controller
                 'title' => 'Tambah users',
                 'users' => $this->users->get_data($id_users),
                 'divisi' => $this->divisi->get_all_data(),
-                'isi' => 'HR/add_users'
+                'isi' => 'hr/add_users'
             );
 
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -114,7 +114,7 @@ class Karyawan extends CI_Controller
                     'users' => $this->users->get_all_data(),
                     'divisi' => $this->divisi->get_all_data(),
                     'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'HR/add_users'
+                    'isi' => 'hr/add_users'
                 );
 
                 $this->load->view('layout/wrapper', $data, FALSE);
@@ -146,7 +146,7 @@ class Karyawan extends CI_Controller
 
                 $this->users->add($data);
                 $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                redirect('HR/Karyawan');
+                redirect('hr/Karyawan');
             }
         }
     }
@@ -217,7 +217,7 @@ class Karyawan extends CI_Controller
                 'title' => 'edit users',
                 'users' => $this->users->get_data($id_users),
                 'divisi' => $this->divisi->get_all_data(),
-                'isi' => 'HR/edit_users',
+                'isi' => 'hr/edit_users',
 
             );
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -250,7 +250,7 @@ class Karyawan extends CI_Controller
                     );
                     $this->users->edit($data);
                     $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                    redirect('HR/Karyawan');
+                    redirect('hr/Karyawan');
                 } else {
                     $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
                     $data = array(
@@ -273,7 +273,7 @@ class Karyawan extends CI_Controller
                     );
                     $this->users->edit($data);
                     $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                    redirect('HR/Karyawan');
+                    redirect('hr/Karyawan');
                 }
             } else {
 
@@ -307,7 +307,7 @@ class Karyawan extends CI_Controller
                     );
                     $this->users->edit($data);
                     $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                    redirect('HR/Karyawan');
+                    redirect('hr/Karyawan');
                 } else {
                     $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
                     $data = array(
@@ -331,7 +331,7 @@ class Karyawan extends CI_Controller
                     );
                     $this->users->edit($data);
                     $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                    redirect('HR/Karyawan');
+                    redirect('hr/Karyawan');
                 }
             }
         }
@@ -343,14 +343,14 @@ class Karyawan extends CI_Controller
         $data = array('id_users' => $id_users);
         $this->users->delete($data);
         $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !!! ');
-        redirect('HR/Karyawan');
+        redirect('hr/Karyawan');
     }
 
     ////////// Tambah Kurang Cuti Karyawan //////////////////////////
     public function tambah_cuti_all()
     {
         $this->users->tambah_cuti_all($this->input->post('tambah_cuti'));
-        redirect('HR/karyawan');
+        redirect('hr/karyawan');
     }
 
     public function kurangi_cuti_all()
@@ -377,7 +377,7 @@ class Karyawan extends CI_Controller
                 $this->users->kurangi_cuti($data);
             }
         }
-        redirect('HR/karyawan');
+        redirect('hr/karyawan');
         // $this->karyawan->kurangi_cuti_all($this->input->post('kurangi_cuti'));
 
     }
@@ -394,14 +394,14 @@ class Karyawan extends CI_Controller
                 'kurangi_cuti' => $sisa_cuti,
             );
             $this->users->kurangi_cuti($data);
-            redirect('HR/karyawan');
+            redirect('hr/karyawan');
         } else {
             $data = array(
                 'id_users' => $id_users,
                 'kurangi_cuti' => $kurangi_cuti,
             );
             $this->users->kurangi_cuti($data);
-            redirect('HR/karyawan');
+            redirect('hr/karyawan');
         }
     }
 
@@ -415,7 +415,7 @@ class Karyawan extends CI_Controller
         );
 
         $this->users->tambah_cuti($data);
-        redirect('HR/karyawan');
+        redirect('hr/karyawan');
     }
 }
 

@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="card-title"> List <?= $title ?></div>
         <div class="card-tools">
-          <a href="<?= base_url('HR/Divisi/add_users/' . $id_divisi) ?>" class="btn btn-primary btn-sm">
+          <a href="<?= base_url('hr/divisi/add_users/' . $id_divisi) ?>" class="btn btn-primary btn-sm">
             <i class=" fa fa-plus"></i>
             Add
           </a>
@@ -62,7 +62,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <a href="<?= base_url('HR/Divisi/delete_users/' . $value->id_users) ?>" class="btn btn-danger">Delete</a>
+              <a href="<?= base_url('hr/divisi/delete_users/' . $value->id_users) ?>" class="btn btn-danger">Delete</a>
             </div>
           </div>
           <?php echo form_close(); ?>

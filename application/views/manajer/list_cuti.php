@@ -44,7 +44,7 @@
                     <?php  } ?>
                   </td>
 
-                  <td> <a href="<?= base_url('Manajer/Cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                  <td> <a href="<?= base_url('manajer/cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
                 </tr>
             <?php   }
             } ?>

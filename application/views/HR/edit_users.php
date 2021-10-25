@@ -6,7 +6,7 @@
       <div class="card-text">
         <!--Start Formulir-->
         <?php
-        echo form_open_multipart('HR/Karyawan/edit/' . $users->id_users)
+        echo form_open_multipart('hr/karyawan/edit/' . $users->id_users)
         ?>
 
         <div class="row">
