@@ -28,7 +28,7 @@ class Pdfview extends CI_Controller
         //orientasi paper potrait / landscape
         $orientation = "portrait";
 
-        $html = $this->load->view('HR/cuti_pdf', $data, true);
+        $html = $this->load->view('hr/cuti_pdf', $data, true);
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }

@@ -117,58 +117,62 @@ class Cuti extends CI_Controller
         } else {
             $cek = $this->db->order_by('id_cuti', 'desc')->get_where('cuti', ['id_users' => $this->session->userdata('id_users')], 1)->row_array();
             $cek_direktur = $cek['status_direktur'];
+            $cek_id = $cek['id_users'];
+            $post_id = $this->input->post('id_users');
 
-            if ($cek_direktur != 'diajukan') {
-                $sisa_cuti = $this->input->post('sisa_cuti');
-                $lama_cuti = $this->input->post('lama_cuti');
-                $hasil = $sisa_cuti - $lama_cuti;
-                if ($sisa_cuti < $lama_cuti) {
+            if ($cek_id ==  $post_id) {
+                if ($cek_direktur != 'diajukan') {
+                    $sisa_cuti = $this->input->post('sisa_cuti');
+                    $lama_cuti = $this->input->post('lama_cuti');
+                    $hasil = $sisa_cuti - $lama_cuti;
+                    if ($sisa_cuti < $lama_cuti) {
 
-                    $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
-                    redirect('users/cuti/ajukan_cuti');
+                        $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
+                        redirect('users/cuti/ajukan_cuti');
+                    }
+                    $sisa_cuti = $this->input->post('sisa_cuti');
+                    $lama_cuti = $this->input->post('lama_cuti');
+                    $hasil = $sisa_cuti - $lama_cuti;
+
+                    $row_mb_tgl = $this->input->post("mulai_bekerja");
+                    $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
+
+                    $row_m_tgl = $this->input->post("mulai_tanggal");
+                    $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
+                    $s_tgl = date('Y-m-d', strtotime('+' . $lama_cuti . 'days', strtotime($m_tgl)));
+                    // $row_s_tgl = $this->input->post("sampai_tanggal");
+                    // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
+
+                    $data = array(
+                        'id_users' => $this->input->post('id_users'),
+                        'nama_users' => $this->input->post('nama_users'),
+                        'nama_divisi' => $this->input->post('nama_divisi'),
+                        'mulai_bekerja' => $mb_tgl,
+                        'jenis_cuti' => $this->input->post('jenis_cuti'),
+                        'lokasi_cuti' => $this->input->post('lokasi_cuti'),
+                        'lama_cuti' => $lama_cuti,
+                        'sisa_cuti' => $sisa_cuti,
+                        'mulai_tanggal' => $m_tgl,
+                        'sampai_tanggal' => $s_tgl,
+                        'keterangan_cuti' => $this->input->post('keterangan_cuti'),
+                        'keterangan_manajer' => $this->input->post('keterangan_cuti'),
+                        'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
+                        'status_manajer' => 'accept',
+                        'status_direktur' => 'diajukan'
+                    );
+                    $sisa_data = array(
+                        'id_users' => $this->input->post('id_users'),
+                        'sisa_cuti' => $hasil,
+                    );
+
+                    $this->cuti->add($data);
+                    $this->cuti->edit($sisa_data);
+                    $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
+                    redirect('manajer/cuti/list_cuti');
                 }
-                $sisa_cuti = $this->input->post('sisa_cuti');
-                $lama_cuti = $this->input->post('lama_cuti');
-                $hasil = $sisa_cuti - $lama_cuti;
-
-                $row_mb_tgl = $this->input->post("mulai_bekerja");
-                $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
-
-                $row_m_tgl = $this->input->post("mulai_tanggal");
-                $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
-                $s_tgl = date('Y-m-d', strtotime('+' . $lama_cuti . 'days', strtotime($m_tgl)));
-                // $row_s_tgl = $this->input->post("sampai_tanggal");
-                // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
-
-                $data = array(
-                    'id_users' => $this->input->post('id_users'),
-                    'nama_users' => $this->input->post('nama_users'),
-                    'nama_divisi' => $this->input->post('nama_divisi'),
-                    'mulai_bekerja' => $mb_tgl,
-                    'jenis_cuti' => $this->input->post('jenis_cuti'),
-                    'lokasi_cuti' => $this->input->post('lokasi_cuti'),
-                    'lama_cuti' => $lama_cuti,
-                    'sisa_cuti' => $sisa_cuti,
-                    'mulai_tanggal' => $m_tgl,
-                    'sampai_tanggal' => $s_tgl,
-                    'keterangan_cuti' => $this->input->post('keterangan_cuti'),
-                    'keterangan_manajer' => $this->input->post('keterangan_cuti'),
-                    'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-                    'status_manajer' => 'accept',
-                    'status_direktur' => 'diajukan'
-                );
-                $sisa_data = array(
-                    'id_users' => $this->input->post('id_users'),
-                    'sisa_cuti' => $hasil,
-                );
-
-                $this->cuti->add($data);
-                $this->cuti->edit($sisa_data);
-                $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
-                redirect('manajer/cuti/list_cuti');
+                $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
+                redirect('manajer/cuti/ajukan_cuti');
             }
-            $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
-            redirect('manajer/cuti/ajukan_cuti');
         }
     }
 

@@ -23,7 +23,7 @@ class Cuti extends CI_Controller
                 'title' => 'list Cuti',
                 'users' => $this->users->get_data($id_users),
                 'list_cuti' => $this->cuti->get_all_data_cuti(),
-                'isi' => 'HR/list_cuti'
+                'isi' => 'hr/list_cuti'
             );
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
@@ -40,7 +40,7 @@ class Cuti extends CI_Controller
             'title' => ' Detail Karyawan',
             'list_cuti' => $this->cuti->view($id_cuti),
             'users' => $this->users->get_data($id_users),
-            'isi' => 'HR/cuti',
+            'isi' => 'hr/cuti',
         );
         $this->load->view('layout/wrapper', $data, FALSE);
     }
