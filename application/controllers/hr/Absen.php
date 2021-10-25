@@ -42,7 +42,7 @@ class Absen extends CI_Controller
             'title' => 'List Absen Pekerja',
             'users' => $this->users->get_data($this->session->userdata('id_users')),
             'list_absen' => $this->absen->list_absen_admin($nama, $tahun, $bulan),
-            'isi' => 'HR/list_absen'
+            'isi' => 'hr/list_absen'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
     }
