@@ -118,7 +118,7 @@ class Cuti extends CI_Controller
                 $this->cuti->add($data);
                 $this->users->edit($sisa_data);
                 $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
-                redirect('karyawan/users/cuti');
+                redirect('karyawan/cuti/list_cuti');
             }
             if ($cek_direktur != 'diajukan') {
                 $sisa_cuti = $this->input->post('sisa_cuti');
@@ -126,8 +126,8 @@ class Cuti extends CI_Controller
                 $hasil = $sisa_cuti - $lama_cuti;
                 if ($sisa_cuti < $lama_cuti) {
 
-                    $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
-                    redirect('users/cuti/ajukan_cuti');
+                    $this->session->set_flashdata('invalidcuti', 'gagal mengjukan cuti');
+                    redirect('karyawan/cuti/ajukan_cuti');
                 }
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
