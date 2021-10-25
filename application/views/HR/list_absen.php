@@ -27,7 +27,7 @@
                         foreach ($list_absen as $key => $value) { ?>
                           <tr>
                               <td><?= $no++; ?></td>
-                              <td><?= $value->nama_karyawan ?></td>
+                              <td><?= $value->nama_users ?></td>
                               <td><?= $value->tgl ?></td>
                               <td><?= $value->waktu_datang ?></td>
                               <td><?= $value->waktu_pulang ?></td>
