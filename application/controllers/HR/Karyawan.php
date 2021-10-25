@@ -96,7 +96,6 @@ class Karyawan extends CI_Controller
             $data = array(
                 'title' => 'Tambah users',
                 'users' => $this->users->get_data($id_users),
-                'role' => $this->users->get_all_role(),
                 'divisi' => $this->divisi->get_all_data(),
                 'isi' => 'HR/add_users'
             );
@@ -147,7 +146,7 @@ class Karyawan extends CI_Controller
 
                 $this->users->add($data);
                 $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                redirect('HR/Karyawn');
+                redirect('HR/Karyawan');
             }
         }
     }

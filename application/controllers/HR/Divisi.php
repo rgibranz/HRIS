@@ -141,7 +141,6 @@ class Divisi extends CI_Controller
                 'title' => 'Tambah users',
 
                 'users' => $this->users->get_data($this->session->userdata('id_users')),
-                'role' => $this->users->get_all_role(),
                 'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
                 'isi' => 'HR/add_users_divisi'
             );
