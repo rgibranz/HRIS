@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card card-primary">
       <div class="card-header">
-        <div class="card-title"> List <?= $title ?></div>
+        <div class="card-title"> List <?= $title ?> <?= $divisi->nama_divisi?></div>
         <div class="card-tools">
           <a href="<?= base_url('hr/divisi/add_users/' . $id_divisi) ?>" class="btn btn-primary btn-sm">
             <i class=" fa fa-plus"></i>
@@ -18,8 +18,10 @@
             <tr>
               <th>No</th>
               <th>Nama</th>
+              <th>Email</th>
               <th>divisi</th>
               <th>Posisi</th>
+              <th>Sisa Cuti</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -31,8 +33,10 @@
               <tr>
                 <td><?= $no++; ?></td>
                 <td><?= $value->nama_users ?></td>
+                <td><?= $value->email ?></td>
                 <td><?= $value->nama_divisi ?></td>
                 <td><?= $value->job ?></td>
+                <td><?= $value->sisa_cuti ?></td>
                 <td>
                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_users ?>"><i class="fa fa-trash"></i></button>
                 </td>

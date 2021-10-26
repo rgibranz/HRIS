@@ -29,12 +29,11 @@
     <div class="bodyisi">
         <p>Yang bertanda tangan di bawah ini :</p>
         <p>Nama Lengkap : <?= $profile->nama_users ?></p>
-        <p>Mulai Bekerja : <?= $profile->mulai_bekerja ?></p>
-        <p>Dengan ini mengajukan Cuti :</p>
-        <p>Jenis cuti : <?= $profile->jenis_cuti ?></p>
-        <p>Lama cuti : <?= $profile->lama_cuti ?> hari </p>
-        <p>Mulai tanggal : <?= date('d-m-Y', strtotime($profile->mulai_tanggal));  ?></p>
-        <p>Sampai tanggal : <?= date('d-m-Y', strtotime($profile->sampai_tanggal));  ?></p>
+        <p>Mulai Bekerja : <?= date('d-m-Y', strtotime($profile->mulai_bekerja)); ?></p>
+        <p>Dengan ini mengajukan Cuti <?= $profile->jenis_cuti ?> selama <?= $profile->lama_cuti ?> hari </p>
+        <p>Mulai Tanggal <?= date('d-m-Y', strtotime($profile->mulai_tanggal));  ?></p>
+        <p>Sampai Tanggal <?= date('d-m-Y', strtotime($profile->sampai_tanggal)); ?></p>
+        <p>Sisa cuti <?= $profile->sisa_cuti ?></p>
         <p>Demikian permohonan Cuti ini saya Buat sesuai dengan keadaan yang sebenarnya.</p>
         <div style="float: left;">
             <p>Jakarta <?= date('d-m-Y', strtotime($profile->tgl_pengajuan));  ?></p>
@@ -43,7 +42,8 @@
             <br>
             <P>TTD</P>
             <br>
-            <P><?= $profile->nama_users ?></P>
+            <P><?= $profile->nama_direktur ?></P>
+            <div class="kecil">direktur</div>
         </div>
         <div style="float: right;">
             <br>

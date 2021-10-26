@@ -66,9 +66,10 @@ class Divisi extends CI_Controller
     public function users($id_divisi)
     {
         $data = array(
-            'title' => 'anggota devisi',
+            'title' => 'anggota divisi',
             'users' => $this->users->get_data($this->session->userdata('id_users')),
             'id_divisi' => $id_divisi,
+            'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
             'divisi_users' => $this->users->get_data_d_users($id_divisi),
             'isi' => 'hr/divisi_users'
         );
