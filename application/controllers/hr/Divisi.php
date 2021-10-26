@@ -142,7 +142,7 @@ class Divisi extends CI_Controller
 
                 'users' => $this->users->get_data($this->session->userdata('id_users')),
                 'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
-                'isi' => 'hr/add_users_divisi'
+                'isi' => 'hr/add_users'
             );
 
             $this->load->view('layout/wrapper', $data, FALSE);
@@ -156,10 +156,10 @@ class Divisi extends CI_Controller
             if (!$this->upload->do_upload($field_name)) {
                 $data = array(
                     'title' => 'Tambah users',
-                    'users' => $this->users->get_all_data(),
+                    'users' => $this->users->get_data($this->session->userdata('id_users')),
                     'divisi' => $this->m_divisi->get_all_data(),
                     'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'admin/add_users'
+                    'isi' => 'hr/add_users'
                 );
 
                 $this->load->view('layout/wrapper', $data, FALSE);
