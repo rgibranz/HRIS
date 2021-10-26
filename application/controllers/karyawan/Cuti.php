@@ -78,8 +78,8 @@ class Cuti extends CI_Controller
                 $hasil = $sisa_cuti - $lama_cuti;
                 if ($sisa_cuti < $lama_cuti) {
 
-                    $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
-                    redirect('users/cuti/ajukan_cuti');
+                    $this->session->set_flashdata('invalidcuti', 'gagal mengajukan cuti');
+                    redirect('karyawan/cuti/ajukan_cuti');
                 }
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
