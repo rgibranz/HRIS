@@ -124,12 +124,10 @@
                 <label> Role User</label>
                 <select name="level" class="form-control">
                   <option value="<?= $users->level ?>"><?= $users->level ?></option>
-                  <?php
-                  $x = 1;
-                  foreach ($role as $key => $value) { ?>
-                    <option value="<?= $x++ ?>" hidden></option>
-                    <option value="<?= $value->users_role ?>"><?= $value->users_role ?></option>
-                  <?php } ?>
+                  <option value="HR" hidden>HR</option>
+                  <option value="direktur">direktur</option>
+                  <option value="manajer">manajer</option>
+                  <option value="karyawan">karyawan</option>
 
                 </select>
               </div>
