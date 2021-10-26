@@ -26,7 +26,7 @@
               <div class="form-group">
                 <label>Tanggal Mulai Bekerja</label>
                 <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                  <input type="text" name="mulai_bekerja" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="Tanggal-bulan-Tahun" />
+                  <input type="text" name="mulai_bekerja" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="YYYY-MM-DD" />
                   <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                   </div>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                   <label>Tanggal lahir</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate"  placeholder="YYYY-MM-DD" />
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
