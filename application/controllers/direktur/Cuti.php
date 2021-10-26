@@ -51,6 +51,7 @@ class Cuti extends CI_Controller
 
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
+                'nama_direktur' => $this->session->userdata('nama_users'),
                 'status_direktur' => $this->input->post('status_direktur'),
                 'keterangan_direktur' => $this->input->post('keterangan_direktur'),
             );

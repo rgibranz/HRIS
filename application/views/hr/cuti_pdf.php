@@ -12,6 +12,11 @@
         .bodyisi {
             margin: 40px, 40px;
         }
+        .isihead{
+            margin-top: -15px;
+            font-weight: bold;
+            font-size: 13px;
+        }
 
         .kecil {
             margin-top: -15px;
@@ -27,6 +32,10 @@
     <h3 style="text-align: center;"> FORMULIR PENGAJUAN CUTI</h3>
 
     <div class="bodyisi">
+        <p class="isihead">Kepada :</p>
+        <p class="isihead">Yth. Divisi GA & HRD</p>
+        <P class="isihead">PT. Korpora Trainindo Consultant</P>
+        
         <p>Yang bertanda tangan di bawah ini :</p>
         <p>Nama Lengkap : <?= $profile->nama_users ?></p>
         <p>Mulai Bekerja : <?= date('d-m-Y', strtotime($profile->mulai_bekerja)); ?></p>
@@ -34,13 +43,12 @@
         <p>Mulai Tanggal <?= date('d-m-Y', strtotime($profile->mulai_tanggal));  ?></p>
         <p>Sampai Tanggal <?= date('d-m-Y', strtotime($profile->sampai_tanggal)); ?></p>
         <p>Sisa cuti <?= $profile->sisa_cuti ?></p>
-        <p>Demikian permohonan Cuti ini saya Buat sesuai dengan keadaan yang sebenarnya.</p>
+        <p>Demikian permohonan Cuti ini saya buat sesuai dengan keadaan yang sebenarnya.</p>
         <div style="float: left;">
             <p>Jakarta <?= date('d-m-Y', strtotime($profile->tgl_pengajuan));  ?></p>
             <p></p>
             <p>Mengetauhi</p>
             <br>
-            <P>TTD</P>
             <br>
             <P><?= $profile->nama_direktur ?></P>
             <div class="kecil">direktur</div>
@@ -50,7 +58,6 @@
             <br>
             <p>Mengajukan</p>
             <br>
-            <P>TTD</P>
             <br>
             <P><?= $profile->nama_users ?></P>
             <div class="kecil">Divisi <?= $profile->nama_divisi ?></div>
