@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller
             $data = array(
                 'title' => 'Dashboard',
                 'users' => $this->users->get_data($id_users),
-                'isi' => 'users/dasboard'
+                'isi' => 'users/dashboard'
             );
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
