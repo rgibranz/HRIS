@@ -30,7 +30,7 @@
                             if ($absen_end->waktu_pulang != '') { ?>
                               <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
                           <?php } elseif ($time <=  $wkt_pulang) { ?>
-                              <a href="<?= base_url('absen/pulang/' . $absen_end->id_absen) ?>" class="btn btn-primary btn-sm">Absen Pulang</a>
+                              <a href="<?= base_url('manajer/absen/pulang/' . $absen_end->id_absen) ?>" class="btn btn-primary btn-sm">Absen Pulang</a>
                           <?php } else { ?>
                               <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
 

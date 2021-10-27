@@ -32,11 +32,6 @@
                 height: 330,
                 image_format: 'jpeg',
                 jpeg_quality: 90,
-                constraints: {
-                    facingMode: 'environment',
-                    video: true,
-
-                }
             });
 
             Webcam.attach('#my_camera');
