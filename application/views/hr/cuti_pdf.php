@@ -45,7 +45,7 @@
         <p>Sisa cuti <?= $profile->sisa_cuti ?></p>
         <p>Demikian permohonan Cuti ini saya buat sesuai dengan keadaan yang sebenarnya.</p>
         <div style="float: left;">
-            <p>Jakarta <?= date('d-m-Y', strtotime($profile->tgl_pengajuan));  ?></p>
+            <p>Jakarta, <?= date('d/m/Y', strtotime($profile->tgl_pengajuan));  ?></p>
             <p></p>
             <p>Mengetauhi</p>
             <br>
