@@ -51,7 +51,7 @@ class Absen extends CI_Controller
         $nama_users = $this->session->userdata('nama_users');
         $status = $this->input->post('status');
         $tgl = date('y-m-d');
-        $waktu = date('h:i:s');
+        $waktu = date('H:i:s');
         $date = array(
             'tgl' => $tgl,
             'waktu' => $waktu,
@@ -77,6 +77,7 @@ class Absen extends CI_Controller
             'nama_users' => $nama_users,
             'tgl' => $tgl,
             'waktu_datang' => $waktu,
+            'img_absen' => $fileName,
         );
         $this->absen->add($data);
         redirect('manajer/absen');
@@ -85,7 +86,7 @@ class Absen extends CI_Controller
     public function pulang($id_absen)
     {
         date_default_timezone_set('Asia/Jakarta');
-        $waktu = date('h:i:s');
+        $waktu = date('H:i:s');
         $data = array(
             'id_absen' => $id_absen,
             'waktu_pulang' => $waktu,
