@@ -80,7 +80,7 @@ class Auth extends CI_Controller
                         'nama_users' => $nama_user,
                     ];
                     $this->session->set_userdata($data);
-                    redirect('Karyawan/dashboard');
+                    redirect('karyawan/dashboard');
                 }
             } else {
                 $this->session->set_flashdata('error', 'Email atau Password salah');
