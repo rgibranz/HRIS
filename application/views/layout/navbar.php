@@ -5,7 +5,6 @@
         <img src="<?= base_url() ?>assets/gambar/icon/Untitled-1cc.png" alt="Logo" width="200" style="opacity: .8">
     </a>
 
-
     <?php
     if ($this->session->userdata('level_user') == 'HR') { ?>
         <!--HR-->
@@ -25,17 +24,6 @@
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
-                            </p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="<?= base_url('hr/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                                    echo "active";
-                                                                                } ?>">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>
-                                List Absen
                             </p>
                         </a>
                     </li>
@@ -122,23 +110,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('direktur/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                                    echo "active";
-                                                                                } ?>">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Absen
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a href="<?= base_url('direktur/cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
                                                                                     echo "active";
                                                                                 } ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            list cuti
+                            List cuti
                         </p>
                     </a>
                 </li>
@@ -182,16 +159,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="<?= base_url('manajer/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                                    echo "active";
-                                                                                } ?>">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Absen
-                        </p>
-                    </a>
-                </li>
 
                 <li class="nav-item">
                     <a href="<?= base_url('manajer/cuti') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_cuti_admin') {
@@ -199,7 +166,7 @@
                                                                                 } ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            list cuti
+                            List cuti
                         </p>
                     </a>
                 </li>
@@ -276,17 +243,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="<?= base_url('karyawan/absen') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'absen') {
-                                                                                    echo "active";
-                                                                                } ?>">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                            Absen
-                        </p>
-                    </a>
                 </li>
 
                 <li class="nav-item has-treeview <?php if ($this->uri->segment(3) == 'list_cuti' || $this->uri->segment(3) == 'ajukan_cuti') {
