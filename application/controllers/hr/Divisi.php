@@ -138,7 +138,7 @@ class Divisi extends CI_Controller
 
                 $this->users->add($data);
                 $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
-                redirect('hr/divisi/users/' . $this->input->post('id_divisi'));
+                redirect('hr/divisi/users/' . $id_divisi);
             }
         }
     }
