@@ -12,15 +12,15 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $s_id = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
+        $s_id     = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
         $id_users = $s_id['id_users'];
-        $level = $this->session->userdata('level_user');
+        $level    = $this->session->userdata('level_user');
         if ($level == 'HR') {
-            $data = array(
-                'title' => 'Dasboard',
-                'users' => $this->users->get_data($id_users),
-                'isi' => 'hr/Dashboard'
-            );
+
+            $data['title'] = 'Dasboard';
+            $data['users'] = $this->users->get_data($id_users);
+            $data['isi']   = 'hr/Dashboard';
+
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
             $this->user_login->logout();
