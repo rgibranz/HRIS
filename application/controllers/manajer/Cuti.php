@@ -118,10 +118,11 @@ class Cuti extends CI_Controller
             $cek = $this->db->order_by('id_cuti', 'desc')->get_where('cuti', ['id_users' => $this->session->userdata('id_users')], 1)->row_array();
             $post_id = $this->input->post('id_users');
 
-            if ($cek['id_users'] ==  $post_id || $cek['id_users'] == null ) {
-                if ($cek['status_direktur'] != 'diajukan' || $cek['status_direktur'] == NULL ) {
+            if ($cek['id_users'] ==  $post_id || $cek['id_users'] == null) {
+                if ($cek['status_direktur'] != 'diajukan' || $cek['status_direktur'] == NULL) {
                     $sisa_cuti = $this->input->post('sisa_cuti');
                     $lama_cuti = $this->input->post('lama_cuti');
+                    $kurang = $lama_cuti - 1;
                     $hasil = $sisa_cuti - $lama_cuti;
                     if ($sisa_cuti < $lama_cuti) {
 
@@ -137,7 +138,7 @@ class Cuti extends CI_Controller
 
                     $row_m_tgl = $this->input->post("mulai_tanggal");
                     $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
-                    $s_tgl = date('Y-m-d', strtotime('+' . $lama_cuti . 'days', strtotime($m_tgl)));
+                    $s_tgl = date('Y-m-d', strtotime('+' . $kurang . 'days', strtotime($m_tgl)));
                     // $row_s_tgl = $this->input->post("sampai_tanggal");
                     // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
 

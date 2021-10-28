@@ -75,22 +75,19 @@ class Cuti extends CI_Controller
             if ($cek_menajer == "reject" || $cek_menajer == "") {
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
+                $kurang = $lama_cuti - 1;
                 $hasil = $sisa_cuti - $lama_cuti;
                 if ($sisa_cuti < $lama_cuti) {
 
                     $this->session->set_flashdata('invalidcuti', 'gagal mengajukan cuti');
                     redirect('karyawan/cuti/ajukan_cuti');
                 }
-                $sisa_cuti = $this->input->post('sisa_cuti');
-                $lama_cuti = $this->input->post('lama_cuti');
-                $hasil = $sisa_cuti - $lama_cuti;
-
                 $row_mb_tgl = $this->input->post("mulai_bekerja");
                 $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
 
                 $row_m_tgl = $this->input->post("mulai_tanggal");
                 $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
-                $s_tgl = date('Y-m-d', strtotime('+' . $lama_cuti . 'days', strtotime($m_tgl)));
+                $s_tgl = date('Y-m-d', strtotime('+' . $kurang . 'days', strtotime($m_tgl)));
                 // $row_s_tgl = $this->input->post("sampai_tanggal");
                 // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
 
@@ -123,22 +120,20 @@ class Cuti extends CI_Controller
             if ($cek_direktur != 'diajukan') {
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
+                $kurang = $lama_cuti - 1;
                 $hasil = $sisa_cuti - $lama_cuti;
                 if ($sisa_cuti < $lama_cuti) {
 
                     $this->session->set_flashdata('invalidcuti', 'gagal mengjukan cuti');
                     redirect('karyawan/cuti/ajukan_cuti');
                 }
-                $sisa_cuti = $this->input->post('sisa_cuti');
-                $lama_cuti = $this->input->post('lama_cuti');
-                $hasil = $sisa_cuti - $lama_cuti;
 
                 $row_mb_tgl = $this->input->post("mulai_bekerja");
                 $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
 
                 $row_m_tgl = $this->input->post("mulai_tanggal");
                 $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
-                $s_tgl = date('Y-m-d', strtotime('+' . $lama_cuti . 'days', strtotime($m_tgl)));
+                $s_tgl = date('Y-m-d', strtotime('+' . $kurang . 'days', strtotime($m_tgl)));
                 // $row_s_tgl = $this->input->post("sampai_tanggal");
                 // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
 
