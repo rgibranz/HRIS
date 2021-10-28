@@ -30,7 +30,7 @@
                 <td><?= $no++; ?></td>
                 <td><?= $value->nama_users ?></td>
                 <td><?= $value->jenis_cuti; ?></td>
-                <td><?= $value->tgl_pengajuan; ?></td>
+                <td><?= date('d/m/Y', strtotime($value->tgl_pengajuan));  ?></td>
                 <td>
                   <?php if ($value->status_manajer == "accept") { ?>
                     <p class="text-success"><?= $value->status_manajer; ?></p>
