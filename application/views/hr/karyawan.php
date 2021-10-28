@@ -4,10 +4,7 @@
       <div class="card-header">
         <div class="card-title"> Data <?= $title ?></div>
         <div class="card-tools">
-          <a href="<?= base_url('hr/karyawan/add') ?>" class="btn btn-primary btn-sm">
-            <i class=" fa fa-plus"></i>
-            Add
-          </a>
+
         </div>
       </div>
 
