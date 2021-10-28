@@ -2,7 +2,7 @@
   <div class="card">
 
     <div class="card-body">
-      <h5>Form <?= $title ?></h5>
+      <h5>Tambah Karyawan Divisi <?= $divisi->nama_divisi ?></h5>
 
       <hr>
       <div class="card-text">
@@ -18,7 +18,7 @@
             <div class="col-md-8">
               <div class="form-group">
                 <label>Nama Pekerja</label>
-                <input type="text" name="nama_users" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Lengkap">
+                <input type="text" name="nama_users" class="form-control" placeholder="John Doe">
               </div>
             </div>
 
@@ -26,7 +26,7 @@
               <div class="form-group">
                 <label>Tanggal Mulai Bekerja</label>
                 <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                  <input type="text" name="mulai_bekerja" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="YYYY-MM-DD" />
+                  <input type="text" name="mulai_bekerja" class="form-control datetimepicker-input" data-target="#reservationdate2" placeholder="TTTT-BB-HH" />
                   <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                   </div>
@@ -40,7 +40,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tempat Lahir</label>
-                  <input type="text" name="tmpt_lahir" class="form-control" id="exampleInputEmail1" placeholder="Tempat Lahir">
+                  <input type="text" name="tmpt_lahir" class="form-control" placeholder="Tempat Lahir">
                 </div>
               </div>
 
@@ -48,7 +48,7 @@
                 <div class="form-group">
                   <label>Tanggal lahir</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate"  placeholder="YYYY-MM-DD" />
+                    <input type="text" name="tgl_lahir" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="TTTT-BB-HH" />
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
@@ -62,7 +62,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Alamat Sesuai KTP</label>
-                <textarea class="form-control" name="alamat_ktp" rows="3" placeholder="Alamat"></textarea>
+                <textarea class="form-control" name="alamat_ktp" rows="3" placeholder="Jl. Pegangsaan Timur No.56 RT.1/RW.1, Pegangsaan, Kec. Menteng, Jakarta Pusat
+"></textarea>
               </div>
             </div>
 
@@ -76,24 +77,17 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Nomor Hp</label>
-                <input type="text" name="no_hp" class="form-control" id="exampleInputEmail1" placeholder="No Hp" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                <input type="text" name="no_hp" class="form-control" placeholder="081234567890" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
               <div class="form-group">
                 <label>Nomor Hp Darurat</label>
-                <input type="text" name="no_hp_d" class="form-control" id="exampleInputEmail1" placeholder="Nomor Hp" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                <input type="text" name="no_hp_d" class="form-control" placeholder="081234567890" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Alamat Email">
-              </div>
-
-              <div class="form-group">
-                <label> Divisi</label>
-                <select name="id_divisi" class="form-control" readonly>
-                  <option value="<?= $divisi->id_divisi ?>"><?= $divisi->nama_divisi ?></option>
-                </select>
+                <input type="email" name="email" class="form-control" placeholder="email@example.com">
               </div>
 
               <div class="form-group">
@@ -108,13 +102,13 @@
               </div>
 
               <div class="form-group">
-                <label>Posisi</label>
-                <input type="text" name="job" class="form-control" placeholder="Jabatan/Posisi">
+                <label>Posisi/Jabatan</label>
+                <input type="text" name="job" class="form-control" placeholder="Contoh : Programmer">
               </div>
 
 
               <div class="form-group">
-                <label>password Akun</label>
+                <label>Password Akun</label>
                 <input type="password" name="password" class="form-control" placeholder="password">
               </div>
 
@@ -123,9 +117,9 @@
                 <select name="level" class="form-control">
                   <option value="">--Pilih Role User --</option>
                   <option value="HR" hidden>HR</option>
-                  <option value="direktur">direktur</option>
-                  <option value="manajer">manajer</option>
-                  <option value="karyawan">karyawan</option>
+                  <option value="Direktur">Direktur</option>
+                  <option value="Manajer">Manajer</option>
+                  <option value="Karyawan">Karyawan</option>
                 </select>
               </div>
 
@@ -135,7 +129,7 @@
               </div>
 
               <div class="form-group">
-                <label for="">Jumalah Cuti </label>
+                <label for="">Jumlah Cuti </label>
                 <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
 
@@ -145,7 +139,7 @@
           <div class="col-md-3">
 
             <div class="form-group text-center">
-              <img src="" alt="" width="200px" height="240px" id="gambar_load">
+              <img src="" alt="" width="200px" height="200px" id="gambar_load">
             </div>
 
             <div class="form-group">

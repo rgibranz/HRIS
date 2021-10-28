@@ -79,58 +79,8 @@ class Divisi extends CI_Controller
     public function add_users($id_divisi)
     {
         $this->form_validation->set_rules(
-            'nama_users',
-            'Nama Karang',
-            'required',
-            array('required' => '%s Harus Diisi !!!')
-        );
-
-        $this->form_validation->set_rules(
-            'tmpt_lahir',
-            'Tempat Lahir',
-            'required',
-            array('required' => '%s Harus Diisi !!!')
-        );
-
-        $this->form_validation->set_rules(
-            'tgl_lahir',
-            'Tanggal Lahir',
-            'required',
-            array('required' => '%s Harus Diisi !!!')
-        );
-
-        $this->form_validation->set_rules(
-            'alamat_ktp',
-            'Alamat',
-            'required',
-            array('required' => '%s Harus Diisi !!!')
-        );
-
-        $this->form_validation->set_rules(
-            'no_hp',
-            'Nomor Hp',
-            'required',
-            array('required' => '%s Harus Diisi !!!')
-        );
-
-        $this->form_validation->set_rules(
             'email',
             'email',
-            'required',
-            array('required' => '%s Harus Diisi !!!')
-        );
-
-
-        $this->form_validation->set_rules(
-            'id_divisi',
-            'id_divisi',
-            'required',
-            array('required' => '%s Harus di pilih !!!')
-        );
-
-        $this->form_validation->set_rules(
-            'password',
-            'password',
             'required',
             array('required' => '%s Harus Diisi !!!')
         );
@@ -138,13 +88,10 @@ class Divisi extends CI_Controller
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         if ($this->form_validation->run() == FALSE) {
 
-            $data = array(
-                'title' => 'Tambah users',
-
-                'users' => $this->users->get_data($this->session->userdata('id_users')),
-                'divisi' => $this->m_divisi->get_data_divisi($id_divisi),
-                'isi' => 'hr/add_users_divisi'
-            );
+            $data['title']  = 'Tambah Users';
+            $data['users']  = $this->users->get_data($this->session->userdata('id_users'));
+            $data['divisi'] = $this->m_divisi->get_data_divisi($id_divisi);
+            $data['isi']    = 'hr/add_users_divisi';
 
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
@@ -170,25 +117,24 @@ class Divisi extends CI_Controller
                 $config['image_library'] = 'gb2';
                 $config['source_image'] = './assets/gambar/user' . $upload_data['uploads']['file_name'];
                 $this->load->library('image_lib', $config);
-                $data = array(
-                    'nama_users' => $this->input->post('nama_users'),
-                    'mulai_bekerja' => $this->input->post('mulai_bekerja'),
-                    'tmpt_lahir' => $this->input->post('tmpt_lahir'),
-                    'tgl_lahir' => $this->input->post('tgl_lahir'),
-                    'alamat_ktp' => $this->input->post('alamat_ktp'),
-                    'alamat_domisili' => $this->input->post('alamat_domisili'),
-                    'no_hp' => $this->input->post('no_hp'),
-                    'no_hp_d' => $this->input->post('no_hp_d'),
-                    'email' => $this->input->post('email'),
-                    'id_divisi' => $this->input->post('id_divisi'),
-                    'status_users' => $this->input->post('status_users'),
-                    'job' => $this->input->post('job'),
-                    'password' => $password,
-                    'level' => $this->input->post('level'),
-                    'gaji' => $this->input->post('gaji'),
-                    'img' => $upload_data['uploads']['file_name'],
-                    'sisa_cuti' => $this->input->post('sisa_cuti')
-                );
+
+                $data['nama_users']      = $this->input->post('nama_users');
+                $data['mulai_bekerja']   = $this->input->post('mulai_bekerja');
+                $data['tmpt_lahir']      = $this->input->post('tmpt_lahir');
+                $data['tgl_lahir']       = $this->input->post('tgl_lahir');
+                $data['alamat_ktp']      = $this->input->post('alamat_ktp');
+                $data['alamat_domisili'] = $this->input->post('alamat_domisili');
+                $data['no_hp']           = $this->input->post('no_hp');
+                $data['no_hp_d']         = $this->input->post('no_hp_d');
+                $data['email']           = $this->input->post('email');
+                $data['id_divisi']       = $this->input->post('id_divisi');
+                $data['status_users']    = $this->input->post('status_users');
+                $data['job']             = $this->input->post('job');
+                $data['password']        = $password;
+                $data['level']           = $this->input->post('level');
+                $data['gaji']            = $this->input->post('gaji');
+                $data['img']             = $upload_data['uploads']['file_name'];
+                $data['sisa_cuti']       = $this->input->post('sisa_cuti');
 
                 $this->users->add($data);
                 $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
