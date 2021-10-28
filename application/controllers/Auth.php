@@ -12,6 +12,9 @@ class Auth extends CI_Controller
 
     public function login()
     {
+        $this->form_validation->set_rules('email', 'email', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
+
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login';
             $this->load->view('login_user', $data, FALSE);
@@ -26,7 +29,6 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $cek = $this->db->get_where('users', ['email' => $email])->row_array();
-
 
         if ($cek) {
             if (password_verify($password, $cek['password'])) {
@@ -56,6 +58,7 @@ class Auth extends CI_Controller
                 redirect('auth/login');
             }
         } else {
+
             $this->session->set_flashdata('login_error', 'Email atau password tidak terdaftar');
             redirect('auth/login');
         }

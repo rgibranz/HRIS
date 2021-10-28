@@ -23,6 +23,8 @@ class Dashboard extends CI_Controller
 
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
+            echo "error";
+            die;
             $this->user_login->logout();
         }
     }
