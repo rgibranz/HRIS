@@ -127,7 +127,7 @@ class Divisi extends CI_Controller
                 $data['no_hp']           = $this->input->post('no_hp');
                 $data['no_hp_d']         = $this->input->post('no_hp_d');
                 $data['email']           = $this->input->post('email');
-                $data['id_divisi']       = $this->input->post('id_divisi');
+                $data['id_divisi']       = $id_divisi;
                 $data['status_users']    = $this->input->post('status_users');
                 $data['job']             = $this->input->post('job');
                 $data['password']        = $password;
