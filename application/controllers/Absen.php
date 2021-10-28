@@ -14,7 +14,7 @@ class Absen extends CI_Controller
         $level = $this->session->userdata('level_user');
 
         if ($level != 'user') {
-            if ($level == 'direktur') {
+            if ($level == 'Direktur') {
                 $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
                 $id_karyawan = $get_id['id_karyawan'];
                 $data = array(
@@ -27,7 +27,7 @@ class Absen extends CI_Controller
                 );
                 $this->load->view('layout/wrapper_direktur', $data, FALSE);
             }
-            if ($level == 'manajer') {
+            if ($level == 'Manajer') {
                 $get_id = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
                 $id_karyawan = $get_id['id_karyawan'];
                 $data = array(

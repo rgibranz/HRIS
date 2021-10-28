@@ -18,7 +18,7 @@ class Dashboard extends CI_Controller
         $s_id = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
         $id_users = $s_id['id_users'];
         $level = $this->session->userdata('level_user');
-        if ($level == 'direktur') {
+        if ($level == 'Direktur') {
             $data = array(
                 'title' => 'Dasboard',
                 'users' => $this->users->get_data($id_users),

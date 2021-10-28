@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?= base_url('hr/karyawan') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'karyawan') {
+                        <a href="<?= base_url('hr/karyawan') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Karyawan') {
                                                                                         echo "active";
                                                                                     } ?>">
                             <i class="nav-icon fas fa-user"></i>
@@ -84,7 +84,7 @@
 <!--END HR-->
 
 <?php }
-    if ($this->session->userdata('level_user') == 'direktur') { ?>
+    if ($this->session->userdata('level_user') == 'Direktur') { ?>
     <!-- Direktur-->
 
     <!-- Sidebar -->
@@ -138,7 +138,7 @@
 
     <!--END Dirktur-->
 <?php }
-    if ($this->session->userdata('level_user') == 'manajer') { ?>
+    if ($this->session->userdata('level_user') == 'Manajer') { ?>
     <!-- Sidebar Manajer -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -196,7 +196,7 @@
     </aside>
 
 <?php }
-    if ($this->session->userdata('level_user') == 'karyawan') { ?>
+    if ($this->session->userdata('level_user') == 'Karyawan') { ?>
 
     <!-- Sidebar karyawan -->
     <div class="sidebar">

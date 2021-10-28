@@ -53,7 +53,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     redirect('hr/dashboard');
                 }
-                if ($level == 'direktur') {
+                if ($level == 'Direktur') {
                     $data = [
                         'id_users' => $cek['id_users'],
                         'email' => $cek['email'],
@@ -63,7 +63,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     redirect('direktur/dashboard');
                 }
-                if ($level == 'manajer') {
+                if ($level == 'Manajer') {
                     $data = [
                         'id_users' => $cek['id_users'],
                         'email' => $cek['email'],
@@ -80,7 +80,7 @@ class Auth extends CI_Controller
                         'nama_users' => $nama_user,
                     ];
                     $this->session->set_userdata($data);
-                    redirect('karyawan/dashboard');
+                    redirect('Karyawan/dashboard');
                 }
             } else {
                 $this->session->set_flashdata('error', 'Email atau Password salah');
