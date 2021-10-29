@@ -125,9 +125,9 @@
                 <select name="level" class="form-control">
                   <option value="<?= $users->level ?>"><?= $users->level ?></option>
                   <option value="HR" hidden>HR</option>
-                  <option value="direktur">direktur</option>
-                  <option value="manajer">manajer</option>
-                  <option value="karyawan">karyawan</option>
+                  <option value="Direktur">direktur</option>
+                  <option value="Manajer">manajer</option>
+                  <option value="Karyawan">karyawan</option>
 
                 </select>
               </div>
