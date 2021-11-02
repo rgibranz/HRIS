@@ -61,6 +61,8 @@ class Cuti extends CI_Controller
         if ($status_manajer == "reject") {
             // jika di reject maka sisa cuti kembali.
             $sisa_cuti = $this->input->post('sisa_cuti');
+            $lama_cuti = $this->input->post('lama_cuti');
+            $hasil = $sisa_cuti + $lama_cuti;
 
             $data = array(
                 'id_cuti' => $this->input->post('id_cuti'),
@@ -70,7 +72,7 @@ class Cuti extends CI_Controller
 
             $sisa_data = array(
                 'id_users' => $this->input->post('id_users'),
-                'sisa_cuti' => $sisa_cuti,
+                'sisa_cuti' => $hasil,
             );
 
             $this->users->edit($sisa_data);
@@ -150,7 +152,8 @@ class Cuti extends CI_Controller
                         'jenis_cuti' => $this->input->post('jenis_cuti'),
                         'lokasi_cuti' => $this->input->post('lokasi_cuti'),
                         'lama_cuti' => $lama_cuti,
-                        'sisa_cuti' => $sisa_cuti,
+                        'sisa_cuti' => $hasil,
+                        'cuti_awal' => $sisa_cuti,
                         'mulai_tanggal' => $m_tgl,
                         'sampai_tanggal' => $s_tgl,
                         'keterangan_cuti' => $this->input->post('keterangan_cuti'),
@@ -178,9 +181,10 @@ class Cuti extends CI_Controller
     public function delete($id_cuti = null)
     {
         // mengambalikan sisa cuti //
-        $s_id = $this->db->get_where('users', ['id_users' => $this->session->userdata('id_users')])->row_array();
+        $s_id = $this->db->get_where('cuti', ['id_users' => $this->session->userdata('id_users')])->row_array();
         $cuti = $s_id['sisa_cuti'];
-        $cuti_balik = $cuti + 1;
+        $lama_cuti = $s_id['lama_cuti'];
+        $cuti_balik = $cuti + $lama_cuti;
         $balik = array(
             'id_users' => $s_id['id_users'],
             'sisa_cuti' => $cuti_balik,

@@ -1,5 +1,18 @@
   <!-- /.col-md-6 -->
   <div class="col-md-12">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group text-right">
+          <?php echo form_open_multipart('karyawan/cuti/kartu_cuti') ?>
+          <input type="text" value="<?= $users->id_users ?>" name="id_cuti" hidden>
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-print"></i> Print
+          </button>
+          <?php echo form_close() ?>
+        </div>
+      </div>
+    </div>
+
     <div class="card card-primary">
       <div class="card-header">
         <div class="card-title"> List <?= $title ?></div>
