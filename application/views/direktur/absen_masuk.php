@@ -1,5 +1,5 @@
         <div class="col-md-12">
-            <form method="POST" action="<?= base_url('absen/add') ?>">
+            <form method="POST" action="<?= base_url('direktur/absen/add') ?>">
 
                 <div class="row">
                     <div class="col-md-6">
@@ -28,15 +28,10 @@
 
         <script language="JavaScript">
             Webcam.set({
-                width: 320,
-                height: 240,
+                width: 430,
+                height: 330,
                 image_format: 'jpeg',
                 jpeg_quality: 90,
-                constraints: {
-                    facingMode: 'environment',
-                    video: true,
-
-                }
             });
 
             Webcam.attach('#my_camera');

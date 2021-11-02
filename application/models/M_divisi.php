@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_divisi extends CI_Model {
+class M_divisi extends CI_Model
+{
 
     public function get_all_data()
     {
@@ -34,10 +35,7 @@ class M_divisi extends CI_Model {
     {
         $this->db->where('id_divisi', $data['id_divisi']);
         $this->db->update('divisi', $data);
-        
-        
     }
-
 }
 
 /* End of file m_model.php */

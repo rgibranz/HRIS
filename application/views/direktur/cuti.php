@@ -120,7 +120,7 @@
             <?php } else { ?>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Keterangan Manajer</label>
+                        <label>Keterangan Direktur</label>
                         <textarea class="form-control" name="keterangan_direktur" cols="10" rows="3"></textarea>
                     </div>
                 </div>

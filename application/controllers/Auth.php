@@ -12,22 +12,11 @@ class Auth extends CI_Controller
 
     public function login()
     {
-
-
-        $this->form_validation->set_rules('email', 'email', 'required',  array(
-            'required' => '%s Harus Diisi !!!'
-        ));
-
-        $this->form_validation->set_rules('password', 'password', 'required', array(
-            'required' => '%s Harus Diisi !!!'
-        ));
-
+        $this->form_validation->set_rules('email', 'email', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
 
         if ($this->form_validation->run() == false) {
-            $data = array(
-                'title' => 'login User',
-            );
-
+            $data['title'] = 'Login';
             $this->load->view('login_user', $data, FALSE);
         } else {
             $this->_login();
@@ -36,50 +25,32 @@ class Auth extends CI_Controller
 
     private function _login()
     {
-        $email  = $this->input->post('email');
-        $password  = $this->input->post('password');
-        $cek   = $this->db->get_where('users', ['email' => $email])->row_array();
+        $email    = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        $cek = $this->db->get_where('users', ['email' => $email])->row_array();
+
         if ($cek) {
             if (password_verify($password, $cek['password'])) {
-                $level = $cek['level'];
+                $level     = $cek['level'];
                 $nama_user = $cek['nama_users'];
+
+                $data['id_users']   = $cek['id_users'];
+                $data['email']      = $cek['email'];
+                $data['level_user'] = $level;
+                $data['nama_users'] = $nama_user;
+
+                $this->session->set_userdata($data);
+
                 if ($level == 'HR') {
-                    $data = [
-                        'id_users' => $cek['id_users'],
-                        'email' => $cek['email'],
-                        'level_user' => $level,
-                        'nama_users' => $nama_user,
-                    ];
-                    $this->session->set_userdata($data);
                     redirect('hr/dashboard');
                 }
-                if ($level == 'direktur') {
-                    $data = [
-                        'id_users' => $cek['id_users'],
-                        'email' => $cek['email'],
-                        'level_user' => $level,
-                        'nama_users' => $nama_user,
-                    ];
-                    $this->session->set_userdata($data);
+                if ($level == 'Direktur') {
                     redirect('direktur/dashboard');
                 }
-                if ($level == 'manajer') {
-                    $data = [
-                        'id_users' => $cek['id_users'],
-                        'email' => $cek['email'],
-                        'level_user' => $level,
-                        'nama_users' => $nama_user,
-                    ];
-                    $this->session->set_userdata($data);
+                if ($level == 'Manajer') {
                     redirect('manajer/dashboard');
                 } else {
-                    $data = [
-                        'id_users' => $cek['id_users'],
-                        'email' => $cek['email'],
-                        'level_user' => $level,
-                        'nama_users' => $nama_user,
-                    ];
-                    $this->session->set_userdata($data);
                     redirect('karyawan/dashboard');
                 }
             } else {
@@ -87,6 +58,7 @@ class Auth extends CI_Controller
                 redirect('auth/login');
             }
         } else {
+
             $this->session->set_flashdata('login_error', 'Email atau password tidak terdaftar');
             redirect('auth/login');
         }

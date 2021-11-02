@@ -15,7 +15,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Nama Karyawan</label>
-                <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan" value="<?= $karyawan->nama_karyawan ?>">
+                <input type="text" name="nama_karyawan" class="form-control" id="exampleInputEmail1" placeholder="Nama Karyawan" value="<?= $karyawan->nama_users ?>">
               </div>
             </div>
 

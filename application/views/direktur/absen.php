@@ -12,8 +12,17 @@
 
               <div class="row mb-3">
                   <div class="ml-2">
-                      <a href="<?= base_url('absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
+                      <?php
+                        date_default_timezone_set('Asia/Jakarta');
+                        $tanggal = $absen_end->tgl;
+                        $hari_ini = date('y-m-d');
+                        if ($tanggal == $hari_ini) {
+                        ?>
+                          <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
+                      <?php } else { ?>
+                          <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm disabled">Absen Masuk</a>
 
+                      <?php } ?>
                       <?php
                         if ($absen_end == '') { ?>
                           <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
@@ -30,7 +39,7 @@
                             if ($absen_end->waktu_pulang != '') { ?>
                               <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
                           <?php } elseif ($time <=  $wkt_pulang) { ?>
-                              <a href="<?= base_url('absen/pulang/' . $absen_end->id_absen) ?>" class="btn btn-primary btn-sm">Absen Pulang</a>
+                              <a href="<?= base_url('direktur/absen/pulang/' . $absen_end->id_absen) ?>" class="btn btn-primary btn-sm">Absen Pulang</a>
                           <?php } else { ?>
                               <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
 

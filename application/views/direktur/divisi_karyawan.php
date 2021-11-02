@@ -26,7 +26,7 @@
             foreach ($karyawan as $key => $value) { ?>
               <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $value->nama_karyawan ?></td>
+                <td><?= $value->nama_users ?></td>
                 <td><?= $value->nama_divisi ?></td>
                 <td><?= $value->job ?></td>
                 <td>

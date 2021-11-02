@@ -12,8 +12,17 @@
 
               <div class="row mb-3">
                   <div class="ml-2">
-                      <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
+                      <?php
+                        date_default_timezone_set('Asia/Jakarta');
+                        $tanggal = $absen_end->tgl;
+                        $hari_ini = date('y-m-d');
+                        if ($tanggal == $hari_ini) {
+                        ?>
+                          <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
+                      <?php } else { ?>
+                          <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm disabled">Absen Masuk</a>
 
+                      <?php } ?>
                       <?php
                         if ($absen_end == '') { ?>
                           <button class="btn btn-primary btn-sm" disabled>Absen Pulang</button>
@@ -24,7 +33,7 @@
                             $wkt_datang = $absen_end->waktu_datang;
                             $timestamp = strtotime($wkt_datang) + 15;
                             $time = date('H:i:s', $timestamp);
-                            $wkt_pulang = date('h:i:s');
+                            $wkt_pulang = date('H:i:s');
                             //end waktu pulang
 
                             if ($absen_end->waktu_pulang != '') { ?>

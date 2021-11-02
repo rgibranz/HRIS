@@ -5,7 +5,7 @@
             <div class="card-text">
                 <!--Start Formulir-->
 
-                <?php echo form_open_multipart('manajer/Cuti/edit/') ?>
+                <?php echo form_open_multipart('manajer/cuti/edit/') ?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
