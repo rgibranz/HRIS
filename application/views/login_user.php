@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a><b>HRIS</b></a>
+            <img src="<?= base_url() ?>assets/gambar/icon/Untitled-1cc.png" alt="Logo" width="250" style="opacity: .8">
         </div>
         <!-- /.login-logo -->
         <div class="card">
