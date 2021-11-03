@@ -106,7 +106,6 @@
                     </div>
                 </div>
             </div>
-
             <?php echo form_close(); ?>
             <!--End Formulir-->
         </div>

@@ -73,7 +73,7 @@ class M_cuti extends CI_Model
 
     public function get_cuti_limit1($id_users)
     {
-        $query = $this->db->query("SELECT * FROM `cuti` WHERE id_users = $id_users ORDER BY id_cuti DESC LIMIT 1");
+        $query = $this->db->query("SELECT * FROM `cuti` WHERE id_users = $id_users ORDER BY id_cuti ASC LIMIT 1");
 
         return $query->row();
     }
@@ -100,6 +100,19 @@ class M_cuti extends CI_Model
         $this->db->where('id_cuti', $data['id_cuti']);
         $this->db->update('cuti', $data);
     }
+
+    public function select_date($nama, $tahun)
+    {
+        $query = $this->db->query("SELECT * FROM cuti WHERE id_users = $nama AND YEAR(tgl_pengajuan) = $tahun ");
+        return $query->result();
+    }
+
+    public function select_limit($nama, $tahun)
+    {
+        $query = $this->db->query("SELECT * FROM cuti WHERE id_users = $nama AND YEAR(tgl_pengajuan) = $tahun ORDER BY id_users ASC LIMIT 1");
+        return $query->row();
+    }
+
 
 
     public function delete($data)

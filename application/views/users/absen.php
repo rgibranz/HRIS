@@ -21,6 +21,9 @@
                           <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
                       <?php } else { ?>
                           <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm disabled">Absen Masuk</a>
+                      <?php }
+                        if ($tanggal == NULL) { ?>
+                          <a href="<?= base_url('karyawan/absen/masuk') ?>" class="btn btn-primary btn-sm">Absen Masuk</a>
 
                       <?php } ?>
                       <?php
