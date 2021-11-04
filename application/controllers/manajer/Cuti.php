@@ -147,7 +147,7 @@ class Cuti extends CI_Controller
                     $data = array(
                         'id_users' => $this->input->post('id_users'),
                         'nama_users' => $this->input->post('nama_users'),
-                        'nama_divisi' => $this->input->post('nama_divisi'),
+                        'id_divisi' => $this->input->post('id_divisi'),
                         'mulai_bekerja' => $mb_tgl,
                         'jenis_cuti' => $this->input->post('jenis_cuti'),
                         'lokasi_cuti' => $this->input->post('lokasi_cuti'),

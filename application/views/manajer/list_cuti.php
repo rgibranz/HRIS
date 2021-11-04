@@ -25,7 +25,7 @@
             <?php
             $no = 1;
             foreach ($list_cuti as $key => $value) {
-              if ($value->nama_divisi == $users->nama_divisi) {
+              if ($value->id_divisi == $users->id_divisi) {
             ?>
                 <tr>
                   <td><?= $no++; ?></td>

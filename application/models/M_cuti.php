@@ -9,6 +9,7 @@ class M_cuti extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('cuti');
+        $this->db->join('divisi', 'divisi.id_divisi = cuti.id_divisi', 'left');
         $this->db->where('id_cuti', $id_cuti);
 
         return $this->db->get()->row();
@@ -18,6 +19,7 @@ class M_cuti extends CI_Model
     {
         return $this->db->get('cuti');
     }
+
     public function view($id_cuti)
     {
         $this->db->select('*');
@@ -43,7 +45,9 @@ class M_cuti extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('cuti');
+        $this->db->join('divisi', 'divisi.id_divisi = cuti.id_divisi', 'left');
         $this->db->order_by('id_cuti', 'desc');
+
         return $this->db->get()->result();
     }
 
@@ -119,6 +123,44 @@ class M_cuti extends CI_Model
     {
         $this->db->where('id_cuti', $data['id_cuti']);
         $this->db->delete('cuti', $data);
+    }
+
+
+    public function countnotif_dikretur()
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->where('status_direktur', 'diajukan');
+
+        return $this->db->count_all_results();
+    }
+
+    public function notif_dikretur()
+    {
+        $this->db->select('*');
+        $this->db->from('cuti');
+        $this->db->join('users', 'users.id_users = cuti.id_users', 'left');
+        $this->db->where('status_direktur', 'diajukan');
+
+        return $this->db->get()->result();
+    }
+
+    public function countnotif_manajer()
+    {
+        $id_divisi = $this->session->userdata('id_divisi');
+        $query = $this->db->query("SELECT * FROM cuti WHERE id_divisi = $id_divisi AND status_manajer = 'diajukan'");
+        return $query->num_rows();
+    }
+
+    public function notif_manajer()
+    {
+        $id_divisi = $this->session->userdata('id_divisi');
+        $query = $this->db->query("SELECT * FROM cuti  INNER JOIN users ON users.id_users = cuti.id_users WHERE cuti.id_divisi = $id_divisi AND status_manajer = 'diajukan'");
+        return $query->result();
+    }
+
+    public function countnotif_karyawan()
+    {
     }
 }
 

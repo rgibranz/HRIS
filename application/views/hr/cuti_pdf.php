@@ -12,7 +12,8 @@
         .bodyisi {
             margin: 40px, 40px;
         }
-        .isihead{
+
+        .isihead {
             margin-top: -15px;
             font-weight: bold;
             font-size: 13px;
@@ -35,7 +36,7 @@
         <p class="isihead">Kepada :</p>
         <p class="isihead">Yth. Divisi GA & HRD</p>
         <P class="isihead">PT. Korpora Trainindo Consultant</P>
-        
+
         <p>Yang bertanda tangan di bawah ini :</p>
         <p>Nama Lengkap : <?= $profile->nama_users ?></p>
         <p>Mulai Bekerja : <?= date('d-m-Y', strtotime($profile->mulai_bekerja)); ?></p>

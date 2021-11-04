@@ -11,6 +11,23 @@ class Cuti extends CI_Controller
         parent::__construct();
         $this->load->model('m_users', 'users');
         $this->load->model('m_cuti', 'cuti');
+
+        if ($this->session->userdata('level_user') != 'Karyawan') {
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
+
+            if ($this->session->userdata('level_user') == 'Direktur') {
+                redirect('direktur');
+            }
+            if ($this->session->userdata('level_user') == 'Karyawan') {
+                redirect('karyawan');
+            }
+            if ($this->session->userdata('level_user') == 'Manajer') {
+                redirect('manajer');
+            }
+            if ($this->session->userdata('level_user') == 'HR') {
+                redirect('hr');
+            }
+        }
     }
 
     public function list_cuti()
@@ -94,7 +111,7 @@ class Cuti extends CI_Controller
                 $data = array(
                     'id_users' => $this->input->post('id_users'),
                     'nama_users' => $this->input->post('nama_users'),
-                    'nama_divisi' => $this->input->post('nama_divisi'),
+                    'id_divisi' => $this->input->post('id_divisi'),
                     'mulai_bekerja' => $mb_tgl,
                     'jenis_cuti' => $this->input->post('jenis_cuti'),
                     'lokasi_cuti' => $this->input->post('lokasi_cuti'),
@@ -141,7 +158,7 @@ class Cuti extends CI_Controller
                 $data = array(
                     'id_users' => $this->input->post('id_users'),
                     'nama_users' => $this->input->post('nama_users'),
-                    'nama_divisi' => $this->input->post('nama_divisi'),
+                    'id_divisi' => $this->input->post('id_divisi'),
                     'mulai_bekerja' => $mb_tgl,
                     'jenis_cuti' => $this->input->post('jenis_cuti'),
                     'lokasi_cuti' => $this->input->post('lokasi_cuti'),
@@ -198,6 +215,13 @@ class Cuti extends CI_Controller
             'isi' => 'users/select_datecuti'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
+    }
+    public function get_notif()
+    {
+        $notif = $this->cuti->notif();
+        $result['notifx'] = "hai";
+
+        echo json_encode($result);
     }
 }
 

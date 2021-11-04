@@ -90,7 +90,7 @@
                 <div>
                     <div class="form-group">
                         <input type="text" name="id_users" value="<?= $users->id_users ?>" hidden>
-                        <input type="text" name="nama_divisi" value="<?= $users->nama_divisi ?>" hidden>
+                        <input type="text" name="id_divisi" value="<?= $users->id_divisi ?>" hidden>
 
                     </div>
                 </div>
