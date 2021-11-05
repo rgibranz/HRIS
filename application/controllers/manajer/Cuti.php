@@ -53,6 +53,7 @@ class Cuti extends CI_Controller
                 'id_cuti' => $this->input->post('id_cuti'),
                 'status_manajer' => $this->input->post('status_manajer'),
                 'keterangan_manajer' => $this->input->post('keterangan_manajer'),
+                'status_direktur' => 'diajukan'
             );
             $this->cuti->edit_cuti($data);
             $this->session->set_flashdata('pesan', 'Data manajer Berhasil Di buat');

@@ -123,7 +123,8 @@ class Cuti extends CI_Controller
                     'keterangan_cuti' => $this->input->post('keterangan_cuti'),
                     'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
                     'status_manajer' => 'diajukan',
-                    'status_direktur' => 'diajukan'
+                    'status_direktur' => '',
+
                 );
                 $sisa_data = array(
                     'id_users' => $this->input->post('id_users'),
@@ -170,7 +171,8 @@ class Cuti extends CI_Controller
                     'keterangan_cuti' => $this->input->post('keterangan_cuti'),
                     'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
                     'status_manajer' => 'diajukan',
-                    'status_direktur' => 'diajukan'
+                    'status_direktur' => '',
+
                 );
                 $sisa_data = array(
                     'id_users' => $this->input->post('id_users'),

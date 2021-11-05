@@ -43,28 +43,18 @@
                 <td><?= date('d-m-Y', strtotime($value->tgl_pengajuan));  ?></td>
 
                 <td>
-                  <?php if ($value->status_manajer == "accept") { ?>
-                    <?php if ($value->status_direktur == "accept") { ?>
-                      <p class="text-success">accept</p>
-                    <?php }
-                    if ($value->status_direktur == "diajukan") { ?>
-                      <p class="text-warning">Menungu Konfirmasi Direktur</p>
-                    <?php } ?>
-                  <?php }
-                  if ($value->status_manajer == "reject") { ?>
-                    <?php if ($value->status_direktur == "reject") { ?>
-                      <p class="text-danger">Pengajuan Cuti di Tolak Oleh direktur</p>
-                    <?php } else { ?>
-                      <p class="text-danger">Pengajuan Cuti di Tolak Oleh Manajer</p>
-
-                    <?php } ?>
-                  <?php }
-                  if ($value->status_direktur == "reject") { ?>
-                    <p class="text-danger">Pengajuan Cuti di Tolak Oleh direktur</p>
-                  <?php }
-                  if ($value->status_manajer == "diajukan") { ?>
+                  <?php if ($value->status_manajer == "diajukan") { ?>
                     <p class="text-warning">Menungu Konfirmasi Manajer</p>
-                  <?php  } ?>
+                  <?php } else if ($value->status_manajer == "reject") { ?>
+                    <p class="text-danger">Pengajuan Cuti di Tolak Oleh Manajer</p>
+                  <?php } else if ($value->status_direktur == "diajukan") { ?>
+                    <p class="text-warning">Menungu Konfirmasi direktur</p>
+                  <?php } else if ($value->status_direktur == "accept") { ?>
+                    <p class="text-success">accept</p>
+                  <?php } elseif ($value->status_direktur == "reject") { ?>
+                    <p class="text-danger">Pengajuan Cuti di Tolak Oleh Direktur</p>
+                  <?php } ?>
+
                 </td>
 
                 <td>

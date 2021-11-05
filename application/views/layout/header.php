@@ -46,8 +46,9 @@ if ($this->session->userdata('level_user') == 'Direktur') { ?>
               type: "POST",
               datatype: "json",
               success: function(data) {
-
-                $('#count_direktur').html(data);
+                if (data != 0) {
+                  $('#count_direktur').html(data);
+                }
               }
             })
 
@@ -137,8 +138,9 @@ if ($this->session->userdata('level_user') == 'Direktur') { ?>
                   type: "POST",
                   dataType: "json",
                   success: function(data) {
-
-                    $('#count_manajer').html(data);
+                    if (data != 0) {
+                      $('#count_manajer').html(data);
+                    }
                   }
                 })
 
