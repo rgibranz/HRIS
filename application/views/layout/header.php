@@ -64,20 +64,36 @@ if ($this->session->userdata('level_user') == 'Direktur') { ?>
             success: function(data) {
               var html = '';
               var i;
-              for (i = 0; i < data.length; i++) {
-                html += '<a href="<?= base_url() ?>direktur/cuti/view_cuti/' + data[i].id_cuti + '" class="dropdown-item">' +
+              if (data == 0) {
+                html += '<a href="#" class="dropdown-item">' +
                   '<div class="media">' +
-                  '<img src="<?= base_url() ?>assets/gambar/user/' + data[i].img + ' " class="img-size-50 img-circle mr-3">' +
                   '<div class="media-body">' +
                   '<h3 class="dropdown-item-title">' +
-                  '<p>' + data[i].nama_users + '<p>' +
                   '</h3>' +
-                  '<p class="text-sm">Mengajukan Cuti</p>' +
+                  '<p class="text-sm">Tidak Ada Pengajuan cuti</p>' +
                   '</div>' +
                   '</div>' +
                   '</i>' +
                   '<div class="dropdown-divider">' +
                   '</div>';
+              } else {
+                for (i = 0; i < data.length; i++) {
+
+                  html += '<a href="<?= base_url() ?>direktur/cuti/view_cuti/' + data[i].id_cuti + '" class="dropdown-item">' +
+                    '<div class="media">' +
+                    '<img src="<?= base_url() ?>assets/gambar/user/' + data[i].img + ' " class="img-size-50 img-circle mr-3">' +
+                    '<div class="media-body">' +
+                    '<h3 class="dropdown-item-title">' +
+                    '<p>' + data[i].nama_users + '<p>' +
+                    '</h3>' +
+                    '<p class="text-sm">Mengajukan Cuti</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</i>' +
+                    '<div class="dropdown-divider">' +
+                    '</div>';
+
+                }
               }
               $('#show_data').html(html);
             }
@@ -156,20 +172,34 @@ if ($this->session->userdata('level_user') == 'Direktur') { ?>
                 success: function(data) {
                   var html = '';
                   var i;
-                  for (i = 0; i < data.length; i++) {
-                    html += '<a href="<?= base_url() ?>manajer/cuti/view_cuti/' + data[i].id_cuti + '" class="dropdown-item">' +
+                  if (data == 0) {
+                    html += '<a href="#" class="dropdown-item">' +
                       '<div class="media">' +
-                      '<img src="<?= base_url() ?>assets/gambar/user/' + data[i].img + ' " class="img-size-50 img-circle mr-3">' +
                       '<div class="media-body">' +
                       '<h3 class="dropdown-item-title">' +
-                      '<p>' + data[i].nama_users + '<p>' +
                       '</h3>' +
-                      '<p class="text-sm">Mengajukan Cuti</p>' +
+                      '<p class="text-sm">Tidak Ada Pengajuan cuti</p>' +
                       '</div>' +
                       '</div>' +
                       '</i>' +
                       '<div class="dropdown-divider">' +
                       '</div>';
+                  } else {
+                    for (i = 0; i < data.length; i++) {
+                      html += '<a href="<?= base_url() ?>manajer/cuti/view_cuti/' + data[i].id_cuti + '" class="dropdown-item">' +
+                        '<div class="media">' +
+                        '<img src="<?= base_url() ?>assets/gambar/user/' + data[i].img + ' " class="img-size-50 img-circle mr-3">' +
+                        '<div class="media-body">' +
+                        '<h3 class="dropdown-item-title">' +
+                        '<p>' + data[i].nama_users + '<p>' +
+                        '</h3>' +
+                        '<p class="text-sm">Mengajukan Cuti</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</i>' +
+                        '<div class="dropdown-divider">' +
+                        '</div>';
+                    }
                   }
                   $('#show_data').html(html);
                 }
