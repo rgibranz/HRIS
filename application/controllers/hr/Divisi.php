@@ -98,6 +98,12 @@ class Divisi extends CI_Controller
             'required',
             array('required' => '%s Harus Diisi !!!')
         );
+        $this->form_validation->set_rules(
+            'level',
+            'role user',
+            'required',
+            array('required' => '%s Harus Dipilih')
+        );
 
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         if ($this->form_validation->run() == FALSE) {
