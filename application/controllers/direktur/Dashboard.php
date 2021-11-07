@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->model('m_users', 'users');
         if ($this->session->userdata('level_user') != 'Direktur') {
-            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman Direktur")</script>';
 
             if ($this->session->userdata('level_user') == 'Direktur') {
                 redirect('direktur');

@@ -13,7 +13,7 @@ class Biodata extends CI_Controller
         $this->load->model('m_cuti', 'cuti');
 
         if ($this->session->userdata('level_user') != 'Karyawan') {
-            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman Karyawan")</script>';
 
             if ($this->session->userdata('level_user') == 'Direktur') {
                 redirect('direktur');

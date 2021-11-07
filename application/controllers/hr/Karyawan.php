@@ -23,9 +23,6 @@ class Karyawan extends CI_Controller
             if ($this->session->userdata('level_user') == 'Manajer') {
                 redirect('manajer');
             }
-            if ($this->session->userdata('level_user') == 'HR') {
-                redirect('hr');
-            }
         }
     }
 
@@ -432,6 +429,23 @@ class Karyawan extends CI_Controller
         );
 
         $this->users->tambah_cuti($data);
+        redirect('hr/karyawan');
+    }
+
+
+    public function reset()
+    {
+        $users = $this->users->get_all_data();
+        foreach ($users as $key) {
+            $sisa_cuti = intval($key->sisa_cuti);
+
+            $data = array(
+                'id_users' => $key->id_users,
+                'sisa_cuti' => $sisa_cuti,
+            );
+
+            $this->users->reset($data);
+        }
         redirect('hr/karyawan');
     }
 }

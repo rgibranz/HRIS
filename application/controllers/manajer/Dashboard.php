@@ -8,6 +8,22 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_users', 'users');
+        if ($this->session->userdata('level_user') != 'Manajer') {
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman Manajer")</script>';
+
+            if ($this->session->userdata('level_user') == 'Direktur') {
+                redirect('direktur');
+            }
+            if ($this->session->userdata('level_user') == 'Karyawan') {
+                redirect('karyawan');
+            }
+            if ($this->session->userdata('level_user') == 'Manajer') {
+                redirect('manajer');
+            }
+            if ($this->session->userdata('level_user') == 'HR') {
+                redirect('hr');
+            }
+        }
     }
 
     public function index()

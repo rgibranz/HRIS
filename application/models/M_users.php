@@ -76,6 +76,12 @@ class M_users extends CI_Model
         $query = $this->db->query("UPDATE `users` SET `sisa_cuti`= `sisa_cuti` - $data[kurangi_cuti] WHERE id_users = $data[id_users]");
         return $query;
     }
+
+    public function reset($data)
+    {
+        $query = $this->db->query("UPDATE `users` SET `sisa_cuti`= `sisa_cuti` - $data[sisa_cuti] WHERE id_users = $data[id_users]");
+        return $query;
+    }
 }
 
 /* End of file .php */

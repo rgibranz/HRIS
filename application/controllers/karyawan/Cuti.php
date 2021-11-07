@@ -88,7 +88,6 @@ class Cuti extends CI_Controller
             $cek = $this->db->order_by('id_cuti', 'desc')->get_where('cuti', ['id_users' => $this->session->userdata('id_users')], 1)->row_array();
             $cek_menajer = $cek['status_manajer'];
             $cek_direktur = $cek['status_direktur'];
-
             if ($cek_menajer == "reject" || $cek_menajer == "") {
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
@@ -136,7 +135,7 @@ class Cuti extends CI_Controller
                 $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
                 redirect('karyawan/cuti/list_cuti');
             }
-            if ($cek_direktur != 'diajukan') {
+            if ($cek_direktur != '') {
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
                 $kurang = $lama_cuti - 1;
@@ -184,6 +183,7 @@ class Cuti extends CI_Controller
                 $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
                 redirect('karyawan/cuti/list_cuti');
             }
+
             $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
             redirect('karyawan/cuti/ajukan_cuti');
         }

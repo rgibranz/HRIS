@@ -50,7 +50,7 @@
             <p></p>
             <p>Mengetauhi</p>
             <br>
-            <br>
+            <P style="color: green;"> APPROVE</P>
             <P><?= $profile->nama_direktur ?></P>
             <div class="kecil">direktur</div>
         </div>
@@ -58,6 +58,7 @@
             <br>
             <br>
             <p>Mengajukan</p>
+            <br>
             <br>
             <br>
             <P><?= $profile->nama_users ?></P>

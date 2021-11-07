@@ -126,6 +126,8 @@ class M_cuti extends CI_Model
     }
 
 
+
+
     public function countnotif_dikretur()
     {
         $this->db->select('*');

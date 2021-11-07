@@ -38,7 +38,7 @@
                         <p class="text-warning">Menungu Konfirmasi dari direktur</p>
                       <?php } else if ($value->status_direktur == "accept") { ?>
                         <p class="text-success">Permintaan Cuti telah di accept oleh direktur</p>
-                      <?php } else if ($value->staatus_direktur == "reject") { ?>
+                      <?php } else if ($value->status_direktur == "reject") { ?>
                         <p class="text-danger">Permintaan Cuti telah di reject oleh direktur</p>
                       <?php } ?>
                     <?php } else if ($value->status_manajer == 'accept') { ?>

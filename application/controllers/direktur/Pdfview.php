@@ -11,12 +11,9 @@ class Pdfview extends CI_Controller
         $this->load->model('m_users', 'users');
         $this->load->model('m_cuti', 'cuti');
 
-        if ($this->session->userdata('level_user') != 'HR') {
-            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
+        if ($this->session->userdata('level_user') != 'Direktur') {
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman Direktur")</script>';
 
-            if ($this->session->userdata('level_user') == 'Direktur') {
-                redirect('direktur');
-            }
             if ($this->session->userdata('level_user') == 'Karyawan') {
                 redirect('karyawan');
             }
@@ -29,23 +26,23 @@ class Pdfview extends CI_Controller
         }
     }
 
-    public function index()
+    public function view($id_cuti = null)
     {
-        $get_data = $this->db->get_where('cuti', ['id_cuti' => $this->input->post('id_cuti')])->row_array();
+        $get_data = $this->db->get_where('cuti', ['id_cuti' => $id_cuti])->row_array();
 
         $data = array(
             'title' => "Form Cuti",
-            'profile' => $this->cuti->get_data($get_data['id_cuti']),
+            'profile' => $this->cuti->get_data($id_cuti),
         );
         // $this->data['title'] = "Form Cuti " . $get_data['nama_users'];
         // filename dari pdf ketika didownload
-        $file_pdf = "Form_Cuti_" . $get_data['nama_users'];
+        $file_pdf = "Form_Cuti_" . $get_data['nama_users'] . "_" . date('d-m-y');
         // setting paper
         $paper = 'A4';
         //orientasi paper potrait / landscape
         $orientation = "portrait";
 
-        $html = $this->load->view('hr/cuti_pdf', $data, true);
+        $html = $this->load->view('direktur/cuti_pdf', $data, true);
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }

@@ -20,6 +20,9 @@
           <div class="col-2 mr-5">
             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#kurangi_cuti">Kurangi Cuti</button>
           </div>
+          <div class="col-2 mr-5">
+            <a href="<?php base_url('cuti/reset') ?>" class="btn btn-danger btn-sm">reset cuti</a>
+          </div>
         </div>
 
         <!--Table-->

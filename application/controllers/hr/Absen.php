@@ -23,9 +23,6 @@ class Absen extends CI_Controller
             if ($this->session->userdata('level_user') == 'Manajer') {
                 redirect('manajer');
             }
-            if ($this->session->userdata('level_user') == 'HR') {
-                redirect('hr');
-            }
         }
     }
 
