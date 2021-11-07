@@ -35,7 +35,7 @@ if ($tanggalx[0] != $tahun) {
             .thb {
                 margin-top: 50px;
                 border: 1px solid #999;
-                margin-left: 60px;
+                margin-left: 50px;
                 border-collapse: collapse;
             }
 
@@ -97,26 +97,27 @@ if ($tanggalx[0] != $tahun) {
                     foreach ($list_cuti as $key => $value) { ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= $value->keterangan_cuti ?></td>
+                            <td><?= $value->jenis_cuti ?></td>
                             <td><?= $value->lama_cuti ?></td>
-                            <?php if ($value->status_manajer != "reject") { ?>
-                                <td><?= $value->sisa_cuti ?></td>
-                                <td><?= $value->status_manajer ?></td>
-                            <?php } else { ?>
+                            <?php if ($value->status_manajer == "accept") { ?>
+                                <?php if ($value->status_direktur == "reject") { ?>
+                                    <td><?= $value->cuti_awal ?></td>
+                                    <td><?= $value->status_direktur ?> oleh direktur</td>
+                                <?php } else { ?>
+                                    <td><?= $value->sisa_cuti ?></td>
+                                    <td><?= $value->status_manajer ?></td>
+                                <?php } ?>
+                            <?php }
+                            if ($value->status_manajer == "reject") { ?>
                                 <td><?= $value->cuti_awal ?></td>
-                                <td><?= $value->status_manajer ?></td>
+                                <td><?= $value->status_manajer ?> oleh manajer</td>
+                            <?php } ?>
                         </tr>
-                <?php }
-                        } ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
-
-
-
-
-
     </body>
 
     </html>
-<?php  } ?>
+<?php } ?>
