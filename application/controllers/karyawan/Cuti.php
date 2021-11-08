@@ -11,6 +11,23 @@ class Cuti extends CI_Controller
         parent::__construct();
         $this->load->model('m_users', 'users');
         $this->load->model('m_cuti', 'cuti');
+
+        if ($this->session->userdata('level_user') != 'Karyawan') {
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
+
+            if ($this->session->userdata('level_user') == 'Direktur') {
+                redirect('direktur');
+            }
+            if ($this->session->userdata('level_user') == 'Karyawan') {
+                redirect('karyawan');
+            }
+            if ($this->session->userdata('level_user') == 'Manajer') {
+                redirect('manajer');
+            }
+            if ($this->session->userdata('level_user') == 'HR') {
+                redirect('hr');
+            }
+        }
     }
 
     public function list_cuti()
@@ -71,7 +88,6 @@ class Cuti extends CI_Controller
             $cek = $this->db->order_by('id_cuti', 'desc')->get_where('cuti', ['id_users' => $this->session->userdata('id_users')], 1)->row_array();
             $cek_menajer = $cek['status_manajer'];
             $cek_direktur = $cek['status_direktur'];
-
             if ($cek_menajer == "reject" || $cek_menajer == "") {
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
@@ -94,7 +110,7 @@ class Cuti extends CI_Controller
                 $data = array(
                     'id_users' => $this->input->post('id_users'),
                     'nama_users' => $this->input->post('nama_users'),
-                    'nama_divisi' => $this->input->post('nama_divisi'),
+                    'id_divisi' => $this->input->post('id_divisi'),
                     'mulai_bekerja' => $mb_tgl,
                     'jenis_cuti' => $this->input->post('jenis_cuti'),
                     'lokasi_cuti' => $this->input->post('lokasi_cuti'),
@@ -106,7 +122,8 @@ class Cuti extends CI_Controller
                     'keterangan_cuti' => $this->input->post('keterangan_cuti'),
                     'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
                     'status_manajer' => 'diajukan',
-                    'status_direktur' => 'diajukan'
+                    'status_direktur' => '',
+
                 );
                 $sisa_data = array(
                     'id_users' => $this->input->post('id_users'),
@@ -118,7 +135,7 @@ class Cuti extends CI_Controller
                 $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
                 redirect('karyawan/cuti/list_cuti');
             }
-            if ($cek_direktur != 'diajukan') {
+            if ($cek_direktur != '') {
                 $sisa_cuti = $this->input->post('sisa_cuti');
                 $lama_cuti = $this->input->post('lama_cuti');
                 $kurang = $lama_cuti - 1;
@@ -141,7 +158,7 @@ class Cuti extends CI_Controller
                 $data = array(
                     'id_users' => $this->input->post('id_users'),
                     'nama_users' => $this->input->post('nama_users'),
-                    'nama_divisi' => $this->input->post('nama_divisi'),
+                    'id_divisi' => $this->input->post('id_divisi'),
                     'mulai_bekerja' => $mb_tgl,
                     'jenis_cuti' => $this->input->post('jenis_cuti'),
                     'lokasi_cuti' => $this->input->post('lokasi_cuti'),
@@ -153,7 +170,8 @@ class Cuti extends CI_Controller
                     'keterangan_cuti' => $this->input->post('keterangan_cuti'),
                     'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
                     'status_manajer' => 'diajukan',
-                    'status_direktur' => 'diajukan'
+                    'status_direktur' => '',
+
                 );
                 $sisa_data = array(
                     'id_users' => $this->input->post('id_users'),
@@ -165,6 +183,7 @@ class Cuti extends CI_Controller
                 $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
                 redirect('karyawan/cuti/list_cuti');
             }
+
             $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
             redirect('karyawan/cuti/ajukan_cuti');
         }
@@ -198,6 +217,13 @@ class Cuti extends CI_Controller
             'isi' => 'users/select_datecuti'
         );
         $this->load->view('layout/wrapper', $data, FALSE);
+    }
+    public function get_notif()
+    {
+        $notif = $this->cuti->notif();
+        $result['notifx'] = "hai";
+
+        echo json_encode($result);
     }
 }
 

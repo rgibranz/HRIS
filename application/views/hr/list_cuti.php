@@ -44,15 +44,20 @@
                 </td>
 
                 <td>
-                  <?php if ($value->status_direktur == "accept") { ?>
-                    <p class="text-success"><?= $value->status_direktur; ?></p>
-                  <?php }
-                  if ($value->status_direktur == "reject") { ?>
-                    <p class="text-danger"><?= $value->status_direktur; ?></p>
-                  <?php }
-                  if ($value->status_direktur == "diajukan") { ?>
-                    <p class="text-warning">Menungu Konfirmasi direktur</p>
-                  <?php  } ?>
+                  <?php if ($value->status_manajer == "accept") { ?>
+                    <?php if ($value->status_direktur == "diajukan") { ?>
+                      <p class="text-warning">Menungu Konfirmasi Direktur</p>
+                    <?php } else if ($value->status_direktur == "reject") { ?>
+                      <p class="text-danger"><?= $value->status_direktur; ?></p>
+                    <?php } else if ($value->status_direktur == "accept") { ?>
+                      <p class="text-success"><?= $value->status_direktur; ?></p>
+                    <?php } ?>
+                    <!--end kondisi accept-->
+                  <?php } else if ($value->status_manajer == "reject") { ?>
+                    <p class="text-danger">Pengajuan Cuti tidak di tolak Manajer</p>
+                  <?php } else if ($value->status_manajer == "diajukan") { ?>
+                    <p class="text-warning">Menungu Konfirmasi Manajer</p>
+                  <?php } ?>
                 </td>
 
                 <td> <a href="<?= base_url('hr/cuti/view_cuti/' . $value->id_cuti) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
@@ -66,6 +71,17 @@
     </div>
 
     <!-- model Delete-->
+    <?php if ($this->session->flashdata('pesan')) : ?>
+      <script>
+        swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Cuti Berhasil di ajukan",
+          button: false,
+          timer: 3000,
+        });
+      </script>
+    <?php endif; ?>
 
     <!--End Modal Delete-->
 

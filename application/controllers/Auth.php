@@ -36,6 +36,7 @@ class Auth extends CI_Controller
                 $nama_user = $cek['nama_users'];
 
                 $data['id_users']   = $cek['id_users'];
+                $data['id_divisi']   = $cek['id_divisi'];
                 $data['email']      = $cek['email'];
                 $data['level_user'] = $level;
                 $data['nama_users'] = $nama_user;

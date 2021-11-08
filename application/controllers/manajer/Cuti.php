@@ -11,6 +11,22 @@ class Cuti extends CI_Controller
         parent::__construct();
         $this->load->model('m_users', 'users');
         $this->load->model('m_cuti', 'cuti');
+        if ($this->session->userdata('level_user') != 'Manajer') {
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman Manajer")</script>';
+
+            if ($this->session->userdata('level_user') == 'Direktur') {
+                redirect('direktur');
+            }
+            if ($this->session->userdata('level_user') == 'Karyawan') {
+                redirect('karyawan');
+            }
+            if ($this->session->userdata('level_user') == 'Manajer') {
+                redirect('manajer');
+            }
+            if ($this->session->userdata('level_user') == 'HR') {
+                redirect('hr');
+            }
+        }
     }
 
 
@@ -53,6 +69,7 @@ class Cuti extends CI_Controller
                 'id_cuti' => $this->input->post('id_cuti'),
                 'status_manajer' => $this->input->post('status_manajer'),
                 'keterangan_manajer' => $this->input->post('keterangan_manajer'),
+                'status_direktur' => 'diajukan'
             );
             $this->cuti->edit_cuti($data);
             $this->session->set_flashdata('pesan', 'Data manajer Berhasil Di buat');
@@ -118,63 +135,59 @@ class Cuti extends CI_Controller
             $this->load->view('layout/wrapper', $data, FALSE);
         } else {
             $cek = $this->db->order_by('id_cuti', 'desc')->get_where('cuti', ['id_users' => $this->session->userdata('id_users')], 1)->row_array();
-            $post_id = $this->input->post('id_users');
+            if ($cek['status_direktur'] != 'diajukan') {
+                $sisa_cuti = $this->input->post('sisa_cuti');
+                $lama_cuti = $this->input->post('lama_cuti');
+                $kurang = $lama_cuti - 1;
+                $hasil = $sisa_cuti - $lama_cuti;
+                if ($sisa_cuti < $lama_cuti) {
 
-            if ($cek['id_users'] ==  $post_id || $cek['id_users'] == null) {
-                if ($cek['status_direktur'] != 'diajukan' || $cek['status_direktur'] == NULL) {
-                    $sisa_cuti = $this->input->post('sisa_cuti');
-                    $lama_cuti = $this->input->post('lama_cuti');
-                    $kurang = $lama_cuti - 1;
-                    $hasil = $sisa_cuti - $lama_cuti;
-                    if ($sisa_cuti < $lama_cuti) {
-
-                        $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
-                        redirect('manajer/cuti/ajukan_cuti');
-                    }
-                    $sisa_cuti = $this->input->post('sisa_cuti');
-                    $lama_cuti = $this->input->post('lama_cuti');
-                    $hasil = $sisa_cuti - $lama_cuti;
-
-                    $row_mb_tgl = $this->input->post("mulai_bekerja");
-                    $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
-
-                    $row_m_tgl = $this->input->post("mulai_tanggal");
-                    $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
-                    $s_tgl = date('Y-m-d', strtotime('+' . $kurang . 'days', strtotime($m_tgl)));
-                    // $row_s_tgl = $this->input->post("sampai_tanggal");
-                    // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
-
-                    $data = array(
-                        'id_users' => $this->input->post('id_users'),
-                        'nama_users' => $this->input->post('nama_users'),
-                        'nama_divisi' => $this->input->post('nama_divisi'),
-                        'mulai_bekerja' => $mb_tgl,
-                        'jenis_cuti' => $this->input->post('jenis_cuti'),
-                        'lokasi_cuti' => $this->input->post('lokasi_cuti'),
-                        'lama_cuti' => $lama_cuti,
-                        'sisa_cuti' => $hasil,
-                        'cuti_awal' => $sisa_cuti,
-                        'mulai_tanggal' => $m_tgl,
-                        'sampai_tanggal' => $s_tgl,
-                        'keterangan_cuti' => $this->input->post('keterangan_cuti'),
-                        'keterangan_manajer' => $this->input->post('keterangan_cuti'),
-                        'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
-                        'status_manajer' => 'accept',
-                        'status_direktur' => 'diajukan'
-                    );
-                    $sisa_data = array(
-                        'id_users' => $this->input->post('id_users'),
-                        'sisa_cuti' => $hasil,
-                    );
-
-                    $this->cuti->add($data);
-                    $this->cuti->edit($sisa_data);
-                    $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
-                    redirect('manajer/cuti/');
+                    $this->session->set_flashdata('invalidcuti', 'Cuti Berhasil di ajukan');
+                    redirect('manajer/cuti/ajukan_cuti');
                 }
-                $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
-                redirect('manajer/cuti/ajukan_cuti');
+                $sisa_cuti = $this->input->post('sisa_cuti');
+                $lama_cuti = $this->input->post('lama_cuti');
+                $hasil = $sisa_cuti - $lama_cuti;
+
+                $row_mb_tgl = $this->input->post("mulai_bekerja");
+                $mb_tgl = date_format(new DateTime($row_mb_tgl), "Y-m-d");
+
+                $row_m_tgl = $this->input->post("mulai_tanggal");
+                $m_tgl = date_format(new DateTime($row_m_tgl), "Y-m-d");
+                $s_tgl = date('Y-m-d', strtotime('+' . $kurang . 'days', strtotime($m_tgl)));
+                // $row_s_tgl = $this->input->post("sampai_tanggal");
+                // $s_tgl = date_format(new DateTime($row_s_tgl), "Y-m-d");
+
+                $data = array(
+                    'id_users' => $this->input->post('id_users'),
+                    'nama_users' => $this->input->post('nama_users'),
+                    'id_divisi' => $this->input->post('id_divisi'),
+                    'mulai_bekerja' => $mb_tgl,
+                    'jenis_cuti' => $this->input->post('jenis_cuti'),
+                    'lokasi_cuti' => $this->input->post('lokasi_cuti'),
+                    'lama_cuti' => $lama_cuti,
+                    'sisa_cuti' => $hasil,
+                    'cuti_awal' => $sisa_cuti,
+                    'mulai_tanggal' => $m_tgl,
+                    'sampai_tanggal' => $s_tgl,
+                    'keterangan_cuti' => $this->input->post('keterangan_cuti'),
+                    'keterangan_manajer' => $this->input->post('keterangan_cuti'),
+                    'tgl_pengajuan' => $this->input->post('tgl_pengajuan'),
+                    'status_manajer' => 'accept',
+                    'status_direktur' => 'diajukan'
+                );
+                $sisa_data = array(
+                    'id_users' => $this->input->post('id_users'),
+                    'sisa_cuti' => $hasil,
+                );
+
+                $this->cuti->add($data);
+                $this->cuti->edit($sisa_data);
+                $this->session->set_flashdata('pesan', 'Cuti Berhasil di ajukan');
+                redirect('manajer/cuti/');
             }
+            $this->session->set_flashdata('masihjalan', 'Masih ada pengajuan Yang di proses');
+            redirect('manajer/cuti/ajukan_cuti');
         }
     }
 

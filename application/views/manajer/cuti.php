@@ -127,7 +127,6 @@
                 <?php if ($list_cuti->status_manajer != "reject" && $list_cuti->status_manajer != "accept") {
                 ?>
                     <div class="col-md-6 text-left">
-                        <a href="<?= base_url('manajer/dashboard') ?>" class=" btn btn-outline-secondary">Batal</a>
                     </div>
                     <div class="col-md-6 text-right">
                         <input value="reject" name="status_manajer" type="submit" class="btn btn-outline-danger"></input>

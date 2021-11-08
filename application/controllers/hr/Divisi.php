@@ -11,6 +11,20 @@ class Divisi extends CI_Controller
         parent::__construct();
         $this->load->model('m_divisi');
         $this->load->model('m_users', 'users');
+
+        if ($this->session->userdata('level_user') != 'HR') {
+            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
+
+            if ($this->session->userdata('level_user') == 'Direktur') {
+                redirect('direktur');
+            }
+            if ($this->session->userdata('level_user') == 'Karyawan') {
+                redirect('karyawan');
+            }
+            if ($this->session->userdata('level_user') == 'Manajer') {
+                redirect('manajer');
+            }
+        }
     }
 
     public function index()
@@ -83,6 +97,12 @@ class Divisi extends CI_Controller
             'email',
             'required',
             array('required' => '%s Harus Diisi !!!')
+        );
+        $this->form_validation->set_rules(
+            'level',
+            'role user',
+            'required',
+            array('required' => '%s Harus Dipilih')
         );
 
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
