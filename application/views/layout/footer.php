@@ -20,10 +20,14 @@
 <footer class="main-footer">
   <!-- To the right -->
   <div class="float-right d-none d-sm-inline">
-    Anything you want
+    HRIS
   </div>
   <!-- Default to the left -->
-  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  <?php
+  $ctahun = explode("-", date("d-m-Y"));
+
+  ?>
+  <strong>Copyright &copy; <?= $ctahun[2]; ?> Korpora Trainindo Consultant.</strong>
 </footer>
 </div>
 <!-- ./wrapper -->
@@ -63,7 +67,6 @@
 
       Swal.fire({
         title: 'Yakin ingin Logout?',
-        imageUrl: '<?= base_url() ?>assets/gambar/icon/logout.jpg',
         imageWidth: 150,
         imageAlt: 'Custom image',
         showCancelButton: true,

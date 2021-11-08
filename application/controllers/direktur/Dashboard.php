@@ -36,7 +36,7 @@ class Dashboard extends CI_Controller
         $level = $this->session->userdata('level_user');
         if ($level == 'Direktur') {
             $data = array(
-                'title' => 'Dasboard',
+                'title' => 'Dashboard',
                 'users' => $this->users->get_data($id_users),
                 'isi' => 'direktur/dasboard'
             );

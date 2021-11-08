@@ -239,7 +239,7 @@
                             <a href="<?= base_url('karyawan/biodata/edit_biodata') ?>" class="nav-link <?php if ($this->uri->segment(3) == 'edit_biodata') {
                                                                                                             echo "active";
                                                                                                         } ?>"> <i class="far fa-circle nav-icon"></i>
-                                <p>Edit Cuti</p>
+                                <p>Edit Biodata</p>
                             </a>
                         </li>
                     </ul>
