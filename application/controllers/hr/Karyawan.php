@@ -153,7 +153,6 @@ class Karyawan extends CI_Controller
                     'job' => $this->input->post('job'),
                     'password' => $password,
                     'level' => $this->input->post('level'),
-                    'gaji' => $this->input->post('gaji'),
                     'img' => $upload_data['uploads']['file_name'],
                     'sisa_cuti' => $this->input->post('sisa_cuti')
                 );
@@ -260,7 +259,6 @@ class Karyawan extends CI_Controller
                         'status_users' => $this->input->post('status_users'),
                         'job' => $this->input->post('job'),
                         'level' => $this->input->post('level'),
-                        'gaji' => $this->input->post('gaji'),
                     );
                     $this->users->edit($data);
                     $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
@@ -282,7 +280,6 @@ class Karyawan extends CI_Controller
                         'status_users' => $this->input->post('status_users'),
                         'job' => $this->input->post('job'),
                         'level' => $this->input->post('level'),
-                        'gaji' => $this->input->post('gaji'),
                         'password' => $password,
                     );
                     $this->users->edit($data);
