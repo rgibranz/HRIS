@@ -105,12 +105,15 @@ if ($tanggalx[0] != $tahun) {
                                     <td><?= $value->status_direktur ?> oleh direktur</td>
                                 <?php } else { ?>
                                     <td><?= $value->sisa_cuti ?></td>
-                                    <td><?= $value->status_manajer ?></td>
+                                    <td><?= $value->status_direktur ?></td>
                                 <?php } ?>
                             <?php }
                             if ($value->status_manajer == "reject") { ?>
                                 <td><?= $value->cuti_awal ?></td>
                                 <td><?= $value->status_manajer ?> oleh manajer</td>
+                            <?php } else if ($value->status_manajer == "diajukan") { ?>
+                                <td><?= $value->sisa_cuti ?></td>
+                                <td><?= $value->status_manajer ?></td>
                             <?php } ?>
                         </tr>
                     <?php } ?>
