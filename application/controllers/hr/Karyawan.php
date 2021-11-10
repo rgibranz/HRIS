@@ -313,7 +313,6 @@ class Karyawan extends CI_Controller
                         'status_users' => $this->input->post('status_users'),
                         'job' => $this->input->post('job'),
                         'level' => $this->input->post('level'),
-                        'gaji' => $this->input->post('gaji'),
                         'img' => $upload_data['uploads']['file_name'],
                     );
                     $this->users->edit($data);
@@ -336,7 +335,6 @@ class Karyawan extends CI_Controller
                         'status_users' => $this->input->post('status_users'),
                         'job' => $this->input->post('job'),
                         'level' => $this->input->post('level'),
-                        'gaji' => $this->input->post('gaji'),
                         'password' => $password,
                         'img' => $upload_data['uploads']['file_name'],
                     );

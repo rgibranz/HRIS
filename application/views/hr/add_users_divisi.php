@@ -134,12 +134,12 @@
           <div class="col-md-3">
 
             <div class="form-group text-center">
-              <img src="" alt="" width="200px" height="200px" id="gambar_load">
+              <img src="<?= base_url() ?>assets/gambar/icon/default-profile.png" alt="" width="200px" height="200px" id="gambar_load">
             </div>
 
             <div class="form-group">
               <label for="exampleInputFile">Upload Gambar</label>
-              <input type="file" class="form-control" id="preview_gambar" name="img" required>
+              <input type="file" class="form-control" id="preview_gambar" name="img">
             </div>
 
           </div>

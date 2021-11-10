@@ -151,7 +151,7 @@
                         <div class="row m-l-0 m-r-0">
                             <div class="col-sm-4 bg-c-lite-green user-profile">
                                 <div class="card-block text-center text-white">
-                                    <div class="m-b-25"> <img src="<?= base_url('assets/gambar/user/' . $users->img) ?>" class="img-circle elevation-2" height="100px" alt="User-Profile-Image"> </div>
+                                    <div class="m-b-25"> <img src="<?= base_url('assets/gambar/user/' . $users->img) ?>" class="img-circle elevation-2" height="100px" width="100px" alt="User-Profile-Image"> </div>
                                     <h6 class="f-w-600"><?= $users->nama_users ?></h6>
                                     <p><?= $users->job ?></p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                 </div>
