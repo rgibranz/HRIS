@@ -23,16 +23,15 @@ class Dashboard extends CI_Controller
             }
             if ($this->session->userdata('level_user') == 'HR') {
                 redirect('hr');
-            }else {
-                redirect('auth/login');
             }
         }
 
         $GET_HBD = $this->users->get_all_data();
         foreach ($GET_HBD as $key => $value) {
-            if($value->tgl_lahir == date('Y-m-d')){
+            if ($value->tgl_lahir == date('Y-m-d')) {
                 $HBD['user_hbd'] = $value->nama_users;
-                $this->session->set_userdata($HBD); 
+                $HBD['img_hbd'] = $value->img;
+                $this->session->set_userdata($HBD);
                 $this->session->set_flashdata('HBD', 'Selamat ulang tahun');
             }
         }

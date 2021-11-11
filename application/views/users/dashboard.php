@@ -196,14 +196,14 @@
 </div>
 <?php if ($this->session->flashdata('HBD')) : ?>
     <script>
-      swal.fire({
-        imageUrl: '<?= base_url() ?>assets/gambar/icon/birthday-icon-10201.gif',
-        imageWidth: 150,
-        title: "Ada yang Ulang Tahun Nih",
-        text: "Hari ini Ulang Tahun <?= $this->session->userdata('user_hbd')?> loh ",
-        button: false,
-        timer: 5000,
-      });
+        swal.fire({
+            title: "Ada yang Ulang Tahun Nih",
+            imageUrl: "<?= base_url() ?>assets/gambar/user/<?= $this->session->userdata('img_hbd') ?>",
+            imageWidth: 150,
+            text: "Hari ini Ulang Tahun <?= $this->session->userdata('user_hbd') ?> loh ",
+            button: false,
+            timer: 5000,
+        });
     </script>
 <?php endif; ?>
 
