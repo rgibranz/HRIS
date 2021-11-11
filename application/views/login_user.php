@@ -49,6 +49,12 @@
                     ';
                     echo $this->session->flashdata('pesan');
                     echo '</div>';
+                }if ($this->session->flashdata('tolak')){
+                    echo '<div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    ';
+                    echo $this->session->flashdata('tolak');
+                    echo '</div>';
                 }
 
                 echo form_open('auth/login')
