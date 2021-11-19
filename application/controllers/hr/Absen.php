@@ -11,19 +11,7 @@ class Absen extends CI_Controller
         $this->load->model('m_users', 'users');
         $this->load->model('m_absen', 'absen');
 
-        if ($this->session->userdata('level_user') != 'HR') {
-            echo '<script>alert("Anda Tidak Memiliki Akses Ke Halaman HR")</script>';
-
-            if ($this->session->userdata('level_user') == 'Direktur') {
-                redirect('direktur');
-            }
-            if ($this->session->userdata('level_user') == 'Karyawan') {
-                redirect('karyawan');
-            }
-            if ($this->session->userdata('level_user') == 'Manajer') {
-                redirect('manajer');
-            }
-        }
+        checkauth($this->session->userdata('level_user'), 'HR');
     }
 
     public function index()
