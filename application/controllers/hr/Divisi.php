@@ -92,6 +92,8 @@ class Divisi extends CI_Controller
             'required',
             array('required' => '%s Harus Dipilih')
         );
+        $this->form_validation->set_rules('email', 'email', 'is_unique[users.email]', array('is_unique' => '%s Email sudah terdaftar, silahkan masukan email lain'));
+
 
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         if ($this->form_validation->run() == FALSE) {
@@ -110,15 +112,27 @@ class Divisi extends CI_Controller
             $this->upload->initialize($config);
             $field_name = "img";
             if (!$this->upload->do_upload($field_name)) {
-                $data = array(
-                    'title' => 'Tambah users',
-                    'users' => $this->users->get_data($this->session->userdata('id_users')),
-                    'divisi' => $this->m_divisi->get_all_data(),
-                    'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'hr/add_users_divisi'
-                );
+                $data['nama_users']      = $this->input->post('nama_users');
+                $data['mulai_bekerja']   = $this->input->post('mulai_bekerja');
+                $data['tmpt_lahir']      = $this->input->post('tmpt_lahir');
+                $data['tgl_lahir']       = $this->input->post('tgl_lahir');
+                $data['alamat_ktp']      = $this->input->post('alamat_ktp');
+                $data['alamat_domisili'] = $this->input->post('alamat_domisili');
+                $data['no_hp']           = $this->input->post('no_hp');
+                $data['no_hp_d']         = $this->input->post('no_hp_d');
+                $data['email']           = $this->input->post('email');
+                $data['id_divisi']       = $id_divisi;
+                $data['status_users']    = $this->input->post('status_users');
+                $data['job']             = $this->input->post('job');
+                $data['password']        = $password;
+                $data['level']           = $this->input->post('level');
+                $data['gaji']            = $this->input->post('gaji');
+                $data['img']             = "default-profile.png";
+                $data['sisa_cuti']       = $this->input->post('sisa_cuti');
 
-                $this->load->view('layout/wrapper', $data, FALSE);
+                $this->users->add($data);
+                $this->session->set_flashdata('pesan', 'Data users Berhasil Di buat');
+                redirect('hr/divisi/users/' . $id_divisi);
             } else {
 
                 $upload_data = array('uploads' => $this->upload->data());

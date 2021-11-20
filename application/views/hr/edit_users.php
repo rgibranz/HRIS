@@ -132,11 +132,6 @@
                 </select>
               </div>
 
-              <div class="form-group">
-                <label>Gaji</label>
-                <input type="text" value="<?= $users->gaji ?>" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">
-              </div>
-
             </div>
 
           </div>

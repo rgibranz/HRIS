@@ -124,11 +124,6 @@
               </div>
 
               <div class="form-group">
-                <label>Gaji</label>
-                <input type="text" name="gaji" class="form-control" placeholder="Gaji" onkeypress="return event.charCode >= 48 && event.charCode <=57">
-              </div>
-
-              <div class="form-group">
                 <label for="">Jumlah Cuti </label>
                 <input type="text" name="sisa_cuti" class="form-control" placeholder="" aria-describedby="helpId" placeholder="Cuti dalam 1 Tahun" onkeypress="return event.charCode >= 48 && event.charCode <=57">
               </div>
@@ -139,12 +134,12 @@
           <div class="col-md-3">
 
             <div class="form-group text-center">
-              <img src="" alt="" width="200px" height="200px" id="gambar_load">
+              <img src="<?= base_url() ?>assets/gambar/icon/default-profile.png" alt="" width="200px" height="200px" id="gambar_load">
             </div>
 
             <div class="form-group">
               <label for="exampleInputFile">Upload Gambar</label>
-              <input type="file" class="form-control" id="preview_gambar" name="img" required>
+              <input type="file" class="form-control" id="preview_gambar" name="img">
             </div>
 
           </div>
