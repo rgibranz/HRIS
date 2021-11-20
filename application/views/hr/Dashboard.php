@@ -135,56 +135,58 @@
             transition: all 0.3s ease-in-out
         }
     </style>
-    <div class="row container d-flex justify-content-center">
-        <div class="col-md-6 offset-md-3">
-            <div class="widget-user-header">
-                <img src="<?= base_url('assets/gambar/icon/Untitled-1cc.png') ?>" height="75px">
+    <div class="offset-sm-2">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-6 offset-md-3">
+                <div class="widget-user-header">
+                    <img src="<?= base_url('assets/gambar/icon/Untitled-1cc.png') ?>" height="75px">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="page-content page-container" id="page-content">
-        <div class="padding">
-            <div class="row container d-flex justify-content-center">
+        <div class="page-content page-container" id="page-content">
+            <div class="padding">
+                <div class="row container d-flex justify-content-center">
 
-                <div class="col-xl-8 col-lg-12">
-                    <div class="card user-card-full">
-                        <div class="row m-l-0 m-r-0">
-                            <div class="col-sm-4 bg-c-lite-green user-profile">
-                                <div class="card-block text-center text-white">
-                                    <div class="m-b-25"> <img src="<?= base_url('assets/gambar/user/' . $users->img) ?>" class="img-circle elevation-3" height="100px" width="100px" alt="User-Profile-Image"> </div>
-                                    <h6 class="f-w-600"><?= $users->nama_users ?></h6>
-                                    <p><?= $users->job ?></p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="card-block">
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Email</p>
-                                            <h6 class="text-muted f-w-400"><?= $users->email ?></h6>
-                                            <p class="m-b-10 f-w-600">Divisi</p>
-                                            <?php if ($users->nama_divisi == "") { ?>
-                                                <br>
-                                            <?php } else { ?>
-                                                <h6 class="text-muted f-w-400"><?= $users->nama_divisi ?></h6>
-                                            <?php } ?>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <p class="m-b-10 f-w-600">Phone</p>
-                                            <?php if ($users->no_hp == "") { ?>
-                                                <br>
-                                            <?php } else { ?>
-                                                <h6 class="text-muted f-w-400"><?= $users->no_hp ?></h6>
-                                            <?php } ?> <p class="m-b-10 f-w-600">Status</p>
-                                            <?php if ($users->status_users == "") { ?>
-                                                <br>
-                                            <?php } else { ?>
-                                                <h6 class="text-muted f-w-400"><?= $users->status_users ?></h6>
-                                            <?php } ?>
-                                        </div>
+                    <div class="col-xl-8 col-lg-12">
+                        <div class="card user-card-full">
+                            <div class="row m-l-0 m-r-0">
+                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                    <div class="card-block text-center text-white">
+                                        <div class="m-b-25"> <img src="<?= base_url('assets/gambar/user/' . $users->img) ?>" class="img-circle elevation-3" height="100px" width="100px" alt="User-Profile-Image"> </div>
+                                        <h6 class="f-w-600"><?= $users->nama_users ?></h6>
+                                        <p><?= $users->job ?></p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                     </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Email</p>
+                                                <h6 class="text-muted f-w-400"><?= $users->email ?></h6>
+                                                <p class="m-b-10 f-w-600">Divisi</p>
+                                                <?php if ($users->nama_divisi == "") { ?>
+                                                    <br>
+                                                <?php } else { ?>
+                                                    <h6 class="text-muted f-w-400"><?= $users->nama_divisi ?></h6>
+                                                <?php } ?>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p class="m-b-10 f-w-600">Phone</p>
+                                                <?php if ($users->no_hp == "") { ?>
+                                                    <br>
+                                                <?php } else { ?>
+                                                    <h6 class="text-muted f-w-400"><?= $users->no_hp ?></h6>
+                                                <?php } ?> <p class="m-b-10 f-w-600">Status</p>
+                                                <?php if ($users->status_users == "") { ?>
+                                                    <br>
+                                                <?php } else { ?>
+                                                    <h6 class="text-muted f-w-400"><?= $users->status_users ?></h6>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
