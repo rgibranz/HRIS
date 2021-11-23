@@ -30,59 +30,42 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Silahkan Login</p>
 
-                <?php
-                echo validation_errors('<div class="alert alert-warning alert-dismissible">
-                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>', '</div>');
-                if ($this->session->flashdata('error')) {
-                    echo '<div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    ';
-                    echo $this->session->flashdata('error');
-                    echo '</div>';
-                }
-                if ($this->session->flashdata('pesan')) {
+                <?php if ($this->session->flashdata('msg') != null) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $this->session->flashdata('msg'); ?>
+                    </div>
+                <?php } ?>
+                <?php if ($this->session->flashdata('error') != null) { ?>
+                    <div class="alert alert-warning" role="alert">
+                        <?php echo $this->session->flashdata('error'); ?>
+                    </div>
+                <?php } ?>
 
-
-                    echo ' <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    ';
-                    echo $this->session->flashdata('pesan');
-                    echo '</div>';
-                }if ($this->session->flashdata('tolak')){
-                    echo '<div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    ';
-                    echo $this->session->flashdata('tolak');
-                    echo '</div>';
-                }
-
-                echo form_open('auth/login')
-                ?>
-                <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                <form action="<?= site_url('auth/auth') ?>" method="post">
+                    <div class="input-group mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                    <div class="input-group mb-3">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-4  offset-md-4">
-                        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-4  offset-md-4">
+                            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
-                <?php echo form_close(); ?>
+                </form>
 
                 <!-- /.social-auth-links -->
 
