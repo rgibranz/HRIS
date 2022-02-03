@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller
 		$this->load->model('m_users', 'users');
 		$this->load->model('m_cuti', 'cuti');
 
-		checkauth($this->session->userdata('level_user'), 'karyawan');
+		checkauth($this->session->userdata('level_user'), 'Karyawan');
 	}
 
 	public function index()
