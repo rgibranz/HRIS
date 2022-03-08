@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_users', 'users');
-        checkauth($this->session->userdata('level_user'), 'manajer');
+        checkauth($this->session->userdata('level_user'), 'Manajer');
     }
 
     public function index()

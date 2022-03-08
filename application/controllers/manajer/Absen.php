@@ -12,7 +12,7 @@ class Absen extends CI_Controller
         $this->load->model('m_users', 'users');
         $this->load->model('m_absen', 'absen');
 
-        checkauth($this->session->userdata('level_user'), 'manajer');
+        checkauth($this->session->userdata('level_user'), 'Manajer');
     }
 
 

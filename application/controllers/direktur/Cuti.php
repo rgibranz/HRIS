@@ -10,7 +10,7 @@ class Cuti extends CI_Controller
         parent::__construct();
         $this->load->model('m_users', 'users');
         $this->load->model('m_cuti', 'cuti');
-        checkauth($this->session->userdata('level_user'), 'direktur');
+        checkauth($this->session->userdata('level_user'), 'Direktur');
     }
 
 

@@ -12,56 +12,55 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('password', 'password', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $data['title'] = 'Login';
-            $this->load->view('login_user', $data, FALSE);
-        } else {
-            $this->_login();
-        }
+        $data['title'] = 'Login';
+        $this->load->view('login_user', $data);
     }
 
-    private function _login()
+    public function auth()
     {
+        // mengambil data hasil inputan user
         $email    = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $cek = $this->db->get_where('users', ['email' => $email])->row_array();
+        // mengecek apakah akun user ada?
+        $user =  $this->db->get_where('users', ['email' => $email])->num_rows();
 
-        if ($cek) {
-            if (password_verify($password, $cek['password'])) {
-                $level     = $cek['level'];
-                $nama_user = $cek['nama_users'];
+        if ($user > 0) {
+            $data_user = $this->db->get_where('users', ['email' => $email])->row();
 
-                $data['id_users']   = $cek['id_users'];
-                $data['id_divisi']   = $cek['id_divisi'];
-                $data['email']      = $cek['email'];
-                $data['level_user'] = $level;
-                $data['nama_users'] = $nama_user;
+            // mengecek apakah password benar
+            if (password_verify($password, $data_user->password)) {
+
+                // set data user yang akan di masukan ke session
+                $data['id_users']   = $data_user->id_users;
+                $data['id_divisi']  = $data_user->id_divisi;
+                $data['email']      = $data_user->email;
+                $data['level_user'] = $data_user->level;
+                $data['nama_users'] = $data_user->nama_users;
+                $data['data_user']  = $data_user;
 
                 $this->session->set_userdata($data);
 
-                if ($level == 'HR') {
+                if (
+                    $data_user->level == 'HR'
+                ) {
                     redirect('hr/dashboard');
                 }
-                if ($level == 'Direktur') {
+                if ($data_user->level == 'Direktur') {
                     redirect('direktur/dashboard');
                 }
-                if ($level == 'Manajer') {
+                if ($data_user->level == 'Manajer') {
                     redirect('manajer/dashboard');
                 } else {
                     redirect('karyawan/dashboard');
                 }
             } else {
-                $this->session->set_flashdata('error', 'Email atau Password salah');
+                $this->session->set_flashdata('error', 'Password salah');
                 redirect('auth/login');
             }
         } else {
-
-            $this->session->set_flashdata('login_error', 'Email atau password tidak terdaftar');
-            redirect('auth/login');
+            $this->session->set_flashdata('error', 'Akun Tidak Terdaftar');
+            redirect('login', 'refresh');
         }
     }
 
